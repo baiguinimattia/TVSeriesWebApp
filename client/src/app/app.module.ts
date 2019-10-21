@@ -5,10 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { HomeModule } from './home/home.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -24,9 +27,10 @@ import { HttpClientModule } from '@angular/common/http';
     }),
     SharedModule,
     AuthModule,
-    HttpClientModule
+    HttpClientModule,
+    HomeModule
   ],
-  providers: [],
+    providers: [ CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

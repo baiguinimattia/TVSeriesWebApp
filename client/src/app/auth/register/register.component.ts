@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly authService: AuthService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    if (this.authService.isAuthenticated()) {
+      console.log('se muta pe home');
+      this.router.navigate(['/home']);
+    }
   }
 
 }

@@ -1,18 +1,18 @@
 <header class="header-6">
     <div class="branding">
-        <a href="..." class="nav-link">
+        <a [routerLink]="['/home']" class="nav-link">
             <clr-icon shape="vm-bug"></clr-icon>
             <span class="title">Project Clarity</span>
         </a>
     </div>
     <div class="header-actions">
-        <a [routerLink]="['/login']" class="nav-link nav-text">
+        <a [routerLink]="['/login']" class="nav-link nav-text" [ngClass]="{'nav-link nav-text' : true}" *ngIf="!isAuthenticated()">
           Log In
       </a>
-        <a [routerLink]="['/register']" class="nav-link nav-text">
+        <a [routerLink]="['/register']" [ngClass]="{'nav-link nav-text' : true}" *ngIf="!isAuthenticated()">
           Register
       </a>
-        <a [routerLink]="['/logout']" class="nav-link nav-text">
+        <a [routerLink]="['/']" routerLinkActive="router-link-active" (click)="logout()" [ngClass]="{'nav-link nav-text' : true}" *ngIf="isAuthenticated()">
           Log Out
       </a>
     </div>

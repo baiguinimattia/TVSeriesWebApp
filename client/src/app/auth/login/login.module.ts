@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ClarityModule } from '@clr/angular';
+import { AppRoutingModule } from '../../app-routing.module';
 
 @NgModule({
   declarations: [LoginComponent, LoginFormComponent],
@@ -14,7 +15,8 @@ import { ClarityModule } from '@clr/angular';
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    ClarityModule
+    ClarityModule,
+    AppRoutingModule
   ],
   exports: [
     LoginComponent

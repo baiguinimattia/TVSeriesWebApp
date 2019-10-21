@@ -5,7 +5,7 @@
         <div class="content-area">
             <router-outlet></router-outlet>
         </div>
-        <nav class="sidenav">
+        <nav class="sidenav" *ngIf="isAuthenticated()">
         </nav>
     </div>
 </div>
