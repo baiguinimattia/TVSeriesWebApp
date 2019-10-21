@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent
@@ -23,7 +23,8 @@ import { AuthModule } from './auth/auth.module';
       positionClass: 'toast-top-right'
     }),
     SharedModule,
-    AuthModule
+    AuthModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

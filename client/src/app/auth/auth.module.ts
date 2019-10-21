@@ -8,7 +8,7 @@ import { RegisterModule } from './register/register.module';
   imports: [
     CommonModule,
     LoginModule,
-    RegisterModule
+    RegisterModule,
   ],
   exports: [
     LoginModule,
