@@ -8,6 +8,7 @@ import { AuthGuard } from '@nestjs/passport';
 export class AuthController {
 
     constructor(private authService: AuthService) { }
+
     @Post('/signUp')
     signUp(@Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto): Promise<void> {
         return this.authService.signUp(authCredentialsDto);
@@ -30,4 +31,5 @@ export class AuthController {
     async sync(@Res() response: Response): Promise<any> {
         response.sendStatus(200);
     }
+
 }

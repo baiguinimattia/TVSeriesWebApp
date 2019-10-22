@@ -4,3 +4,4 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 .vscode/settings.json
+server/development.env
