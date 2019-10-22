@@ -4,14 +4,13 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { AuthCredentialsDto } from './dto/auth-credentials.dto';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './jwt-payload.interface';
-import { ConfigService } from '../../.history/src/config/config.service_20191022093040';
 
 @Injectable()
 export class AuthService {
     private expirationTime = 86400000; // 1 day Unix time stamp
 
     constructor(@InjectRepository(UserRepository) private userRepository: UserRepository,
-        private jwtService: JwtService, private readonly configService: ConfigService,
+        private jwtService: JwtService,
     ) {
 
     }
@@ -28,7 +27,7 @@ export class AuthService {
         }
         const expiresAt = JSON.stringify(new Date().getTime() + this.expirationTime);
         const payload: JwtPayload = { email, expiresAt };
-        const accessToken = await this.jwtService.sign(payload);
+        const accessToken = this.jwtService.sign(payload);
 
         return { accessToken };
     }
