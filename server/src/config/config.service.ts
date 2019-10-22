@@ -29,6 +29,9 @@ export class ConfigService {
                 .default('root'),
             DATABASE_NAME: Joi.string()
                 .default('tvwebapp'),
+            BASE_API_PATH: Joi.string()
+                .default('https://www.radio.net/s/b4bdeephousesoulful'),
+
         });
 
         const { error, value: validatedEnvConfig } = envVarsSchema.validate(envConfig);
