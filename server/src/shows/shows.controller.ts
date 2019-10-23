@@ -1,8 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
-import { Observable } from 'rxjs';
-import { AxiosResponse } from 'axios';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { ShowsService } from './shows.service';
-import * as fastJson from 'fast-json-stringify';
+import { AxiosResponse } from 'axios';
 
 @Controller('shows')
 export class ShowsController {
@@ -10,7 +8,25 @@ export class ShowsController {
     constructor(private readonly showsService: ShowsService) { }
 
     @Get('popular')
-    getPopular() {
-        return this.showsService.getPopular();
+    getPopular(): Promise<AxiosResponse<{ error: boolean, result: string[] }>> {
+        return this.showsService.getPopular().toPromise()
+            .then(response => response.data)
+            .catch(error => error);
     }
+
+    @Get(':id')
+    getShow(@Param('id') id) {
+        return this.showsService.getShow(id);
+    }
+
+    @Get(':id/episodes')
+    getEpisodes(@Param('id') id) {
+        return this.showsService.getEpisodes(id);
+    }
+
+    @Get('')
+    getFromSearch(@Query('title') title: string) {
+        return this.showsService.getFromSearch(title);
+    }
+
 }

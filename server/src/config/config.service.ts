@@ -30,7 +30,8 @@ export class ConfigService {
             DATABASE_NAME: Joi.string()
                 .default('tvwebapp'),
             BASE_API_PATH: Joi.string()
-                .default('https://www.radio.net/s/b4bdeephousesoulful'),
+                .default('https://uflixit.p.rapidapi.com'),
+            IMDB_API_KEY: Joi.string().required(),
 
         });
 
@@ -48,5 +49,9 @@ export class ConfigService {
 
     get getApiKey(): string {
         return String(this.envConfig.UFLIXIT_API_KEY);
+    }
+
+    get imdbApiKey(): string {
+        return String(this.envConfig.IMDB_API_KEY);
     }
 }
