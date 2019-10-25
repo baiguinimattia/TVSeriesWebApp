@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataLayerService } from '../data-layer/data-layer.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly dataLayerService: DataLayerService) { }
 
   ngOnInit() {
+    // this.dataLayerService.search('Game of thrones').subscribe( (response) => console.log(response));
+    // this.dataLayerService.getShowEpisodesById('tt0944947').subscribe( (response) => console.log(response));
   }
 
 }

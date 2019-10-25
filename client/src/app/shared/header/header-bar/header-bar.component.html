@@ -5,6 +5,7 @@
             <span class="title">Project Clarity</span>
         </a>
     </div>
+    <app-search-bar></app-search-bar>
     <div class="header-actions">
         <a [routerLink]="['/login']" class="nav-link nav-text" [ngClass]="{'nav-link nav-text' : true}" *ngIf="!isAuthenticated()">
           Log In

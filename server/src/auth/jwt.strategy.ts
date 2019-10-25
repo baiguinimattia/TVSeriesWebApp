@@ -8,7 +8,7 @@ import { UnauthorizedException } from '@nestjs/common';
 export class JwtStrategy extends PassportStrategy(Strategy) {
     constructor(@InjectRepository(UserRepository) private userRepository: UserRepository) {
         super({
-            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+            jwtFromRequest: ExtractJwt.fromHeader('authorization'),
             secretOrKey: 'topSecret51',
         });
     }

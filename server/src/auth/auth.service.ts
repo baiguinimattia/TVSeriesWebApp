@@ -27,7 +27,7 @@ export class AuthService {
         }
         const expiresAt = JSON.stringify(new Date().getTime() + this.expirationTime);
         const payload: JwtPayload = { email, expiresAt };
-        const accessToken = this.jwtService.sign(payload);
+        const accessToken = await this.jwtService.sign(payload);
 
         return { accessToken };
     }

@@ -8,9 +8,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { HomeModule } from './home/home.module';
+import { AuthService } from './auth/auth.service';
+import { AuthInterceptorService } from './auth/auth-interceptor.service';
+
+
+export function jwtOptionsFactory(authService: AuthService) {
+  return {
+    tokenGetter: () => authService.getSessionId(),
+    whitelistedDomains: ['localhost:3000']
+  };
+}
+
 
 @NgModule({
   declarations: [
@@ -28,9 +39,12 @@ import { HomeModule } from './home/home.module';
     SharedModule,
     AuthModule,
     HttpClientModule,
-    HomeModule
+    HomeModule,
   ],
-    providers: [ CookieService],
+    providers: [
+      CookieService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

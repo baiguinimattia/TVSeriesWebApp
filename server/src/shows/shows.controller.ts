@@ -1,8 +1,10 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { ShowsService } from './shows.service';
 import { AxiosResponse } from 'axios';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('shows')
+@UseGuards(AuthGuard())
 export class ShowsController {
 
     constructor(private readonly showsService: ShowsService) { }

@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    const token = this.cookieService.get('Authorization');
+    const token = this.cookieService.get('authorization');
     const jwtHelper = new JwtHelperService();
     // const decodedToken = jwtHelper.decodeToken(token);
 
@@ -35,6 +35,10 @@ export class AuthService {
   }
 
   logout() {
-    this.cookieService.delete('Authorization');
+    this.cookieService.delete('authorization');
+  }
+
+  getSessionId(): string {
+    return this.cookieService.get('authorization');
   }
 }
