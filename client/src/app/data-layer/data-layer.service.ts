@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 
@@ -12,10 +12,6 @@ export class DataLayerService {
 
   search(title: string): Observable<any> {
     return this.http.get('/api/shows', {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'authorization': this.authService.getSessionId(),
-      }),
       params: { title }
     });
   }

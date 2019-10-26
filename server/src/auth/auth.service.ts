@@ -10,7 +10,7 @@ export class AuthService {
     private expirationTime = 86400000; // 1 day Unix time stamp
 
     constructor(@InjectRepository(UserRepository) private userRepository: UserRepository,
-        private jwtService: JwtService,
+                private jwtService: JwtService,
     ) {
 
     }

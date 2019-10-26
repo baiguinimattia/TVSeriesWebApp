@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { DataLayerService } from '../../../../../.history/src/app/data-layer/data-layer.service_20191024001046';
+import { DataLayerService } from '../../../data-layer/data-layer.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -15,7 +15,6 @@ export class SearchBarComponent implements OnInit {
   }
 
   onKeydown($event) {
-    console.log(this.searchInput.nativeElement.value);
     this.dataLayerService.search(this.searchInput.nativeElement.value).subscribe((response) => console.log(response));
   }
 

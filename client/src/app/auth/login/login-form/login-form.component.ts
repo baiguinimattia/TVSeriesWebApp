@@ -28,7 +28,6 @@ export class LoginFormComponent implements OnInit {
     if (this.form.valid) {
       this.authService.login(this.form.value).subscribe(
         (res) => {
-          console.log(res);
           this.toastr.success('You were logged in succesfully!');
           this.router.navigate(['/home']);
         },

@@ -22,16 +22,15 @@ export class AuthService {
     return this.http.post('/api/auth/signIn', formData);
   }
 
-  sync(): Observable<any> {
-    return this.http.get('/api/auth/sync');
-  }
 
-  isAuthenticated(): boolean {
+  isAuthenticated() {
     const token = this.cookieService.get('authorization');
     const jwtHelper = new JwtHelperService();
-    // const decodedToken = jwtHelper.decodeToken(token);
-
     return token && !jwtHelper.isTokenExpired(token);
+  }
+
+  sync(): Observable<{isAuthenticated: boolean}> {
+    return this.http.get<{isAuthenticated: boolean}>('/api/auth/sync');
   }
 
   logout() {

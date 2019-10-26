@@ -29,7 +29,9 @@ export class AuthController {
     @Get('sync')
     @UseGuards(AuthGuard())
     async sync(@Res() response: Response): Promise<any> {
-        response.sendStatus(200);
+        response.json({
+            isAuthenticated: true,
+        });
     }
 
 }
