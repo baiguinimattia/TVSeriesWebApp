@@ -25,7 +25,7 @@ export function jwtOptionsFactory(authService: AuthService) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

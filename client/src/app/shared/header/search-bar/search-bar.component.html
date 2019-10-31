@@ -1,5 +1,4 @@
-<form class="search">
-    <label for="search_input">
-    <input (keydown.enter)="onKeydown($event)" #searchInput type="text" placeholder="Search for keywords...">
-  </label>
-</form>
+<div class="container" *ngIf="isAuthenticated()">
+  <input (keydown.enter)="onKeydown($event)" #searchInput type="text" placeholder="Search ...">
+  <div class="search"></div>
+</div>

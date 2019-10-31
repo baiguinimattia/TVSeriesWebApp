@@ -56,4 +56,14 @@ export class ShowsService {
             return error;
         }
     }
+
+    getSearchTv(searchText: string) {
+        return this.http.get(this.configService.tmdbBasePath + '/search/tv',
+            {
+                params: {
+                    query: searchText,
+                    api_key: this.configService.tmbdApiKey,
+                },
+            });
+    }
 }

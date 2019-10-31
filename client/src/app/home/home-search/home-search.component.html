@@ -1,0 +1,10 @@
+<div [ngClass]="{'search': true, 'open' : toggleOpen}">
+    <input (keydown.enter)="onKeydown($event)" #searchText type="search" class="search-box" />
+    <span class="search-button" [ngClass]="{'search-button': true}" (click)="toggle()">
+      <span class="search-icon"></span>
+    </span>
+  </div>
+
+  <div class="results" *ngIf="results.length">
+    <app-search-result *ngFor="let result of results" [result]="result"></app-search-result>
+  </div>

@@ -16,6 +16,12 @@ export class DataLayerService {
     });
   }
 
+  searchTv(title: string): Observable<any> {
+    return this.http.get('/api/shows/search/tv', {
+      params: { query: title }
+    });
+  }
+
   getShowById(id: string): Observable<any> {
     return this.http.get('/api/shows/' + id);
   }

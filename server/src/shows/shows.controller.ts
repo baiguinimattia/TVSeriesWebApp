@@ -26,9 +26,17 @@ export class ShowsController {
         return this.showsService.getEpisodes(id);
     }
 
+    @Get('/search/tv')
+    getSearchTv(@Query('query') query) {
+        return this.showsService.getSearchTv(query).toPromise()
+        .then(response => response.data.results)
+        .catch(error => error);
+    }
+
     @Get('')
     getFromSearch(@Query('title') title: string) {
         return this.showsService.getFromSearch(title);
     }
+
 
 }

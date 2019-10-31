@@ -32,6 +32,8 @@ export class ConfigService {
             BASE_API_PATH: Joi.string()
                 .default('https://uflixit.p.rapidapi.com'),
             IMDB_API_KEY: Joi.string().required(),
+            TMDB_API_KEY: Joi.string().required(),
+            TMDB_BASE_PATH: Joi.string().default('https://api.themoviedb.org/3'),
 
         });
 
@@ -54,4 +56,13 @@ export class ConfigService {
     get imdbApiKey(): string {
         return String(this.envConfig.IMDB_API_KEY);
     }
+
+    get tmbdApiKey(): string {
+        return String(this.envConfig.TMDB_API_KEY);
+    }
+
+    get tmdbBasePath(): string {
+        return String(this.envConfig.TMDB_BASE_PATH);
+    }
+
 }
