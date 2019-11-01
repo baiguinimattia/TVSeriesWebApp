@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config/typeorm.config';
 import { ConfigModule } from './config/config.module';
 import { ShowsModule } from './shows/shows.module';
+import { MediaModule } from './media/media.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ShowsModule } from './shows/shows.module';
     AuthModule,
     ConfigModule,
     ShowsModule,
+    MediaModule,
   ],
   controllers: [AppController],
   providers: [AppService],

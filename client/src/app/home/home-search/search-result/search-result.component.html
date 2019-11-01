@@ -1,18 +1,16 @@
-
 <div class="clr-row">
-    <div class="clr-col-lg-5 clr-col-md-8 clr-col-12">
+    <div class="clr-col-lg-6 clr-col-12">
         <div class="card">
             <div class="card-header">
                 {{result.name}}
             </div>
-            <div class="card-block">
-                <div class="card-text">
-                    {{result.overview}}
-                </div>
+            <div class="card-img">
+                <img class='poster' [src]="posterPath">
             </div>
-            <div class="card-footer">
-                <button class="btn btn-sm btn-link">Footer Action 1</button>
-                <button class="btn btn-sm btn-link">Footer Action 2</button>
+            <div class="card-block">
+                <p class="card-text">
+                    {{result.overview}}
+                </p>
             </div>
         </div>
     </div>

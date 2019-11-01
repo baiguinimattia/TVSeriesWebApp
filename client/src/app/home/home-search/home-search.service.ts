@@ -10,7 +10,6 @@ export class HomeSearchService {
   constructor(private readonly dataService: DataLayerService) { }
 
   searchEntries(term) {
-    console.log(term);
     return this.dataService.searchTv(term);
   }
 

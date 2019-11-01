@@ -34,6 +34,7 @@ export class ConfigService {
             IMDB_API_KEY: Joi.string().required(),
             TMDB_API_KEY: Joi.string().required(),
             TMDB_BASE_PATH: Joi.string().default('https://api.themoviedb.org/3'),
+            IMAGE_BASE_URL: Joi.string().default('http://image.tmdb.org/t/p/'),
 
         });
 
@@ -63,6 +64,10 @@ export class ConfigService {
 
     get tmdbBasePath(): string {
         return String(this.envConfig.TMDB_BASE_PATH);
+    }
+
+    get imageBasePath(): string {
+        return String(this.envConfig.IMAGE_BASE_URL);
     }
 
 }
