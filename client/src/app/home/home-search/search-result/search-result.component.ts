@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MediaService } from '../../../data-layer/media.service';
-import { PosterSizesEnum } from '../../../enums/image-enums';
+import { PosterSizesEnum, PathsEnum } from '../../../enums/image-enums';
+import { DomSanitizer } from '@angular/platform-browser';
+import { fadeSlide } from '@clr/angular';
 
 @Component({
   selector: 'app-search-result',
@@ -10,14 +12,10 @@ import { PosterSizesEnum } from '../../../enums/image-enums';
 export class SearchResultComponent implements OnInit {
   @Input() result: any;
   posterPath: string;
-  constructor(private readonly mediaService: MediaService) { }
+  constructor(private readonly mediaService: MediaService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    console.log(this.result);
-    this.mediaService.getPosterPath(this.result.poster_path, PosterSizesEnum.original).subscribe( (response) => {
-      this.posterPath = response;
-    },
-    (error) => console.log(error));
+    this.posterPath = PathsEnum.default + PosterSizesEnum.original + this.result.poster_path;
   }
 
 }

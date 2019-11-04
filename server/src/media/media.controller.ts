@@ -1,13 +1,12 @@
-import { Controller, UseGuards, Get, Param, Body, Query } from '@nestjs/common';
+import { Controller, UseGuards, Get, Param, Body, Query, HttpService } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { MediaService } from './media.service';
-import { json } from 'body-parser';
 
 @Controller('media')
 @UseGuards(AuthGuard())
 export class MediaController {
 
-    constructor(private readonly mediaService: MediaService) {}
+    constructor(private readonly mediaService: MediaService, private readonly http: HttpService) { }
 
     @Get('logo')
     getLogoPath(@Param() params): string {
@@ -15,7 +14,10 @@ export class MediaController {
     }
 
     @Get('poster')
-    getPosterPath(@Query() query): string {
-        return JSON.stringify(this.mediaService.getPosterPath(query.path, query.dimension));
+    getPosterPath(@Query() query) {
+        // return JSON.stringify(this.mediaService.getPosterPath(query.path, query.dimension));
+        return this.mediaService.getPosterPath(query.path, query.dimension).toPromise()
+        .then(response => response.data)
+        .catch(error => error);
     }
 }

@@ -5,6 +5,11 @@ export enum BackdropSizesEnum {
     'original' = 'original'
 }
 
+export enum PathsEnum {
+    'default' = 'http://image.tmdb.org/t/p/',
+    'secured' = 'https://image.tmdb.org/t/p/'
+}
+
 
 export enum LogoSizesEnum {
     'w45' = 'w45',
