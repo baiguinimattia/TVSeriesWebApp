@@ -3,7 +3,7 @@ import { ShowsService } from './shows.service';
 import { AxiosResponse } from 'axios';
 import { AuthGuard } from '@nestjs/passport';
 
-@Controller('shows')
+@Controller('tv')
 @UseGuards(AuthGuard())
 export class ShowsController {
 
@@ -16,27 +16,20 @@ export class ShowsController {
             .catch(error => error);
     }
 
+    @Get('/search')
+    getSearchResult(@Query('query') query) {
+        return this.showsService.getSearchResult(query).toPromise()
+            .then(response => response.data.results)
+            .catch(error => error);
+    }
+
     @Get(':id')
-    getShow(@Param('id') id) {
-        return this.showsService.getShow(id);
+    getDetails(@Param('id') id: string) {
+        return this.showsService.getDetails(id).toPromise()
+            .then(response => response.data)
+            .catch(error => error);
     }
 
-    @Get(':id/episodes')
-    getEpisodes(@Param('id') id) {
-        return this.showsService.getEpisodes(id);
-    }
-
-    @Get('/search/tv')
-    getSearchTv(@Query('query') query) {
-        return this.showsService.getSearchTv(query).toPromise()
-        .then(response => response.data.results)
-        .catch(error => error);
-    }
-
-    @Get('')
-    getFromSearch(@Query('title') title: string) {
-        return this.showsService.getFromSearch(title);
-    }
 
 
 }

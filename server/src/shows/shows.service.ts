@@ -1,6 +1,7 @@
 import { Injectable, HttpService, BadRequestException } from '@nestjs/common';
 import { ConfigService } from '../config/config.service';
 import * as imdb from 'imdb-api';
+import { Any } from 'typeorm';
 
 @Injectable()
 export class ShowsService {
@@ -30,40 +31,25 @@ export class ShowsService {
         }
     }
 
-    async getShow(showId: string) {
-        try {
-            const response = await this.imdbClient.get({ id: showId });
-            return response;
-        } catch (error) {
-            throw new BadRequestException();
-        }
-    }
-
-    async getEpisodes(showId: string) {
-        try {
-            const response = await this.imdbClient.get({ id: showId });
-            return response.episodes();
-        } catch (error) {
-            return error;
-        }
-    }
-
-    async getFromSearch(searchText: string) {
-        try {
-            const response = await this.imdbClient.search({ name: searchText });
-            return response.results;
-        } catch (error) {
-            return error;
-        }
-    }
-
-    getSearchTv(searchText: string) {
+    getSearchResult(searchText: string) {
         return this.http.get(this.configService.tmdbBasePath + '/search/tv',
             {
-                params: {
-                    query: searchText,
-                    api_key: this.configService.tmbdApiKey,
-                },
+                params: this.generateParams({key: 'query', value: searchText}),
             });
+    }
+
+    private generateParams(...paramList: Array<{ key: string, value: string }>) {
+        const param = {};
+        paramList.forEach((currentElement) => {
+            param[currentElement.key] = currentElement.value;
+        });
+        param['api_key'] = this.configService.tmbdApiKey;
+        return param;
+    }
+
+    getDetails(id: string) {
+        return this.http.get(this.configService.tmdbBasePath + '/tv/' + id, {
+            params: this.generateParams(),
+        });
     }
 }

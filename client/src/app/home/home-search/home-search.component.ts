@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HomeSearchService } from './home-search.service';
+import { ShowResult } from '../../interfaces/show-result.interface';
 
 @Component({
   selector: 'app-home-search',
@@ -8,7 +9,7 @@ import { HomeSearchService } from './home-search.service';
   styleUrls: ['./home-search.component.css']
 })
 export class HomeSearchComponent implements OnInit {
-  results;
+  results: ShowResult[];
   toggleOpen: boolean;
   @ViewChild('searchText', { static: true }) searchText: ElementRef;
   constructor(private readonly homeSearchService: HomeSearchService) { }
@@ -27,7 +28,6 @@ export class HomeSearchComponent implements OnInit {
 
   onKeydown($event) {
     this.homeSearchService.searchEntries(this.searchText.nativeElement.value).subscribe((response) => {
-      console.log(response);
       this.results = response;
     });
   }

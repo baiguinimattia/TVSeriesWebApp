@@ -17,7 +17,7 @@ export class DataLayerService {
   }
 
   searchTv(title: string): Observable<any> {
-    return this.http.get('/api/shows/search/tv', {
+    return this.http.get('/api/tv/search', {
       params: { query: title }
     });
   }
@@ -30,36 +30,18 @@ export class DataLayerService {
     return this.http.get('/api/shows/' + id + '/episodes');
   }
 
-  private buildHttpOptionsForImage(options?: {
-    params?: HttpParams,
-    payload?: object,
-  }) {
-    const httpOptions: {
-      headers?: HttpHeaders,
-      params?: HttpParams,
-    } = {};
-
-    httpOptions.headers = new HttpHeaders({
-      'Content-Type': 'blob',
-    });
-
-
-    if (options && options.params) {
-      httpOptions.params = options.params;
-    }
-
-    return httpOptions;
-  }
 
   getImage(imageUrl: string, options?: {
     params?: HttpParams
   }): Observable<Blob> {
     const path = options !== undefined ? options.params.get('path') : '';
     const dimension = options !== undefined ? options.params.get('dimension') : 'original';
-    return this.http.get(imageUrl,  {responseType: 'blob', params: {
-      path,
-      dimension
-    }});
+    return this.http.get(imageUrl, {
+      responseType: 'blob', params: {
+        path,
+        dimension
+      }
+    });
   }
 
 
