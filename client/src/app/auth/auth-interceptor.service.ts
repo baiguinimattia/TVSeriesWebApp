@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from './auth.service';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { tap, map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -16,22 +16,42 @@ export class AuthInterceptorService implements HttpInterceptor {
     private readonly toastr: ToastrService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
     if (this.authService.isAuthenticated()) {
-      const token = this.authService.getSessionId();
-      req = req.clone({
-        headers: req.headers.set('Authorization', token),
-      });
+      req = req.clone({ headers: req.headers.set('Authorization', this.authService.getSessionId()) });
     }
 
-    return next.handle(req).pipe(tap(() => { },
-      (err: any) => {
-        if (err instanceof HttpErrorResponse) {
-          if (err.status !== 401) {
-            return;
-          }
-          this.toastr.error('You need to authenticate!');
-          this.router.navigate(['login']);
+    if (!req.headers.has('Content-Type')) {
+      req = req.clone({ headers: req.headers.set('Content-Type', 'application/json') });
+    }
+
+    req = req.clone({ headers: req.headers.set('Accept', 'application/json') });
+
+    return next.handle(req).pipe(
+      map((event: HttpEvent<any>) => {
+        return event;
+      }),
+      catchError((error: HttpErrorResponse) => {
+        switch (error.status) {
+          case (401):
+            if (this.urlContains('/api/login', req)) {
+              return throwError(error);
+            } else {
+              this.toastr.error('The session has expired.');
+              this.authService.logout();
+            }
+            break;
+          case (504):
+            this.toastr.error('Error while requesting data.');
+            break;
+          default:
+            return throwError(error);
         }
-      }));
+      })
+    );
+  }
+
+  private urlContains(path: string, req: HttpRequest<any>): boolean {
+    return req.url.indexOf(path) !== -1;
   }
 }
