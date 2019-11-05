@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MediaService } from '../../../data-layer/media.service';
-import { PosterSizesEnum, PathsEnum } from '../../../enums/image-enums';
-import { ShowResult } from '../../../interfaces/show-result.interface';
-import { TvService } from '../../../data-layer/tv.service';
-import { ShowDetails } from '../../../interfaces/show-details.interface';
+import { ShowResult } from '../../interfaces/show-result.interface';
+import { ShowDetails } from '../../interfaces/show-details.interface';
+import { MediaService } from '../../data-layer/media.service';
+import { TvService } from '../../data-layer/tv.service';
+import { PathsEnum, PosterSizesEnum } from '../../enums/image-enums';
 
 @Component({
   selector: 'app-search-result',
@@ -28,5 +28,4 @@ export class SearchResultComponent implements OnInit {
       this.details = details;
     });
   }
-
 }

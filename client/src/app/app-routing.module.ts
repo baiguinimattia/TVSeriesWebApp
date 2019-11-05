@@ -5,6 +5,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { DetailsPageComponent } from './details-page/details-page.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,9 @@ const routes: Routes = [
   },
   {
     path: 'home', component: HomeComponent, canActivate: [AuthGuardService]
+  },
+  {
+    path: 'search', component: SearchPageComponent, canActivate: [AuthGuardService]
   },
   {
     path: 'details/:id', component: DetailsPageComponent, canActivate: [AuthGuardService]
