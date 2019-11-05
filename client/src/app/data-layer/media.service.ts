@@ -11,14 +11,7 @@ export class MediaService {
 
   constructor(private readonly http: HttpClient, private readonly data: DataLayerService) { }
 
-  getLogoPath(path: string, dimension: LogoSizesEnum) {
-    return this.http.get('/api/media/logo', { params: {
-      path,
-      dimension,
-    }});
-  }
-
-  getImagePath(path?: string, dimension?: PosterSizesEnum): string {
+  getImagePath(path?: string, dimension?: string): string {
     return PathsEnum.default + PosterSizesEnum.original + path;
 
   }

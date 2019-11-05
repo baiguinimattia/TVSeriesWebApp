@@ -16,21 +16,6 @@ export class DataLayerService {
     });
   }
 
-  searchTv(title: string): Observable<any> {
-    return this.http.get('/api/tv/search', {
-      params: { query: title }
-    });
-  }
-
-  getShowById(id: string): Observable<any> {
-    return this.http.get('/api/shows/' + id);
-  }
-
-  getShowEpisodesById(id: string): Observable<any> {
-    return this.http.get('/api/shows/' + id + '/episodes');
-  }
-
-
   getImage(imageUrl: string, options?: {
     params?: HttpParams
   }): Observable<Blob> {

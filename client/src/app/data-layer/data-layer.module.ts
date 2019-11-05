@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataLayerService } from './data-layer.service';
+import { MediaService } from './media.service';
+import { SearchService } from './search.service';
+import { TvService } from './tv.service';
 
 @NgModule({
   declarations: [],
@@ -8,7 +11,10 @@ import { DataLayerService } from './data-layer.service';
     CommonModule
   ],
   providers: [
-    DataLayerService
+    DataLayerService,
+    MediaService,
+    SearchService,
+    TvService
   ],
   exports: [],
 })
