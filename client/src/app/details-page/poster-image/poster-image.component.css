@@ -1,0 +1,18 @@
+.full-width-image {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+.image-container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 50px;
+    left: 20%;
+    font-size: 100px;
+}

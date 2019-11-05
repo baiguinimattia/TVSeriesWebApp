@@ -13,6 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { HomeModule } from './home/home.module';
 import { AuthService } from './auth/auth.service';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
+import { DetailsPageModule } from './details-page/details-page.module';
 
 
 export function jwtOptionsFactory(authService: AuthService) {
@@ -40,6 +41,7 @@ export function jwtOptionsFactory(authService: AuthService) {
     AuthModule,
     HttpClientModule,
     HomeModule,
+    DetailsPageModule
   ],
     providers: [
       CookieService,

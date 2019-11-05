@@ -7,4 +7,5 @@ export interface ShowDetails {
     languages: string[];
     last_air_date: Date;
     name: string;
+    poster_path: string;
 }

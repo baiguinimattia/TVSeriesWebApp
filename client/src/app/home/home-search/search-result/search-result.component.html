@@ -11,6 +11,6 @@
         </p>
     </div>
     <div class="card-footer">
-        <button (click)="getDetails(result.id)" class="btn btn-sm btn-link">Get details</button>
+        <button [routerLink]="['/details', result.id]" routerLinkActive="router-link-active" class="btn btn-sm btn-link">Get details</button>
     </div>
 </div>

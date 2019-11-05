@@ -1,3 +1,7 @@
 .is-hidden {
     display: none;
 }
+
+.main-container .content-container .content-area  {
+    padding: 0;
+}

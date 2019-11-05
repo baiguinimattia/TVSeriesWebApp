@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LogoSizesEnum, PosterSizesEnum } from '../enums/image-enums';
+import { LogoSizesEnum, PosterSizesEnum, PathsEnum } from '../enums/image-enums';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DataLayerService } from './data-layer.service';
@@ -18,16 +18,9 @@ export class MediaService {
     }});
   }
 
-  getPosterPath(path?: string, dimension?: PosterSizesEnum): Observable<any> {
-    const opts = {
-      params: new HttpParams({
-        fromObject: {
-          path: path ? path : '',
-          dimension: dimension ? dimension : 'original'
-        }
-      })
-    };
-    return this.data.getImage('/api/media/poster', opts);
+  getImagePath(path?: string, dimension?: PosterSizesEnum): string {
+    return PathsEnum.default + PosterSizesEnum.original + path;
+
   }
 
 }
