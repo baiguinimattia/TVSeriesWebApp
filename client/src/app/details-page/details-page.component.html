@@ -1,1 +1,11 @@
-<app-poster-image [path]="details.backdrop_path" [name]="details.name"></app-poster-image>
+<!-- <app-poster-image [path]="details.backdrop_path" [name]="details.name"></app-poster-image> -->
+
+<div class="clr-row container">
+    <div class="clr-col-md-8 clr-col-12">
+        <app-intro [data]="details"></app-intro>
+        <app-data-table [data]="details"></app-data-table>
+    </div>
+    <div class="clr-col-md-4 clr-col-12">
+        <app-banner [path]="details.poster_path"></app-banner>
+    </div>
+</div>

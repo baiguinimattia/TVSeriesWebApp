@@ -52,4 +52,8 @@ export class ShowsService {
             params: this.generateParams(),
         });
     }
+
+    getExternalIds(id: string) {
+        return this.http.get(`${this.configService.tmdbBasePath}/tv/${id}/external_ids`, { params: this.generateParams()});
+    }
 }

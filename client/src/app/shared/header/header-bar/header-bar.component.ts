@@ -18,7 +18,6 @@ export class HeaderBarComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    this.toastr.success('You have been logged out succesfully');
     this.router.navigate(['/login']);
   }
 

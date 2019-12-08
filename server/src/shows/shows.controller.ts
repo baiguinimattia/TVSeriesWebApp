@@ -30,6 +30,11 @@ export class ShowsController {
             .catch(error => error);
     }
 
-
+    @Get(':id/external_ids')
+    getExternalIds(@Param('id') id: string) {
+        return this.showsService.getExternalIds(id).toPromise()
+            .then(response => response.data)
+            .catch(error => error);
+    }
 
 }
