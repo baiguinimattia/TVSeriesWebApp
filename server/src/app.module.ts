@@ -7,8 +7,9 @@ import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config/typeorm.config';
 import { ConfigModule } from './config/config.module';
-import { ShowsModule } from './shows/shows.module';
+import { TvModule } from './tv/tv.module';
 import { MediaModule } from './media/media.module';
+import { PersonModule } from './person/person.module';
 
 @Module({
   imports: [
@@ -18,8 +19,9 @@ import { MediaModule } from './media/media.module';
     TypeOrmModule.forRoot(typeOrmConfig),
     AuthModule,
     ConfigModule,
-    ShowsModule,
+    TvModule,
     MediaModule,
+    PersonModule,
   ],
   controllers: [AppController],
   providers: [AppService],

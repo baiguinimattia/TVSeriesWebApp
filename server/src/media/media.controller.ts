@@ -6,7 +6,7 @@ import { MediaService } from './media.service';
 @UseGuards(AuthGuard())
 export class MediaController {
 
-    constructor(private readonly mediaService: MediaService, private readonly http: HttpService) { }
+    constructor(private readonly mediaService: MediaService) { }
 
     @Get('logo')
     getLogoPath(@Param() params): string {

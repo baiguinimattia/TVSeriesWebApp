@@ -1,6 +1,6 @@
 import { Module, HttpModule } from '@nestjs/common';
-import { ShowsService } from './shows.service';
-import { ShowsController } from './shows.controller';
+import { TvService } from './tv.service';
+import { TvController } from './tv.controller';
 import { ConfigModule } from '../config/config.module';
 import { PassportModule } from '@nestjs/passport';
 
@@ -12,7 +12,7 @@ import { PassportModule } from '@nestjs/passport';
     }),
     PassportModule.register({ defaultStrategy: 'jwt'}),
   ],
-  providers: [ShowsService],
-  controllers: [ShowsController],
+  providers: [TvService],
+  controllers: [TvController],
 })
-export class ShowsModule { }
+export class TvModule { }

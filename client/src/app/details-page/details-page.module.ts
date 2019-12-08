@@ -6,9 +6,10 @@ import { ClarityModule } from '@clr/angular';
 import { BannerComponent } from './banner/banner.component';
 import { IntroComponent } from './intro/intro.component';
 import { DataTableComponent } from './data-table/data-table.component';
+import { PersonListComponent } from './person-list/person-list.component';
 
 @NgModule({
-  declarations: [DetailsPageComponent, PosterImageComponent, BannerComponent, IntroComponent, DataTableComponent],
+  declarations: [DetailsPageComponent, PosterImageComponent, BannerComponent, IntroComponent, DataTableComponent, PersonListComponent],
   imports: [
     CommonModule,
     ClarityModule

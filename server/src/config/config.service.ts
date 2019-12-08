@@ -46,6 +46,15 @@ export class ConfigService {
         return validatedEnvConfig;
     }
 
+    generateParams(...paramList: Array<{ key: string, value: string }>) {
+        const param = {};
+        paramList.forEach((currentElement) => {
+            param[currentElement.key] = currentElement.value;
+        });
+        param['api_key'] = this.tmbdApiKey;
+        return param;
+    }
+
     get(key: string): string {
         return this.envConfig[key];
     }
