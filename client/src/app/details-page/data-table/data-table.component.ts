@@ -6,6 +6,7 @@ import { ExternalIds } from '../../interfaces/external-ids.interface';
 import { tap, map, switchMap } from 'rxjs/operators';
 import { PersonDetails, Person } from '../../interfaces/person.interface';
 import { PersonService } from '../../data-layer/person.service';
+import { DetailsPageService } from '../details-page.service';
 
 @Component({
   selector: 'app-data-table',
@@ -17,9 +18,9 @@ export class DataTableComponent implements OnInit, OnChanges, OnDestroy {
   doesDataExist: boolean = false;
   @Input() data: ShowDetails;
   externalIds: ExternalIds;
-  persons: Observable<PersonDetails>[];
 
-  constructor(private readonly tvService: TvService, private readonly personService: PersonService) { }
+  constructor(private readonly tvService: TvService, private readonly personService: PersonService,
+    private readonly detailsPageService: DetailsPageService) { }
 
   private subscriptions: Subscription = new Subscription();
 
@@ -28,21 +29,14 @@ export class DataTableComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges() {
     if (this.data) {
-      this.subscriptions.add(this.tvService.getExternalIds(this.data.id).pipe(
-        tap((externalIds: ExternalIds) => this.externalIds = externalIds),
-      ).subscribe((response: ExternalIds) => {
-        this.doesDataExist = true;
-      }));
 
       this.subscriptions.add(
-        this.tvService.getCredits(this.data.id).pipe(
-          map(credits => credits.cast),
-          switchMap(cast => from(cast)),
-          map((person: Person) => this.personService.getDetails(person.id)),
-        )
-          .subscribe((response) => this.persons.push(response)),
+        this.detailsPageService.getExternalIds(this.data.id).pipe(
+          tap((externalIds: ExternalIds) => this.externalIds = externalIds),
+        ).subscribe((response: ExternalIds) => {
+          this.doesDataExist = true;
+        }),
       );
-
     }
   }
 

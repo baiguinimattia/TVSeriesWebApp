@@ -3,8 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { TvService } from '../data-layer/tv.service';
 import { ShowDetails } from '../interfaces/show-details.interface';
 import { tap, map } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { DetailsPageService } from './details-page.service';
+import { PersonDetails } from '../interfaces/person.interface';
 
 @Component({
   selector: 'app-details-page',
@@ -16,7 +18,11 @@ export class DetailsPageComponent implements OnInit, OnDestroy {
   id: string;
   details: ShowDetails;
   private subscriptions: Subscription = new Subscription();
-  constructor(private route: ActivatedRoute, private readonly tvService: TvService, private readonly toastr: ToastrService) { }
+  private persons: Observable<PersonDetails>[] = [];
+
+
+  constructor(private route: ActivatedRoute, private readonly tvService: TvService, private readonly toastr: ToastrService,
+    private readonly detailsPageService: DetailsPageService) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -32,18 +38,22 @@ export class DetailsPageComponent implements OnInit, OnDestroy {
         })
     );
 
+    this.subscriptions.add(this.detailsPageService.getDetails(this.id).pipe(
+      tap((result: ShowDetails) => {
+        this.details = result;
+      }),
+    ).subscribe(
+      (response) => {
+      },
+      (error) => {
+        this.toastr.error(error.message);
+      }));
+
     this.subscriptions.add(
-      this.tvService.getDetails(this.id).pipe(
-        tap((result: ShowDetails) => {
-          this.details = result;
-        }),
-      ).subscribe(
-        (response) => {
-        },
-        (error) => {
-          this.toastr.error(error.message);
-        })
+      this.detailsPageService.getCredits(this.id).subscribe((response: Observable<PersonDetails>) => this.persons.push(response))
     );
+
+
   }
 
   ngOnDestroy() {
