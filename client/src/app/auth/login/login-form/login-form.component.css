@@ -1,0 +1,11 @@
+#login-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.login-heading {
+    text-align: center;
+    font-weight: 300;
+    font-size: 3rem;
+    padding-bottom: 1rem;
+}

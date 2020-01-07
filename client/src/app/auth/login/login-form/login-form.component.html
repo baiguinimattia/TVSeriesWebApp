@@ -1,18 +1,20 @@
-<h1>Login</h1>
+<div id="login-container">
+    <h1 class="login-heading">Login</h1>
 
-<form clrForm [formGroup]="form" (ngSubmit)="submit()">
-    <clr-input-container>
-        <label>Email</label>
-        <input clrInput formControlName="email" type="email" />
-        <clr-control-error required>Email Required</clr-control-error>
-    </clr-input-container>
+    <form clrForm [formGroup]="form" (ngSubmit)="submit()">
+        <clr-input-container>
+            <label>Email</label>
+            <input clrInput formControlName="email" type="email" />
+            <clr-control-error required>Email Required</clr-control-error>
+        </clr-input-container>
 
-    <clr-password-container>
-        <label>Password</label>
-        <input clrPassword formControlName="password" type="password" />
-        <clr-control-error required>Password Required</clr-control-error>
-    </clr-password-container>
+        <clr-password-container>
+            <label>Password</label>
+            <input clrPassword formControlName="password" type="password" />
+            <clr-control-error required>Password Required</clr-control-error>
+        </clr-password-container>
 
-    <button class="btn">Login</button>
-    <button [routerLink]="['/register']" class="btn">Go to register</button>
-</form>
+        <button class="btn btn-success">Login</button>
+        <button [routerLink]="['/register']" class="btn btn-warning">Go to register</button>
+    </form>
+</div>

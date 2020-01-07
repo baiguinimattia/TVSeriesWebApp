@@ -1,19 +1,22 @@
-<h1>Register</h1>
+<div id="register-container">
 
-<form clrForm [formGroup]="form" (ngSubmit)="submit()">
-    <clr-input-container>
-        <label>Email</label>
-        <input clrInput formControlName="email" type="email" />
-        <clr-control-error required>Email Required</clr-control-error>
-    </clr-input-container>
+    <h1 class="register-heading">Register</h1>
 
-    <clr-password-container>
-        <label>Password</label>
-        <input clrPassword formControlName="password" type="password" />
-        <clr-control-error required>Password Required</clr-control-error>
-    </clr-password-container>
+    <form clrForm [formGroup]="form" (ngSubmit)="submit()">
+        <clr-input-container>
+            <label>Email</label>
+            <input clrInput formControlName="email" type="email" />
+            <clr-control-error required>Email Required</clr-control-error>
+        </clr-input-container>
 
-    <button class="btn">Register</button>
-    <button [routerLink]="['/login']" class="btn">Go to login</button>
+        <clr-password-container>
+            <label>Password</label>
+            <input clrPassword formControlName="password" type="password" />
+            <clr-control-error required>Password Required</clr-control-error>
+        </clr-password-container>
 
-</form>
+        <button class="btn btn-success">Register</button>
+        <button [routerLink]="['/login']" class="btn btn-danger">Go to login</button>
+
+    </form>
+</div>
