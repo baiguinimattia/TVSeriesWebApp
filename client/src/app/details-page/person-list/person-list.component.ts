@@ -16,7 +16,6 @@ export class PersonListComponent implements OnInit, OnChanges {
 
   ngOnChanges(){
     if(this.person) {
-      console.log(this.person);
     }
   }
 
