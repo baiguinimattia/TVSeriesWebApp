@@ -1,4 +1,4 @@
-<div id="login-container">
+<!-- <div id="login-container">
     <h1 class="login-heading">Login</h1>
 
     <form clrForm [formGroup]="form" (ngSubmit)="submit()">
@@ -17,4 +17,17 @@
         <button class="btn btn-success">Login</button>
         <button [routerLink]="['/register']" class="btn btn-warning">Go to register</button>
     </form>
+</div> -->
+
+<div id="login-container">
+    <div class="login-form">
+        <h2 class="welcome-header">Welcome Back</h2>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <input class="form-input" id="email" formControlName="email" type="email" placeholder="Email">
+            <input class="form-input" id="password" formControlName="password" type="password" placeholder="Password">
+            <button class="btn btn-login">Login</button>
+            <p>Don't have an account? <span class="text-primary"> <a [routerLink]="['/register']" routerLinkActive="router-link-active" >Sign Up</a></span></p>
+        </form>
+
+    </div>
 </div>

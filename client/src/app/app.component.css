@@ -5,3 +5,7 @@
 .main-container .content-container .content-area {
     padding: 0;
 }
+
+.content-container {
+    background-color: #A9CCE3;
+}
