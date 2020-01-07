@@ -1,0 +1,24 @@
+.person-element {
+    width: 100%;
+    background-color: #002538;
+    color: #fff;
+    text-align: center;
+}
+
+.person-name {
+    color: #fff;
+    font-weight: 600;
+}
+
+.person-profile {
+    border-radius: 50%;
+}
+
+.details-btn {
+    border: none;
+    color: #fff;
+}
+
+.details-btn:hover {
+    color: #054463;
+}

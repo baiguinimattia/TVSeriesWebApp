@@ -17,7 +17,8 @@ export class SearchResultComponent implements OnInit {
     private readonly tvService: TvService) { }
 
   ngOnInit() {
-    this.posterPath = PathsEnum.default + PosterSizesEnum.original + this.result.poster_path;
+    this.posterPath = `${PathsEnum.default}${PosterSizesEnum.original}${this.result.poster_path}`;
     console.log(this.result);
   }
+
 }

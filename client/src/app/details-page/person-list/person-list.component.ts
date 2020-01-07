@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { PersonDetails } from '../../interfaces/person.interface';
+import { PathsEnum, ProfileSizesEnum } from 'src/app/enums/image-enums';
 
 @Component({
   selector: 'app-person-list',
@@ -7,7 +8,7 @@ import { PersonDetails } from '../../interfaces/person.interface';
   styleUrls: ['./person-list.component.css']
 })
 export class PersonListComponent implements OnInit, OnChanges {
-  @Input() person;
+  @Input() person: PersonDetails;
   constructor() { }
 
   ngOnInit() {
@@ -17,6 +18,10 @@ export class PersonListComponent implements OnInit, OnChanges {
     if(this.person) {
       console.log(this.person);
     }
+  }
+
+  getProfilePhoto() {
+    return `${PathsEnum.default}${ProfileSizesEnum.original}${this.person.profile_path}`;
   }
 
 }

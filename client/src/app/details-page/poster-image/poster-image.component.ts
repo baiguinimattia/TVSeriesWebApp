@@ -15,7 +15,6 @@ export class PosterImageComponent implements OnInit {
 
   ngOnInit() {
     this.imageUrl = this.getImagePath(this.path);
-    console.log(this.imageUrl);
   }
 
   getImagePath(path: string) {

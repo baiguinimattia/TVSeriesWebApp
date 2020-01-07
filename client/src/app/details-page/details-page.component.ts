@@ -6,7 +6,7 @@ import { tap, map } from 'rxjs/operators';
 import { Subscription, Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { DetailsPageService } from './details-page.service';
-import { PersonDetails } from '../interfaces/person.interface';
+import { PersonDetails, Person } from '../interfaces/person.interface';
 
 @Component({
   selector: 'app-details-page',
@@ -17,9 +17,10 @@ export class DetailsPageComponent implements OnInit, OnDestroy {
 
   id: string;
   details: ShowDetails;
+  credits: any;
   private subscriptions: Subscription = new Subscription();
-  private persons: Observable<PersonDetails>[] = [];
-
+  cast: Person[] = [];
+  crew: Person[] = [];
 
   constructor(private route: ActivatedRoute, private readonly tvService: TvService, private readonly toastr: ToastrService,
     private readonly detailsPageService: DetailsPageService) { }
@@ -51,9 +52,15 @@ export class DetailsPageComponent implements OnInit, OnDestroy {
       }));
 
     this.subscriptions.add(
-      this.detailsPageService.getCredits(this.id).subscribe((response: Observable<PersonDetails>) => this.persons.push(response))
+      this.detailsPageService.getCast(this.id).pipe(
+        tap( (response: Person[]) => this.cast = response),
+      ).subscribe(),
     );
-
+    this.subscriptions.add(
+      this.detailsPageService.getCrew(this.id).pipe(
+        tap( (response: Person[]) => this.crew = response),
+      ).subscribe(),
+    );
 
   }
 
