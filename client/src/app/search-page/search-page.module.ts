@@ -4,13 +4,15 @@ import { SearchPageComponent } from './search-page.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { ClarityModule } from '@clr/angular';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [SearchPageComponent, SearchResultComponent],
   imports: [
     CommonModule,
     AppRoutingModule,
-    ClarityModule
+    ClarityModule,
+    DirectivesModule
   ],
   exports: [SearchPageComponent]
 })

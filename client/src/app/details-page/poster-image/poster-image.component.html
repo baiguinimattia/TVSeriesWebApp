@@ -1,4 +1,5 @@
-<div class="image-container">
-    <img class="full-width-image" [src]="imageUrl">
-    <div class="bottom-left">{{name}}</div>
+<div *ngIf="imageUrl" class="image-container" [ngStyle]="{'background': imageUrl}">
+    <div class="show-title">{{name}}</div>
 </div>
+
+

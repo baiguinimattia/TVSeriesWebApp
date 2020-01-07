@@ -13,11 +13,11 @@ import { PathsEnum, PosterSizesEnum } from '../../enums/image-enums';
 export class SearchResultComponent implements OnInit {
   @Input() result: ShowResult;
   posterPath: string;
-  details: ShowDetails;
   constructor(private readonly mediaService: MediaService,
     private readonly tvService: TvService) { }
 
   ngOnInit() {
-    this.posterPath = PathsEnum.default + PosterSizesEnum.original + this.result.backdrop_path;
+    this.posterPath = PathsEnum.default + PosterSizesEnum.original + this.result.poster_path;
+    console.log(this.result);
   }
 }

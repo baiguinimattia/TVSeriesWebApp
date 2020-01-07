@@ -1,18 +1,31 @@
-.full-width-image {
-    width: 100%;
-    display: block;
-    height: auto;
-}
-
 .image-container {
-    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    color: white;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-.bottom-left {
-    position: absolute;
-    bottom: 50px;
-    left: 20%;
-    font-size: 100px;
+.show-title {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
+    color: #fff;
+    line-height: 2.5rem;
 }
+
+@media( min-width: 800px) {
+    .image-container {
+        height: 100vh;
+    }
+    .show-title {
+        font-size: 4rem;
+        line-height: 5rem;
+    }
+}
+
+
+

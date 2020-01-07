@@ -5,12 +5,20 @@
     </span>
 </div>
 <div class="results" *ngIf="results.length">
-    <div class="clr-row" *ngFor="let result of results; let i = index">
+    <!-- <div class="clr-row" *ngFor="let result of results; let i = index">
         <div *ngIf="i%2 === 0" class="clr-col-lg-6 clr-col-12">
             <app-search-result [result]="results[i]"></app-search-result>
         </div>
         <div *ngIf="i%2 === 0" class="clr-col-lg-6 clr-col-12">
             <app-search-result [result]="results[i+1]"></app-search-result>
         </div>
+    </div> -->
+
+
+</div>
+
+<div class="search-container" *ngIf="results.length">
+    <div class="search-response" *ngFor="let result of results">
+        <app-search-result [result]="result"></app-search-result>
     </div>
 </div>

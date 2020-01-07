@@ -41,6 +41,7 @@ export class DetailsPageComponent implements OnInit, OnDestroy {
     this.subscriptions.add(this.detailsPageService.getDetails(this.id).pipe(
       tap((result: ShowDetails) => {
         this.details = result;
+        console.log(this.details);
       }),
     ).subscribe(
       (response) => {

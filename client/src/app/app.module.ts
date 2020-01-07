@@ -15,6 +15,8 @@ import { AuthService } from './auth/auth.service';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { DetailsPageModule } from './details-page/details-page.module';
 import { SearchPageModule } from './search-page/search-page.module';
+import { ImageFallBackDirective } from './directives/image-fall-back.directive';
+import { DirectivesModule } from './directives/directives.module';
 
 
 export function jwtOptionsFactory(authService: AuthService) {
@@ -43,7 +45,8 @@ export function jwtOptionsFactory(authService: AuthService) {
     HttpClientModule,
     HomeModule,
     DetailsPageModule,
-    SearchPageModule
+    SearchPageModule,
+    DirectivesModule
   ],
     providers: [
       CookieService,

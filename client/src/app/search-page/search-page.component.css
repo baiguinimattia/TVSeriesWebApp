@@ -119,3 +119,15 @@ body {
     top: 13px;
     height: 18px;
 }
+
+
+.search-container {
+    width: 100vw;
+    padding: 0 0;
+}
+
+@media(min-width: 768px) {
+    .search-container {
+        padding: 0 2rem;
+    }
+}
