@@ -1,4 +1,4 @@
-<div class="card person-element" *ngIf="person">
+<!-- <div class="card person-element" *ngIf="person">
     <div class="card-header person-name">
         {{person.name}}
     </div>
@@ -14,5 +14,15 @@
     </div>
     <div class="card-footer">
         <button class="btn details-btn">More Details</button>
+    </div>
+</div> -->
+
+<div id="person-container" *ngIf="person">
+    <div class="image-container">
+        <img class="profile-img" [src]="getProfilePhoto()" alt="" appImageFallBack>
+    </div>
+    <div class="text-container">
+        <h2 class="primary-heading">{{person.name}}</h2>
+        <p class="primary-paragraph">{{person.character.substr(0,30)}}...</p>
     </div>
 </div>
