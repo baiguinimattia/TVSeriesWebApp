@@ -1,35 +1,11 @@
-/* .person-element {
-    width: 100%;
-    background-color: #002538;
-    color: #fff;
-    text-align: center;
-}
-
-.person-name {
-    color: #fff;
-    font-weight: 600;
-}
-
-.person-profile {
-    border-radius: 50%;
-}
-
-.details-btn {
-    border: none;
-    color: #fff;
-}
-
-.details-btn:hover {
-    color: #054463;
-} */
-
 #person-container {
     width: 100%;
     min-height: 275px;
     border: 1px solid black;
-    margin: 0.25rem 0;
+    margin: 0.5rem 0.25rem;
     text-align: center;
-    background-color: #002538;
+    background-color: var(--bg-color-dark);
+    box-shadow: var(--bg-color-darker) 10px 5px;
 }
 
 .profile-img {
@@ -44,16 +20,16 @@
 .primary-heading {
     margin: 0;
     font-weight: 800;
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     padding: 0.5rem;
     line-height: normal;
-    color: #fff;
+    color: var(--color-light);
 }
 
 .primary-paragraph {
     margin: 0;
     padding: 0 0.25rem;
-    color: #fff;
+    color: var(--color-lighter);
     font-size: 0.5rem;
     text-align: left;
 }

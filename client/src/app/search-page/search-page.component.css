@@ -10,7 +10,7 @@ body {
     width: 100px;
     height: 100px;
     margin: 40px auto 0;
-    background-color: #002538;
+    background-color: var(--bg-color-dark);
     position: relative;
     overflow: hidden;
     transition: all 0.5s ease;
@@ -22,7 +22,7 @@ body {
     width: 3px;
     height: 100%;
     position: relative;
-    background-color: #00fede;
+    background-color: var(--color-lighter);
     transition: all 0.5s ease;
 }
 
@@ -42,7 +42,7 @@ body {
     box-shadow: none;
     border: none;
     background: transparent;
-    color: #fff;
+    color: var(--color-lighter);
     padding: 20px 100px 20px 45px;
     font-size: 40px;
 }
@@ -66,7 +66,7 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 40px;
-    border: 3px solid #00fede;
+    border: 3px solid var(--color-light);
     display: block;
     position: relative;
     margin-left: 5px;
@@ -81,7 +81,7 @@ body {
     right: -2px;
     top: 30px;
     display: block;
-    background-color: #00fede;
+    background-color: var(--color-light);
     transform: rotate(-45deg);
     transition: all 0.5s ease;
 }
@@ -94,7 +94,7 @@ body {
     right: -12px;
     top: 40px;
     display: block;
-    background-color: #00fede;
+    background-color: var(--color-light);
     transform: rotate(-45deg);
     transition: all 0.5s ease;
 }
@@ -119,7 +119,6 @@ body {
     top: 13px;
     height: 18px;
 }
-
 
 .search-container {
     width: 100vw;

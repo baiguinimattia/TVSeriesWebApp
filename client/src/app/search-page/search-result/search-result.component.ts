@@ -18,7 +18,6 @@ export class SearchResultComponent implements OnInit {
 
   ngOnInit() {
     this.posterPath = `${PathsEnum.default}${PosterSizesEnum.original}${this.result.poster_path}`;
-    console.log(this.result);
   }
 
 }

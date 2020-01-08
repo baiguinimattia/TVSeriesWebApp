@@ -13,7 +13,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     if (this.authService.isAuthenticated()) {
-      console.log('se muta pe home');
       this.router.navigate(['/home']);
     }
   }

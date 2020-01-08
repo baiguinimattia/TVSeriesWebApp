@@ -7,5 +7,5 @@
 }
 
 .content-container {
-    background-color: #A9CCE3;
+    background-color: var(--color-lighter);
 }

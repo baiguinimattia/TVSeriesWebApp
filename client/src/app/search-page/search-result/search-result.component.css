@@ -1,8 +1,8 @@
 .item-container {
     height: 200px;
     max-width: 1000px;
-    background-color: #054463;
-    color: #fff;
+    background-color: var(--bg-color-dark);
+    color: var(--bg-color-darker);
     margin: 1rem auto;
 }
 
@@ -19,12 +19,12 @@
 }
 
 .title-heading {
-    color: #fff;
+    color: var(--color-lighter);
     text-align: center;
 }
 
 .show-overview {
-    color: #f4f4f4;
+    color: var(--color-lighter);
     text-align: center;
     padding: 0 0.25rem;
 }
@@ -34,11 +34,15 @@
     display: block;
     width: 60%;
     text-decoration: none;
-    background: #fff;
+    background: var(--color-light);
     color: #054463;
     padding: 0.25rem 0.5rem;
     text-align: center;
     margin: 0 auto;
+}
+
+.details-btn:hover {
+    background-color: var(--color-lighter);
 }
 
 @media(min-width: 768px) {
@@ -47,4 +51,3 @@
         width: 40%;
     }
 }
-

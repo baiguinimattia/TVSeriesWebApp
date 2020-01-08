@@ -8,9 +8,10 @@ import { IntroComponent } from './intro/intro.component';
 import { DataTableComponent } from './data-table/data-table.component';
 import { PersonListComponent } from './person-list/person-list.component';
 import { DirectivesModule } from '../directives/directives.module';
+import { GuideButtonComponent } from './guide-button/guide-button.component';
 
 @NgModule({
-  declarations: [DetailsPageComponent, PosterImageComponent, BannerComponent, IntroComponent, DataTableComponent, PersonListComponent],
+  declarations: [DetailsPageComponent, PosterImageComponent, BannerComponent, IntroComponent, DataTableComponent, PersonListComponent, GuideButtonComponent],
   imports: [
     CommonModule,
     ClarityModule,

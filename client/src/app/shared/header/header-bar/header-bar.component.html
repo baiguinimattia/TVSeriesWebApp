@@ -1,4 +1,4 @@
-<clr-header class="header-6">
+<clr-header class="header-3 main-header">
     <div class="branding">
         <a [routerLink]="['/home']" class="nav-link">
             <clr-icon shape="vm-bug"></clr-icon>
@@ -15,7 +15,7 @@
         <a [routerLink]="['/register']" [ngClass]="{'nav-link nav-text' : true}" *ngIf="!isAuthenticated()">
       Register
   </a>
-        <a [routerLink]="['/']" routerLinkActive="router-link-active" (click)="logout()" [ngClass]="{'nav-link nav-text' : true}" *ngIf="isAuthenticated()">
+        <a [routerLink]="['/login']" routerLinkActive="router-link-active" (click)="logout()" [ngClass]="{'nav-link nav-text' : true}" *ngIf="isAuthenticated()">
       Log Out
   </a>
     </div>

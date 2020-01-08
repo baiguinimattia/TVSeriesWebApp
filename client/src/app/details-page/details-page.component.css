@@ -4,6 +4,10 @@
     margin-bottom: 1rem;
 }
 
+.content-container .clr-row {
+    margin: 0;
+}
+
 .content-row {
     width: 100%;
 }

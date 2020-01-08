@@ -1,0 +1,17 @@
+.btn-guide {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: var(--bg-color-dark);
+    color: #fff;
+    border: none;
+    height: 10vh;
+    font-weight: 600;
+    font-size: 1.25rem;
+    border-radius: 0 0 10px 10px;
+    line-height: 1.5rem;
+}
+
+.btn-guide:hover {
+    color: #f4f4f4;
+    background-color: var(--bg-color-darker);
+}

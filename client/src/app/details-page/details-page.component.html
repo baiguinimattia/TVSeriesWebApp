@@ -1,5 +1,9 @@
 <div id="image-container" *ngIf="details">
-    <app-poster-image [path]="details.backdrop_path" [name]="details.name"></app-poster-image>
+    <app-poster-image [details]="details"></app-poster-image>
+</div>
+
+<div id="info-container">
+    <app-guide-button [episodeNumber]="details.number_of_episodes" class="btn-episode-guide"></app-guide-button>
 </div>
 
 <div class="content-container">
@@ -17,19 +21,3 @@
         </div>
     </div>
 </div>
-
-
-
-<!-- <div class="clr-row container">
-    <div class="clr-col-md-8 clr-col-12">
-        <app-intro [data]="details"></app-intro>
-        <app-data-table [data]="details"></app-data-table>
-
-        <div *ngFor="let person of persons">
-            <app-person-list [person]="person | async"></app-person-list>
-        </div>
-    </div>
-    <div class="clr-col-md-4 clr-col-12">
-        <app-banner [path]="details.poster_path"></app-banner>
-    </div>
-</div> -->
