@@ -25,7 +25,7 @@
 
 #person-container {
     width: 100%;
-    height: 275px;
+    min-height: 275px;
     border: 1px solid black;
     margin: 0.25rem 0;
     text-align: center;
@@ -39,7 +39,6 @@
 
 .text-container {
     width: 100%;
-    height: 100px;
 }
 
 .primary-heading {
@@ -53,6 +52,8 @@
 
 .primary-paragraph {
     margin: 0;
-    padding: 0.25rem;
+    padding: 0 0.25rem;
     color: #fff;
+    font-size: 0.5rem;
+    text-align: left;
 }
