@@ -37,8 +37,10 @@ export function jwtOptionsFactory(authService: AuthService) {
     ClarityModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 5000,
-      positionClass: 'toast-top-right'
+      "closeButton": true,
+      "positionClass": "toast-bottom-full-width",
+      "timeOut": 300000,
+      "extendedTimeOut": 1000,
     }),
     SharedModule,
     AuthModule,

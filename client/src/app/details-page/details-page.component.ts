@@ -7,6 +7,7 @@ import { Subscription, Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { DetailsPageService } from './details-page.service';
 import { PersonDetails, Person } from '../interfaces/person.interface';
+import { DetailsEnum } from '../enums/details-enum';
 
 @Component({
   selector: 'app-details-page',
@@ -21,6 +22,8 @@ export class DetailsPageComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription = new Subscription();
   cast: Person[] = [];
   crew: Person[] = [];
+  posterPath: string;
+  currentPage: DetailsEnum = DetailsEnum.overview;
 
   constructor(private route: ActivatedRoute, private readonly tvService: TvService, private readonly toastr: ToastrService,
     private readonly detailsPageService: DetailsPageService) { }
@@ -42,7 +45,7 @@ export class DetailsPageComponent implements OnInit, OnDestroy {
     this.subscriptions.add(this.detailsPageService.getDetails(this.id).pipe(
       tap((result: ShowDetails) => {
         this.details = result;
-        console.log(this.details);
+        this.posterPath = this.detailsPageService.getBackgroundPath(this.details.backdrop_path);
       }),
     ).subscribe(
       (response) => {
@@ -66,6 +69,10 @@ export class DetailsPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
+  }
+
+  switchPage(page: DetailsEnum) {
+    this.currentPage = page;
   }
 
 }

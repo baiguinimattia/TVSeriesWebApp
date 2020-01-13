@@ -21,10 +21,10 @@
         <div class="clr-col-4 clr-col-sm-3 clr-col-md-2">
             <img class="poster-result" [src]="posterPath" alt="" appImageFallBack>
         </div>
-        <div class="clr-col-8 clr-col-sm-9 clr-col-md-10">
+        <div class="item-info clr-col-8 clr-col-sm-9 clr-col-md-10">
             <h3 class="title-heading">{{result.name}}</h3>
             <p class="show-overview">{{result.overview.substr(0, 100)}}...</p>
-            <a class="details-btn" [routerLink]="['/details', result.id]" routerLinkActive="router-link-active" >More details</a>
+            <a class="details-btn" [routerLink]="['/details', result.id]" routerLinkActive="router-link-active">More details</a>
         </div>
 
     </div>

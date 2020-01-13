@@ -7,6 +7,8 @@ import { map, switchMap, tap } from 'rxjs/operators';
 import { Person, Credits, PersonDetails } from '../interfaces/person.interface';
 import { ToastrService } from 'ngx-toastr';
 import { ShowDetails } from '../interfaces/show-details.interface';
+import { MediaService } from '../data-layer/media.service';
+import { BackdropSizesEnum } from '../enums/image-enums';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,7 @@ import { ShowDetails } from '../interfaces/show-details.interface';
 export class DetailsPageService {
 
   constructor(private readonly tvService: TvService, private readonly personService: PersonService,
-    private readonly toastService: ToastrService) { }
+    private readonly toastService: ToastrService, private readonly mediaService: MediaService) { }
 
   getExternalIds(id: string): Observable<ExternalIds> {
     return this.tvService.getExternalIds(id);
@@ -48,5 +50,13 @@ export class DetailsPageService {
   getDetails(id: string): Observable<ShowDetails> {
     return this.tvService.getDetails(id).pipe(
     );
+  }
+
+  getBackgroundPath(path: string): string {
+    return `#002538 url(${this.mediaService.getImagePath(path, BackdropSizesEnum.original)}) no-repeat center center/cover`;
+  }
+
+  getPosterPath(path: string): string {
+    return `${this.mediaService.getImagePath(path, BackdropSizesEnum.original)}`;
   }
 }

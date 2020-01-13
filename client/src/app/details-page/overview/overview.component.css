@@ -1,0 +1,47 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#overview-container {
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+#main-data {
+    padding: 1rem;
+}
+
+@media(max-width: 768px) {
+    #overview-container {
+        margin-top: 20px;
+    }
+    #main-data {
+        margin-bottom: 20px;
+    }
+}
+
+.overview-name {
+    color: var(--text-color-inverted);
+    font-weight: 800;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+}
+
+@media(max-width: 800px) {
+    .overview-name {
+        font-size: 1.3rem;
+    }
+}
+
+.overview-poster {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.overview-description {
+    padding-top: 1rem;
+    color: var(--text-color-inverted-lighter);
+}

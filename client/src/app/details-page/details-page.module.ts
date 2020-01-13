@@ -9,9 +9,14 @@ import { DataTableComponent } from './data-table/data-table.component';
 import { PersonListComponent } from './person-list/person-list.component';
 import { DirectivesModule } from '../directives/directives.module';
 import { GuideButtonComponent } from './guide-button/guide-button.component';
+import { BottomMenuComponent } from './bottom-menu/bottom-menu.component';
+import { OverviewComponent } from './overview/overview.component';
+import { DetailsComponent } from './details/details.component';
+import { EpisodesComponent } from './episodes/episodes.component';
+import { RecommendationsComponent } from './recommendations/recommendations.component';
 
 @NgModule({
-  declarations: [DetailsPageComponent, PosterImageComponent, BannerComponent, IntroComponent, DataTableComponent, PersonListComponent, GuideButtonComponent],
+  declarations: [DetailsPageComponent, PosterImageComponent, BannerComponent, IntroComponent, DataTableComponent, PersonListComponent, GuideButtonComponent, BottomMenuComponent, OverviewComponent, DetailsComponent, EpisodesComponent, RecommendationsComponent],
   imports: [
     CommonModule,
     ClarityModule,
