@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ShowDetails } from '../interfaces/show-details.interface';
 import { MediaService } from '../data-layer/media.service';
 import { BackdropSizesEnum } from '../enums/image-enums';
+import { ContentRating } from '../interfaces/content-rating.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class DetailsPageService {
     );
   }
 
-  
+
   getCast(id: string): Observable<Person[]> {
     return this.tvService.getCredits(id).pipe(
       map((credits: Credits) => credits.cast),
@@ -58,5 +59,16 @@ export class DetailsPageService {
 
   getPosterPath(path: string): string {
     return `${this.mediaService.getImagePath(path, BackdropSizesEnum.original)}`;
+  }
+
+  getContentRating(id: string): Observable<ContentRating[]> {
+    return this.tvService.getContentRating(id).pipe(
+      map( (response) => response.results),
+    )
+  }
+
+  getSpecificContentRating(ratings: ContentRating[], country: string): string {
+    const found = ratings.find( (rating: ContentRating) => rating.iso_3166_1 === country);
+    return found ? found.rating : '-';
   }
 }

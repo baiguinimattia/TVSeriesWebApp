@@ -1,0 +1,14 @@
+<div id="data-container" *ngIf="details">
+    <div class="clr-row data-row">
+        <div class=" clr-col-6 left-column">
+            <h3>IMDB Series Id</h3>
+            <h3>Status</h3>
+            <h3>PARENTAL GUIDE</h3>
+        </div>
+        <div class="clr-col-6 right-column" *ngIf="externalIds">
+            <h3 class="imdb-link"><a href="https://www.imdb.com/title/{{externalIds.imdb_id}}">{{externalIds.imdb_id}}</a></h3>
+            <h3>{{details.status}}</h3>
+            <h3>{{parentalGuide}}</h3>
+        </div>
+    </div>
+</div>

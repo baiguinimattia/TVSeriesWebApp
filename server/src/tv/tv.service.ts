@@ -12,16 +12,6 @@ export class TvService {
         };
     }
 
-    getPopular() {
-        try {
-            return this.http.get(`${this.getBasePath}/tv-shows/popular`, {
-                headers: this.headers,
-            });
-        } catch (err) {
-            throw new BadRequestException();
-        }
-    }
-
     getSearchResult(searchText: string) {
         return this.http.get(`${this.getBasePath}/search/tv`,
             {
@@ -36,14 +26,79 @@ export class TvService {
     }
 
     getExternalIds(id: string) {
-        return this.http.get(`${this.getBasePath}/tv/${id}/external_ids`, { params: this.configService.generateParams() });
+        return this.http.get(`${this.getBasePath}/tv/${id}/external_ids`,
+            {
+                params: this.configService.generateParams()
+            });
     }
 
     getCredits(id: string) {
-        return this.http.get(`${this.getBasePath}/tv/${id}/credits`, { params: this.configService.generateParams()});
+        return this.http.get(`${this.getBasePath}/tv/${id}/credits`,
+            {
+                params: this.configService.generateParams()
+            });
     }
 
     private get getBasePath(): string {
         return this.configService.tmdbBasePath;
     }
+
+    getAlternativeTitles(id: string) {
+        return this.http.get(`${this.getBasePath}/tv/${id}/alternative_titles`,
+            {
+                params: this.configService.generateParams(),
+            }
+        );
+    }
+
+    getContentRating(id: string) {
+        return this.http.get(`${this.getBasePath}/tv/${id}/content_ratings`,
+            {
+                params: this.configService.generateParams(),
+            }
+        );
+    }
+
+    getKeywords(id: string) {
+        return this.http.get(`${this.getBasePath}/tv/${id}/keywords`,
+            {
+                params: this.configService.generateParams(),
+            }
+        );
+    }
+
+    getRecommendations(id: string) {
+        return this.http.get(`${this.getBasePath}/tv/${id}/recommendations`,
+            {
+                params: this.configService.generateParams(),
+            }
+        );
+    }
+
+    getSimilar(id: string) {
+        return this.http.get(`${this.getBasePath}/tv/${id}/similar`,
+            {
+                params: this.configService.generateParams(),
+            }
+        );
+    }
+
+    getLatest() {
+        return this.http.get(`${this.getBasePath}/tv/latest`,
+            {
+                params: this.configService.generateParams(),
+            }
+        );
+    }
+
+    getPopular() {
+        return this.http.get(`${this.getBasePath}/tv/popular`,
+            {
+                params: this.configService.generateParams(),
+            }
+        );
+    }
+
+
+
 }

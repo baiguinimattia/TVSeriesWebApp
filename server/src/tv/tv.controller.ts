@@ -47,4 +47,11 @@ export class TvController {
         );
     }
 
+    @Get(':id/content_rating')
+    getContentRating(@Param('id') id: string): Observable<any> {
+        return this.tvService.getContentRating(id).pipe(
+            map( (response) => response.data),
+        );
+    }
+
 }

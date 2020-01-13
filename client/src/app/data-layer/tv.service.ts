@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ShowDetails } from '../interfaces/show-details.interface';
 import { ExternalIds } from '../interfaces/external-ids.interface';
 import { Credits } from '../interfaces/person.interface';
+import { ContentRating } from '../interfaces/content-rating.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,9 @@ export class TvService {
 
   getCredits(id: string): Observable<Credits> {
     return this.http.get<Credits>(`/api/tv/${id}/credits`);
+  }
+
+  getContentRating(id: string): Observable<{results: ContentRating[], id: string}> {
+    return this.http.get<{results: ContentRating[], id: string}>(`/api/tv/${id}/content_rating`);
   }
 }

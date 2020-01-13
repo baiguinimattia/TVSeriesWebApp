@@ -1,0 +1,37 @@
+#data-container {
+    width: 100%;
+    height: 400px;
+    margin-top: 1rem;
+    border: 1px solid red;
+    background-color: var(--background-dark);
+}
+
+.left-column {
+    text-align: left;
+    padding: 0.5rem 1rem;
+}
+
+.right-column {
+    text-align: right;
+    padding: 0.5rem 1rem;
+}
+
+.data-row {
+    display: flex;
+    font-size: 0.6rem;
+    margin: 0 0.25rem;
+}
+
+.data-row h3 {
+    color: var(--text-color-darker);
+    font-size: 0.65rem;
+}
+
+.imdb-link a {
+    color: var(--text-color-inverted-lighter);
+    text-decoration: none;
+}
+
+.imdb-link a:hover {
+    color: var(--text-color-inverted-darker);
+}
