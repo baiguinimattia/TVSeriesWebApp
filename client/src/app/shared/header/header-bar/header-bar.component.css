@@ -1,16 +1,33 @@
 .main-header {
-    background-color: var(--bg-color-darker);
+    background-color: var(--background-dark);
 }
 
 .clr-nav-level-1 {
-    background-color: var(--bg-color-darker) !important;
+    background-color: var(--background-dark) !important;
 }
 
 .title {
     font-weight: 800 !important;
-    color: var(--color-lighter) !important;
+    color: var(--text-color-highlight) !important;
 }
 
 clr-icon[shape=vm-bug] {
-    background-color: var(--bg-color-dark) !important;
+    background-color: var(--background-dark) !important;
+}
+
+.branding a {
+    color: var(--text-color-inverted);
+}
+
+.branding a:hover {
+    color: var(--text-color-inverted-darker);
+}
+
+.header-actions a {
+    color: var(--text-color-inverted);
+    font-size: 1.1rem;
+}
+
+.header-actions a:hover {
+    color: var(--text-color-inverted-darker);
 }

@@ -1,7 +1,7 @@
 #login-container {
     height: 100%;
     width: 100%;
-    background-color: var(--color-lighter);
+    background-color: var(--background-lighter);
     padding: 1rem;
     text-align: center;
 }
@@ -10,7 +10,7 @@
     max-width: 400px;
     margin: 1rem auto;
     min-height: 500px;
-    background-color: var(--color-light);
+    background-color: var(--background-lighter);
     border-radius: 20% 0 20% 0;
     padding: 1rem 0;
 }
@@ -19,7 +19,7 @@
     padding-top: 1rem;
     font-weight: 800;
     font-size: 1.5rem;
-    color: var(--bg-color-darker);
+    color: var(--text-color-inverted);
 }
 
 .login-form input {
@@ -28,13 +28,13 @@
     padding: 0.5rem 1rem;
     width: 80%;
     border: none;
-    border-bottom: 3px solid var(--bg-color-darker);
+    border-bottom: 5px solid var(--highlight);
     border-radius: 10px 10px 0 0;
 }
 
 .btn-login {
-    background-color: var(--bg-color-dark);
-    color: #fff;
+    background-color: var(--background-color-inverted);
+    color: var(--text-color-lighter);
     font-weight: 800;
     border: none;
     width: 80%;
@@ -43,9 +43,19 @@
 
 .btn-login:hover {
     background-color: var(--bg-color-darker);
-    color: #f3f3f3
+    color: var(--text-color-inverted);
 }
 
-.text-primary {
-    color: #1A5276;
+form p {
+    color: var(--text-color-lighter);
+}
+
+.text-primary a {
+    color: var(--text-color-inverted-lighter) !important;
+    text-decoration: none;
+}
+
+.text-primary a:hover {
+    color: var(--text-color-inverted-darker) !important;
+    text-decoration: none;
 }

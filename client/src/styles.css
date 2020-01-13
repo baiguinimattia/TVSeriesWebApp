@@ -1,10 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 
 :root {
-    --bg-color-dark: #117864;
-    --bg-color-darker: #0e6251;
+    --bg-color-dark: #141414;
+    --bg-color-darker: rgb(20, 20, 20);
     --color-dark: #17a589;
     --color-darker: #148f77;
     --color-light: #76d7c4;
     --color-lighter: #a3e4d7;
+    /*  
+    
+    */
+    --background-lighter: #3a3a3a;
+    --background-dark: #141414;
+    --background-darker: #000000;
+    --background-color-inverted: #cc2f08;
+    --background-color-inverted-lighter: #f8434c;
+    --background-color-inverted-darker: #9b060e;
+    /* 
+    
+    */
+    --color-lighter: #f2f2f2;
+    --color-normal: #d8d8d8;
+    --color-darker: #bfbfbf;
+    /* 
+    
+    */
+    --text-color-lighter: #f2f2f2;
+    --text-color-normal: #d8d8d8;
+    --text-color-darker: #bfbfbf;
+    --text-color-inverted: #cc2f08;
+    --text-color-inverted-lighter: #f8434c;
+    --text-color-inverted-darker: #9b060e;
+    /* 
+    
+    */
+    --highlight-lighter: #f8434c;
+    --highlight: #cc2f08;
+    --highlight-darker: #9b060e;
 }
