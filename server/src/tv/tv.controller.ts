@@ -3,7 +3,7 @@ import { TvService } from './tv.service';
 import { AxiosResponse } from 'axios';
 import { AuthGuard } from '@nestjs/passport';
 
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Controller('tv')
@@ -51,6 +51,13 @@ export class TvController {
     getContentRating(@Param('id') id: string): Observable<any> {
         return this.tvService.getContentRating(id).pipe(
             map( (response) => response.data),
+        );
+    }
+
+    @Get(':id/imdb')
+    getImdb(@Param('id') id: string) {
+        return this.tvService.getImdb(id).pipe(
+            tap( (response) => console.log(response)),
         );
     }
 

@@ -1,6 +1,9 @@
 import { Injectable, HttpService, BadRequestException } from '@nestjs/common';
 import { ConfigService } from '../config/config.service';
 
+import * as imdb from 'imdb-api';
+import { of } from 'rxjs';
+
 @Injectable()
 export class TvService {
     private readonly headers: any;
@@ -97,6 +100,10 @@ export class TvService {
                 params: this.configService.generateParams(),
             }
         );
+    }
+
+    getImdb(id: string) {
+        return of(imdb.get( { id: id}, { apiKey: this.configService.imdbApiKey}));
     }
 
 

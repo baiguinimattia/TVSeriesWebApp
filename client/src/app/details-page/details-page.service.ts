@@ -10,6 +10,7 @@ import { ShowDetails } from '../interfaces/show-details.interface';
 import { MediaService } from '../data-layer/media.service';
 import { BackdropSizesEnum } from '../enums/image-enums';
 import { ContentRating } from '../interfaces/content-rating.interface';
+import { ImdbDetails } from '../interfaces/imdb-details.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -70,5 +71,9 @@ export class DetailsPageService {
   getSpecificContentRating(ratings: ContentRating[], country: string): string {
     const found = ratings.find( (rating: ContentRating) => rating.iso_3166_1 === country);
     return found ? found.rating : '-';
+  }
+
+  getImdb(id: string): Observable<ImdbDetails> {
+    return this.tvService.getImdb(id);
   }
 }
