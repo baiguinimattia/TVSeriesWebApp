@@ -36,7 +36,7 @@ export class DataTableComponent implements OnInit, OnChanges, OnDestroy {
             tap((response: ImdbDetails) => this.imdbDetails = response),
           );
         }),
-      ).subscribe((response) => {},
+      ).subscribe((response) => {console.log(this.imdbDetails)},
       (error) => {}));
 
       this.subscriptions.add(

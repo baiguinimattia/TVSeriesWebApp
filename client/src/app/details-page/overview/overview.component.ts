@@ -17,7 +17,6 @@ export class OverviewComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     if(this.details) {
-      console.log(this.details);
       this.posterPath = this.detailsPageService.getPosterPath(this.details.poster_path);
     }
   }

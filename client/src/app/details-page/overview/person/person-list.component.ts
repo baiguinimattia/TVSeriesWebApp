@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { PersonDetails } from '../../interfaces/person.interface';
 import { PathsEnum, ProfileSizesEnum } from 'src/app/enums/image-enums';
+import { PersonDetails } from 'src/app/interfaces/person.interface';
 
 @Component({
   selector: 'app-person-list',
