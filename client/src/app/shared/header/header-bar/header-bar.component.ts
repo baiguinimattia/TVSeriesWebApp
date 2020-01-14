@@ -18,7 +18,6 @@ export class HeaderBarComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/login']);
   }
 
   isAuthenticated() {

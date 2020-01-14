@@ -57,7 +57,6 @@ export class TvController {
     @Get(':id/imdb')
     getImdb(@Param('id') id: string) {
         return this.tvService.getImdb(id).pipe(
-            tap( (response) => console.log(response)),
         );
     }
 

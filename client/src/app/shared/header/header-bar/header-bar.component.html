@@ -15,7 +15,7 @@
         <a [routerLink]="['/register']" [ngClass]="{'nav-link nav-text' : true}" *ngIf="!isAuthenticated()">
       Register
   </a>
-        <a [routerLink]="['/login']" routerLinkActive="router-link-active" (click)="logout()" [ngClass]="{'nav-link nav-text' : true}" *ngIf="isAuthenticated()">
+        <a (click)="logout()" [ngClass]="{'nav-link nav-text' : true}" *ngIf="isAuthenticated()">
       Log Out
   </a>
     </div>

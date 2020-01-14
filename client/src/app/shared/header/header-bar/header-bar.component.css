@@ -29,5 +29,6 @@ clr-icon[shape=vm-bug] {
 }
 
 .header-actions a:hover {
+    cursor: pointer;
     color: var(--text-color-inverted-darker);
 }

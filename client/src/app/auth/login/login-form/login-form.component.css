@@ -42,7 +42,7 @@
 }
 
 .btn-login:hover {
-    background-color: var(--bg-color-darker);
+    background-color: var(--background-darker);
     color: var(--text-color-inverted);
 }
 
