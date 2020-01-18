@@ -24,6 +24,9 @@ export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
   @Select(DetailsState.getId) id$: Observable<string>;
   @Select(DetailsState.getDetails) details$: Observable<ShowDetails>;
   @Select(DetailsState.getPosterPath) posterPath$: Observable<string>;
+  @Select(DetailsState.getCast) cast$: Observable<Person[]>;
+  @Select(DetailsState.getCrew) crew$: Observable<Person[]>;
+
 
   @Emitter(DetailsState.setId)
   public id: Emittable<string>;
@@ -31,16 +34,16 @@ export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
   public details: Emittable<ShowDetails>;
   @Emitter(DetailsState.setPosterPath)
   public posterPath: Emittable<string>;
+  @Emitter(DetailsState.setCrew)
+  public crew: Emittable<Person[]>;
+  @Emitter(DetailsState.setCast)
+  public cast: Emittable<Person[]>;
 
-  credits: any;
   private subscriptions: Subscription = new Subscription();
-  cast: Person[] = [];
-  crew: Person[] = [];
   currentPage: DetailsEnum = DetailsEnum.overview;
   contentRating: ContentRating[];
 
-  constructor(private route: ActivatedRoute, private readonly tvService: TvService,
-    private readonly toastr: ToastrService,
+  constructor(private route: ActivatedRoute,
     private readonly detailsPageService: DetailsPageService,
     private store: Store) { }
 
@@ -56,35 +59,35 @@ export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
         (details: ShowDetails) => {
           this.details.emit(details);
           this.posterPath.emit(this.detailsPageService.getPosterPath(details.poster_path));
+
+          this.subscriptions.add(
+            this.detailsPageService.getCast(details.id).pipe(
+            ).subscribe(
+              (cast: Person[]) => this.cast.emit(cast),
+            ),
+          );
+          this.subscriptions.add(
+            this.detailsPageService.getCrew(details.id).pipe(
+            ).subscribe(
+              (crew: Person[]) => this.crew.emit(crew),
+            ),
+          );
         },
       ),
     );
-  }
 
-  // this.subscriptions.add(
-  //   this.detailsPageService.getCast(this.id).pipe(
-  //     tap((response: Person[]) => this.cast = response),
-  //   ).subscribe(),
-  // );
-  // this.subscriptions.add(
-  //   this.detailsPageService.getCrew(this.id).pipe(
-  //     tap((response: Person[]) => this.crew = response),
-  //   ).subscribe(),
-  // );
-}
-
-ngOnChanges() {
-  if (this.id) {
 
   }
-}
 
-ngOnDestroy() {
-  this.subscriptions.unsubscribe();
-}
+  ngOnChanges() {
+  }
 
-switchPage(page: DetailsEnum) {
-  this.currentPage = page;
-}
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
+  }
+
+  switchPage(page: DetailsEnum) {
+    this.currentPage = page;
+  }
 
 }

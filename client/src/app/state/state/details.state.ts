@@ -65,10 +65,24 @@ export class DetailsState {
         const currentState = getState();
         currentState.posterPath = payload;
         patchState(currentState);
-        console.log(currentState);
     }
 
+    @Receiver()
+    public static setCast({ getState, patchState }: StateContext<DetailsStateModel>,
+        { payload }: EmitterAction<Person[]>) {
+        const currentState = getState();
+        currentState.cast = payload;
+        patchState(currentState);
+    }
 
+    @Receiver()
+    public static setCrew({ getState, patchState }: StateContext<DetailsStateModel>,
+        { payload }: EmitterAction<Person[]>) {
+        const currentState = getState();
+        currentState.crew = payload;
+        patchState(currentState);
+        console.log(currentState);
+    }
 
 
 
