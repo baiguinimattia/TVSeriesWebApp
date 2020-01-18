@@ -2,13 +2,17 @@ import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TvService } from '../data-layer/tv.service';
 import { ShowDetails } from '../interfaces/show-details.interface';
-import { tap, map } from 'rxjs/operators';
+import { tap, map, switchMap } from 'rxjs/operators';
 import { Subscription, Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { DetailsPageService } from './details-page.service';
 import { Person } from '../interfaces/person.interface';
 import { DetailsEnum } from '../enums/details-enum';
 import { ContentRating } from '../interfaces/content-rating.interface';
+import { Select, Store } from '@ngxs/store';
+import { DetailsState } from '../state/state/details.state';
+import { Emitter, Emittable } from '@ngxs-labs/emitter';
+
 
 @Component({
   selector: 'app-details-page',
@@ -17,70 +21,70 @@ import { ContentRating } from '../interfaces/content-rating.interface';
 })
 export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
 
-  id: string;
-  details: ShowDetails;
+  @Select(DetailsState.getId) id$: Observable<string>;
+  @Select(DetailsState.getDetails) details$: Observable<ShowDetails>;
+  @Select(DetailsState.getPosterPath) posterPath$: Observable<string>;
+
+  @Emitter(DetailsState.setId)
+  public id: Emittable<string>;
+  @Emitter(DetailsState.setDetails)
+  public details: Emittable<ShowDetails>;
+  @Emitter(DetailsState.setPosterPath)
+  public posterPath: Emittable<string>;
+
   credits: any;
   private subscriptions: Subscription = new Subscription();
   cast: Person[] = [];
   crew: Person[] = [];
-  posterPath: string;
   currentPage: DetailsEnum = DetailsEnum.overview;
   contentRating: ContentRating[];
 
-  constructor(private route: ActivatedRoute, private readonly tvService: TvService, private readonly toastr: ToastrService,
-    private readonly detailsPageService: DetailsPageService) { }
+  constructor(private route: ActivatedRoute, private readonly tvService: TvService,
+    private readonly toastr: ToastrService,
+    private readonly detailsPageService: DetailsPageService,
+    private store: Store) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
+
     this.subscriptions.add(
       this.route.params.pipe(
         map(params => params.id),
-        tap(id => this.id = id),
+        tap((id: string) => this.id.emit(id)),
+        switchMap((id: string) => this.detailsPageService.getDetails(id),
+        ),
       ).subscribe(
-        (response) => {
+        (details: ShowDetails) => {
+          this.details.emit(details);
+          this.posterPath.emit(this.detailsPageService.getPosterPath(details.poster_path));
         },
-        (error) => {
-          this.toastr.error(error.message);
-        })
-    );
-
-    this.subscriptions.add(this.detailsPageService.getDetails(this.id).pipe(
-      tap((result: ShowDetails) => {
-        this.details = result;
-        this.posterPath = this.detailsPageService.getBackgroundPath(this.details.backdrop_path);
-      }),
-    ).subscribe(
-      (response) => {
-        console.log(response);
-      },
-      (error) => {
-        this.toastr.error(error.message);
-      }));
-
-    this.subscriptions.add(
-      this.detailsPageService.getCast(this.id).pipe(
-        tap((response: Person[]) => this.cast = response),
-      ).subscribe(),
-    );
-    this.subscriptions.add(
-      this.detailsPageService.getCrew(this.id).pipe(
-        tap((response: Person[]) => this.crew = response),
-      ).subscribe(),
+      ),
     );
   }
 
-  ngOnChanges() {
-    if (this.id) {
+  // this.subscriptions.add(
+  //   this.detailsPageService.getCast(this.id).pipe(
+  //     tap((response: Person[]) => this.cast = response),
+  //   ).subscribe(),
+  // );
+  // this.subscriptions.add(
+  //   this.detailsPageService.getCrew(this.id).pipe(
+  //     tap((response: Person[]) => this.crew = response),
+  //   ).subscribe(),
+  // );
+}
 
-    }
-  }
+ngOnChanges() {
+  if (this.id) {
 
-  ngOnDestroy() {
-    this.subscriptions.unsubscribe();
   }
+}
 
-  switchPage(page: DetailsEnum) {
-    this.currentPage = page;
-  }
+ngOnDestroy() {
+  this.subscriptions.unsubscribe();
+}
+
+switchPage(page: DetailsEnum) {
+  this.currentPage = page;
+}
 
 }

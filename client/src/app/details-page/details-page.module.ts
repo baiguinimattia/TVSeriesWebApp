@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DetailsPageComponent } from './details-page.component';
-import { PosterImageComponent } from './poster-image/poster-image.component';
 import { ClarityModule } from '@clr/angular';
 import { BannerComponent } from './banner/banner.component';
 import { IntroComponent } from './intro/intro.component';
@@ -17,7 +16,7 @@ import { PersonsListComponent } from './overview/persons-list/persons-list.compo
 import { DirectivesModule } from '../shared/directives/directives.module';
 
 @NgModule({
-  declarations: [DetailsPageComponent, PosterImageComponent, BannerComponent, IntroComponent, PersonListComponent, GuideButtonComponent, BottomMenuComponent, OverviewComponent, DetailsComponent, EpisodesComponent, RecommendationsComponent, DataTableComponent, PersonsListComponent],
+  declarations: [DetailsPageComponent, BannerComponent, IntroComponent, PersonListComponent, GuideButtonComponent, BottomMenuComponent, OverviewComponent, DetailsComponent, EpisodesComponent, RecommendationsComponent, DataTableComponent, PersonsListComponent],
   imports: [
     CommonModule,
     ClarityModule,

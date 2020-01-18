@@ -34,10 +34,10 @@
             </ul>
         </div>
         <div id="info-container" class="clr-col-12">
-            <app-overview [details]="details" *ngIf="currentPage === 'overview'"></app-overview>
-            <app-details [details]="details" *ngIf="currentPage === 'details'"></app-details>
-            <app-recommendations [details]="details" *ngIf="currentPage === 'recommendations'"></app-recommendations>
-            <app-episodes [details]="details" *ngIf="currentPage === 'episodes'"></app-episodes>
+            <app-overview *ngIf="currentPage === 'overview'"></app-overview>
+            <app-details [details]="details$ | async" *ngIf="currentPage === 'details'"></app-details>
+            <app-recommendations [details]="details$ | async" *ngIf="currentPage === 'recommendations'"></app-recommendations>
+            <app-episodes [details]="details$ | async" *ngIf="currentPage === 'episodes'"></app-episodes>
         </div>
     </div>
 </div>

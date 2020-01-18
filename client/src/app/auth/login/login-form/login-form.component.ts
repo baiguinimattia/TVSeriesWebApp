@@ -43,20 +43,6 @@ export class LoginFormComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      // this.login.emit(this.form.value).pipe(
-      //   tap((response) => {
-      //     this.toastr.success('You were logged in succesfully!');
-      //     this.router.navigate(['/home']);
-      //   }),
-      // ).subscribe(
-      //   (response) => {
-      //     console.log(response);
-      //   },
-      //   (error) => {
-      //     console.log(error);
-      //   }
-      // );
-
       this.authService.login(this.form.value).subscribe(
         (response: { token: string, email: string}) => {
           this.login.emit(response);

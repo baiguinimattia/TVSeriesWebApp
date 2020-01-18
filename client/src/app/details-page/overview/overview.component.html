@@ -1,4 +1,4 @@
-<div id="overview-container" *ngIf="details">
+<div id="overview-container" *ngIf="details$ | async as details">
     <div class="clr-row">
         <div id="main-data" class="clr-col-12 clr-col-md-6">
             <h3 class="overview-name">{{details.name}}</h3>
@@ -10,7 +10,7 @@
             <app-persons-list [details]="details"></app-persons-list>
         </div>
         <div id="secondary-data" class="clr-col-12 clr-col-md-6">
-            <img class="overview-poster" [src]="posterPath" alt="" appImageFallBack>
+            <img class="overview-poster" [src]="posterPath$ | async" alt="" appImageFallBack>
         </div>
     </div>
 </div>

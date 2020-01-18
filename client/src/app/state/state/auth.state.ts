@@ -1,7 +1,6 @@
 import { AuthStateModel } from '../models/auth.model'
 import { State, Selector, StateContext } from '@ngxs/store';
 import { AuthService } from 'src/app/auth/auth.service';
-import { tap } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
 import { Receiver, EmitterAction } from '@ngxs-labs/emitter';
 import { Injector } from '@angular/core';

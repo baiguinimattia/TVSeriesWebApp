@@ -19,6 +19,7 @@ import { DirectivesModule } from './shared/directives/directives.module';
 import { NgxsModule } from '@ngxs/store';
 import { AuthState } from './state/state/auth.state';
 import { NgxsEmitPluginModule } from '@ngxs-labs/emitter';
+import { DetailsState } from './state/state/details.state';
 
 export function jwtOptionsFactory(authService: AuthService) {
   return {
@@ -50,7 +51,7 @@ export function jwtOptionsFactory(authService: AuthService) {
     DetailsPageModule,
     SearchPageModule,
     DirectivesModule,
-    NgxsModule.forRoot([AuthState]),
+    NgxsModule.forRoot([AuthState, DetailsState]),
     NgxsEmitPluginModule.forRoot(),
   ],
   providers: [
