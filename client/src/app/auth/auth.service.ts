@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RegisterForm } from './interfaces/register.interface';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { LoginForm } from './interfaces/login.interface';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CookieService } from 'ngx-cookie-service';
@@ -15,7 +15,7 @@ export class AuthService {
   constructor(private readonly http: HttpClient, private readonly cookieService: CookieService,
     private readonly router: Router) { }
 
-  signUp(formData: RegisterForm): Observable<any> {
+  register(formData: RegisterForm): Observable<any> {
     return this.http.post('/api/auth/signUp', formData);
   }
 
@@ -36,7 +36,7 @@ export class AuthService {
 
   logout() {
     this.cookieService.delete('authorization');
-    this.router.navigate(['/login']);
+    return of();
   }
 
   getSessionId(): string {

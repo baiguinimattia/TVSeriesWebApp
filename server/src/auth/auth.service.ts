@@ -19,7 +19,7 @@ export class AuthService {
         return this.userRepository.signUp(authCredentialsDto);
     }
 
-    async signIn(authCredentialsDto: AuthCredentialsDto): Promise<{ accessToken: string }> {
+    async signIn(authCredentialsDto: AuthCredentialsDto): Promise< string > {
         const email = await this.userRepository.validateUserPassword(authCredentialsDto);
 
         if (!email) {
@@ -29,6 +29,6 @@ export class AuthService {
         const payload: JwtPayload = { email, expiresAt };
         const accessToken = await this.jwtService.sign(payload);
 
-        return { accessToken };
+        return accessToken;
     }
 }

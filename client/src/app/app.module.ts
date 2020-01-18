@@ -15,9 +15,10 @@ import { AuthService } from './auth/auth.service';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { DetailsPageModule } from './details-page/details-page.module';
 import { SearchPageModule } from './search-page/search-page.module';
-import { ImageFallBackDirective } from './directives/image-fall-back.directive';
-import { DirectivesModule } from './directives/directives.module';
-
+import { DirectivesModule } from './shared/directives/directives.module';
+import { NgxsModule } from '@ngxs/store';
+import { AuthState } from './state/state/auth.state';
+import { NgxsEmitPluginModule } from '@ngxs-labs/emitter';
 
 export function jwtOptionsFactory(authService: AuthService) {
   return {
@@ -39,7 +40,7 @@ export function jwtOptionsFactory(authService: AuthService) {
     ToastrModule.forRoot({
       "closeButton": true,
       "positionClass": "toast-bottom-full-width",
-      "timeOut": 300000,
+      "timeOut": 3000,
       "extendedTimeOut": 1000,
     }),
     SharedModule,
@@ -48,12 +49,14 @@ export function jwtOptionsFactory(authService: AuthService) {
     HomeModule,
     DetailsPageModule,
     SearchPageModule,
-    DirectivesModule
+    DirectivesModule,
+    NgxsModule.forRoot([AuthState]),
+    NgxsEmitPluginModule.forRoot(),
   ],
-    providers: [
-      CookieService,
+  providers: [
+    CookieService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
-    ],
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

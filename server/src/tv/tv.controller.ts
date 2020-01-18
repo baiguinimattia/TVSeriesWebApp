@@ -21,9 +21,7 @@ export class TvController {
 
     @Get('/search')
     getSearchResult(@Query('query') query) {
-        return this.tvService.getSearchResult(query).toPromise()
-            .then(response => response.data.results)
-            .catch(error => error);
+        return this.tvService.getSearchResult(query);
     }
 
     @Get(':id')

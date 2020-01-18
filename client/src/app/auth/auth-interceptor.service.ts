@@ -5,6 +5,8 @@ import { Observable, throwError } from 'rxjs';
 import { tap, map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Store } from '@ngxs/store';
+import { AuthState } from '../state/state/auth.state';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +15,12 @@ export class AuthInterceptorService implements HttpInterceptor {
 
 
   constructor(private readonly authService: AuthService, private router: Router,
-    private readonly toastr: ToastrService) { }
+    private readonly toastr: ToastrService, private store: Store) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if (this.authService.isAuthenticated()) {
+
+    if (this.store.selectSnapshot(AuthState.isAuthenticated)) {
       req = req.clone({ headers: req.headers.set('Authorization', this.authService.getSessionId()) });
     }
 

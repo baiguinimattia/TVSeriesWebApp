@@ -6,7 +6,6 @@ import { ClarityModule } from '@clr/angular';
 import { BannerComponent } from './banner/banner.component';
 import { IntroComponent } from './intro/intro.component';
 import { PersonListComponent } from './overview/person/person-list.component';
-import { DirectivesModule } from '../directives/directives.module';
 import { GuideButtonComponent } from './guide-button/guide-button.component';
 import { BottomMenuComponent } from './bottom-menu/bottom-menu.component';
 import { OverviewComponent } from './overview/overview.component';
@@ -15,6 +14,7 @@ import { EpisodesComponent } from './episodes/episodes.component';
 import { RecommendationsComponent } from './recommendations/recommendations.component';
 import { DataTableComponent } from './overview/data-table/data-table.component';
 import { PersonsListComponent } from './overview/persons-list/persons-list.component';
+import { DirectivesModule } from '../shared/directives/directives.module';
 
 @NgModule({
   declarations: [DetailsPageComponent, PosterImageComponent, BannerComponent, IntroComponent, PersonListComponent, GuideButtonComponent, BottomMenuComponent, OverviewComponent, DetailsComponent, EpisodesComponent, RecommendationsComponent, DataTableComponent, PersonsListComponent],

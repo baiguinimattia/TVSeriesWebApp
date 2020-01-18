@@ -51,6 +51,7 @@ export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
       }),
     ).subscribe(
       (response) => {
+        console.log(response);
       },
       (error) => {
         this.toastr.error(error.message);

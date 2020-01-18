@@ -25,7 +25,7 @@ export class RegisterFormComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      this.authService.signUp(this.form.value).subscribe(
+      this.authService.register(this.form.value).subscribe(
         (res) => {
           this.toastr.success('You have been registered succesfully!');
           this.router.navigate(['/login']);

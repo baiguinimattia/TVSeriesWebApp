@@ -9,13 +9,13 @@
         <a [routerLink]="['/search']" routerLinkActive="router-link-active" class="active nav-link nav-text ">SEARCH</a>
     </div>
     <div class="header-actions">
-        <a [routerLink]="['/login']" class="nav-link nav-text" [ngClass]="{'nav-link nav-text' : true}" *ngIf="!isAuthenticated()">
+        <a [routerLink]="['/login']" class="nav-link nav-text" [ngClass]="{'nav-link nav-text' : true}" *ngIf="!authStatus">
       Log In
   </a>
-        <a [routerLink]="['/register']" [ngClass]="{'nav-link nav-text' : true}" *ngIf="!isAuthenticated()">
+        <a [routerLink]="['/register']" [ngClass]="{'nav-link nav-text' : true}" *ngIf="!authStatus">
       Register
   </a>
-        <a (click)="logout()" [ngClass]="{'nav-link nav-text' : true}" *ngIf="isAuthenticated()">
+        <a (click)="logout()" [ngClass]="{'nav-link nav-text' : true}" *ngIf="authStatus">
       Log Out
   </a>
     </div>

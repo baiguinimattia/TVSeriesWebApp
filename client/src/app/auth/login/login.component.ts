@@ -9,12 +9,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private readonly authService: AuthService, private route: ActivatedRoute, private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
-    if (this.authService.isAuthenticated()) {
-      this.router.navigate(['/home']);
-    }
   }
 
 }

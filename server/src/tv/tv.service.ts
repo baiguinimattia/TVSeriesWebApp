@@ -3,6 +3,7 @@ import { ConfigService } from '../config/config.service';
 
 import * as imdb from 'imdb-api';
 import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class TvService {
@@ -19,7 +20,9 @@ export class TvService {
         return this.http.get(`${this.getBasePath}/search/tv`,
             {
                 params: this.configService.generateParams({ key: 'query', value: searchText }),
-            });
+            }).pipe( 
+                map( response => response.data.results),
+            )
     }
 
     getDetails(id: string) {

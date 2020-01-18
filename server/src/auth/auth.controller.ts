@@ -19,11 +19,8 @@ export class AuthController {
 
         const token = await this.authService.signIn(authCredentialsDto);
         // response.header('authorization', 'Bearer ' + token.accessToken);
-        response.cookie('authorization', token.accessToken);
-        response.send({
-            success: true,
-            token,
-        });
+        response.cookie('authorization', token);
+        response.send({token});
     }
 
     @Get('sync')
