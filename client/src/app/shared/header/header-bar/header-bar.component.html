@@ -6,7 +6,7 @@
         </a>
     </div>
     <div class="header-nav" [clr-nav-level]="1">
-        <a [routerLink]="['/search']" routerLinkActive="router-link-active" class="active nav-link nav-text ">SEARCH</a>
+        <a [routerLink]="['/search']" routerLinkActive="router-link-active" class="active nav-link nav-text " *ngIf="authStatus">SEARCH</a>
     </div>
     <div class="header-actions">
         <a [routerLink]="['/login']" class="nav-link nav-text" [ngClass]="{'nav-link nav-text' : true}" *ngIf="!authStatus">

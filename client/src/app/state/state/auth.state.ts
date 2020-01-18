@@ -1,10 +1,10 @@
 import { AuthStateModel } from '../models/auth.model'
-import { State, Selector, Action, StateContext } from '@ngxs/store';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { State, Selector, StateContext } from '@ngxs/store';
 import { AuthService } from 'src/app/auth/auth.service';
-import { Login, Logout, Register } from '../actions/auth.action';
 import { tap } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
+import { Receiver, EmitterAction } from '@ngxs-labs/emitter';
+import { Injector } from '@angular/core';
 
 @State<AuthStateModel>({
     name: 'auth',
@@ -14,44 +14,48 @@ import { CookieService } from 'ngx-cookie-service';
     }
 })
 export class AuthState {
+
+    private static authSrv: AuthService;
+    private static cookieSrv: CookieService;
+    constructor(injector: Injector) {
+            AuthState.authSrv = injector.get<AuthService>(AuthService);
+            AuthState.cookieSrv = injector.get<CookieService>(CookieService);
+         }
+
     @Selector()
     static token(state: AuthStateModel): string | null {
         return state.token;
     }
 
     @Selector()
-    static isAuthenticated(state: AuthStateModel): boolean {
-        const jwtHelper = new JwtHelperService();
-        return state.token && !jwtHelper.isTokenExpired(state.token);
+    public static isAuthenticated(state: AuthStateModel): boolean {
+        return this.authSrv.isAuthenticated();
     }
 
-    constructor(private authService: AuthService, private cookieSrv: CookieService) {
-
-    }
-
-    @Action(Login)
-    login(ctx: StateContext<AuthStateModel>, action: Login) {
-        return this.authService.login(action.payload).pipe(
+    @Receiver()
+    public static login({ patchState }: StateContext<AuthStateModel>, { payload }: EmitterAction<AuthStateModel>) {
+        return this.authSrv.login(payload).pipe(
             tap((result) => {
-                ctx.patchState({
+                patchState({
                     token: result.token,
-                    email: action.payload.email
+                    email: payload.email
                 });
             })
         );
     }
 
-    @Action(Logout)
-    logout(ctx: StateContext<AuthStateModel>) {
+    @Receiver()
+    public static logout({setState}: StateContext<AuthStateModel>) {
         this.cookieSrv.delete('authorization');
-        ctx.setState({
+        setState({
             token: null,
-            email: null
-        });
+            email: null,
+        })
     }
 
-    @Action(Register)
-    register(ctx: StateContext<AuthStateModel>, action: Register) {
-        return this.authService.register(action.payload);
+    @Receiver()
+    public static register({}: StateContext<AuthStateModel>, { payload }: EmitterAction<{email: string, password: string}>) {
+        return this.authSrv.register({email: payload.email, password: payload.password});
     }
+
 }

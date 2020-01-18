@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './auth/auth.service';
-import { Actions, ofActionDispatched } from '@ngxs/store';
+import { Actions } from '@ngxs/store';
 import { Router } from '@angular/router';
-import { Logout } from './state/actions/auth.action';
+import { AuthState } from './state/state/auth.state';
+import {
+  ofEmittableDispatched,
+} from '@ngxs-labs/emitter';
+
 
 @Component({
   selector: 'app-root',
@@ -12,12 +15,10 @@ import { Logout } from './state/actions/auth.action';
 export class AppComponent implements OnInit {
   title = 'client';
 
-  constructor(private actions: Actions, private router: Router) {
-
-  }
+  constructor(private actions: Actions, private router: Router) {}
 
   ngOnInit() {
-    this.actions.pipe(ofActionDispatched(Logout)).subscribe( () => {
+    this.actions.pipe(ofEmittableDispatched(AuthState.logout)).subscribe(() => {
       this.router.navigate(['/login']);
     });
   }

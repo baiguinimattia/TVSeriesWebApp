@@ -6,6 +6,7 @@ import { LoginForm } from './interfaces/login.interface';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { AuthStateModel } from '../state/models/auth.model';
 
 
 @Injectable({
@@ -19,7 +20,7 @@ export class AuthService {
     return this.http.post('/api/auth/signUp', formData);
   }
 
-  login(formData: LoginForm): Observable<any> {
+  login(formData: AuthStateModel): Observable<any> {
     return this.http.post('/api/auth/signIn', formData);
   }
 
