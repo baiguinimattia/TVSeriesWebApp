@@ -4,7 +4,6 @@ import { AuthService } from '../../auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { Login } from 'src/app/state/actions/auth.action';
 import { tap, catchError } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
@@ -21,10 +20,13 @@ import { AuthStateModel } from 'src/app/state/models/auth.model';
 export class LoginFormComponent implements OnInit {
   form: FormGroup;
   @Emitter(AuthState.login)
-  public login: Emittable<{ email: string, password: string }>;
+  public login: Emittable<AuthStateModel>;
 
-  constructor(private readonly formBuilder: FormBuilder, private readonly authService: AuthService, private toastr: ToastrService
-    , private route: ActivatedRoute, private router: Router,
+  constructor(private readonly formBuilder: FormBuilder,
+    private readonly authService: AuthService,
+    private toastr: ToastrService,
+    private route: ActivatedRoute,
+    private router: Router,
     private store: Store) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -41,20 +43,31 @@ export class LoginFormComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      this.login.emit(this.form.value).pipe(
-        tap((response) => {
+      // this.login.emit(this.form.value).pipe(
+      //   tap((response) => {
+      //     this.toastr.success('You were logged in succesfully!');
+      //     this.router.navigate(['/home']);
+      //   }),
+      // ).subscribe(
+      //   (response) => {
+      //     console.log(response);
+      //   },
+      //   (error) => {
+      //     console.log(error);
+      //   }
+      // );
+
+      this.authService.login(this.form.value).subscribe(
+        (response: { token: string, email: string}) => {
+          this.login.emit(response);
           this.toastr.success('You were logged in succesfully!');
           this.router.navigate(['/home']);
-        }),
-        catchError((error: HttpErrorResponse) => {
-          switch (error.status) {
-            default:
-              this.form.setValue({ email: this.form.get('email').value, password: '' });
-              this.toastr.error('Error while submiting data.');
-              return throwError(error);
-          }
-        }),
-      ).subscribe();
+        },
+        (error) => {
+          this.toastr.error('Username or password incorrect!');
+          this.form.reset();
+        }
+      );
     }
   }
 

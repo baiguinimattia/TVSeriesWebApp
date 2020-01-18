@@ -18,9 +18,9 @@ export class AuthState {
     private static authSrv: AuthService;
     private static cookieSrv: CookieService;
     constructor(injector: Injector) {
-            AuthState.authSrv = injector.get<AuthService>(AuthService);
-            AuthState.cookieSrv = injector.get<CookieService>(CookieService);
-         }
+        AuthState.authSrv = injector.get<AuthService>(AuthService);
+        AuthState.cookieSrv = injector.get<CookieService>(CookieService);
+    }
 
     @Selector()
     static token(state: AuthStateModel): string | null {
@@ -34,28 +34,17 @@ export class AuthState {
 
     @Receiver()
     public static login({ patchState }: StateContext<AuthStateModel>, { payload }: EmitterAction<AuthStateModel>) {
-        return this.authSrv.login(payload).pipe(
-            tap((result) => {
-                patchState({
-                    token: result.token,
-                    email: payload.email
-                });
-            })
-        );
+        this.cookieSrv.set('authorization', payload.token);
+        patchState(payload);
     }
 
     @Receiver()
-    public static logout({setState}: StateContext<AuthStateModel>) {
+    public static logout({ setState }: StateContext<AuthStateModel>) {
         this.cookieSrv.delete('authorization');
         setState({
             token: null,
             email: null,
         })
-    }
-
-    @Receiver()
-    public static register({}: StateContext<AuthStateModel>, { payload }: EmitterAction<{email: string, password: string}>) {
-        return this.authSrv.register({email: payload.email, password: payload.password});
     }
 
 }

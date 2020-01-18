@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Emittable } from '@ngxs-labs/emitter';
 
 @Component({
   selector: 'app-register-form',
@@ -11,6 +12,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RegisterFormComponent implements OnInit {
   form: FormGroup;
+  register: Emittable<{ email: string, password: string }>;
+
   constructor(private readonly formBuilder: FormBuilder, private readonly authService: AuthService,
     private route: ActivatedRoute, private router: Router, private readonly toastr: ToastrService) {
     this.form = this.formBuilder.group({
@@ -26,14 +29,15 @@ export class RegisterFormComponent implements OnInit {
   submit() {
     if (this.form.valid) {
       this.authService.register(this.form.value).subscribe(
-        (res) => {
+        (response) => {
           this.toastr.success('You have been registered succesfully!');
           this.router.navigate(['/login']);
         },
-      (err) => {
-          this.form.reset();
-          this.toastr.error(err.error.message);
-        });
+        (error) => {
+          this.form.setValue({ email: this.form.get('email').value, password: '' });
+          this.toastr.error('Error while registering!');
+        }
+      );
     }
   }
 }

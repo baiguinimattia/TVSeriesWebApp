@@ -37,7 +37,7 @@ export class AuthInterceptorService implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         switch (error.status) {
           case (401):
-            if (this.urlContains('/api/login', req)) {
+            if (this.urlContains('/api/auth/signIn', req)) {
               return throwError(error);
             } else {
               this.toastr.error('The session has expired.');

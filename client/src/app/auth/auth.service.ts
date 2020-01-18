@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { RegisterForm } from './interfaces/register.interface';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { LoginForm } from './interfaces/login.interface';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { AuthStateModel } from '../state/models/auth.model';
+import { tap, catchError, take } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Injectable({
@@ -14,14 +16,16 @@ import { AuthStateModel } from '../state/models/auth.model';
 })
 export class AuthService {
   constructor(private readonly http: HttpClient, private readonly cookieService: CookieService,
-    private readonly router: Router) { }
+    private readonly router: Router, private readonly toastr: ToastrService) { }
 
   register(formData: RegisterForm): Observable<any> {
-    return this.http.post('/api/auth/signUp', formData);
+    return this.http.post('/api/auth/signUp', formData).pipe(take(1));
   }
 
-  login(formData: AuthStateModel): Observable<any> {
-    return this.http.post('/api/auth/signIn', formData);
+  login(formData: LoginForm): Observable<any> {
+    return this.http.post('/api/auth/signIn', formData).pipe(
+      take(1),
+    );
   }
 
 
@@ -31,8 +35,8 @@ export class AuthService {
     return token && !jwtHelper.isTokenExpired(token);
   }
 
-  sync(): Observable<{isAuthenticated: boolean}> {
-    return this.http.get<{isAuthenticated: boolean}>('/api/auth/sync');
+  sync(): Observable<{ isAuthenticated: boolean }> {
+    return this.http.get<{ isAuthenticated: boolean }>('/api/auth/sync');
   }
 
   logout() {

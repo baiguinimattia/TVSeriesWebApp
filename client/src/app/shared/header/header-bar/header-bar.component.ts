@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { AuthState } from 'src/app/state/state/auth.state';
 import { tap } from 'rxjs/operators';
-import { Logout } from 'src/app/state/actions/auth.action';
 import { Emitter, Emittable } from '@ngxs-labs/emitter';
 
 @Component({
