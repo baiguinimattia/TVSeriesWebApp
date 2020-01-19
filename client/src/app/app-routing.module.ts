@@ -23,7 +23,7 @@ const routes: Routes = [
   {
     path: 'details/:id', component: DetailsPageComponent, canActivate: [AuthGuardService]
   },
-  { path: '', redirectTo: '/home', pathMatch: 'full', canActivate: [AuthGuardService] }
+  { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuardService] }
 ];
 
 @NgModule({

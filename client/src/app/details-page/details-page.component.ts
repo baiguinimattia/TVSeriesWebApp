@@ -12,6 +12,8 @@ import { ContentRating } from '../interfaces/content-rating.interface';
 import { Select, Store } from '@ngxs/store';
 import { DetailsState } from '../state/state/details.state';
 import { Emitter, Emittable } from '@ngxs-labs/emitter';
+import { ExternalIds } from '../interfaces/external-ids.interface';
+import { ImdbDetails } from '../interfaces/imdb-details.interface';
 
 
 @Component({
@@ -26,6 +28,8 @@ export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
   @Select(DetailsState.getPosterPath) posterPath$: Observable<string>;
   @Select(DetailsState.getCast) cast$: Observable<Person[]>;
   @Select(DetailsState.getCrew) crew$: Observable<Person[]>;
+  @Select(DetailsState.getExternalIds) externalIds$: Observable<ExternalIds>;
+  @Select(DetailsState.getImdbDetails) imdbDetails$: Observable<ImdbDetails>;
 
 
   @Emitter(DetailsState.setId)
@@ -38,6 +42,10 @@ export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
   public crew: Emittable<Person[]>;
   @Emitter(DetailsState.setCast)
   public cast: Emittable<Person[]>;
+  @Emitter(DetailsState.setExternalIds)
+  public externalIds: Emittable<ExternalIds>;
+  @Emitter(DetailsState.setImdbDetails)
+  public imdbDetails: Emittable<ImdbDetails>;
 
   private subscriptions: Subscription = new Subscription();
   currentPage: DetailsEnum = DetailsEnum.overview;
@@ -72,22 +80,36 @@ export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
               (crew: Person[]) => this.crew.emit(crew),
             ),
           );
+
+          this.subscriptions.add(
+            this.detailsPageService.getExternalIds(details.id).pipe(
+              tap((ids: ExternalIds) => this.externalIds.emit(ids)),
+              map((ids: ExternalIds) => ids.imdb_id),
+              switchMap((id: string) => {
+                return this.detailsPageService.getImdb(id).pipe(
+                  tap((imdbDetails: ImdbDetails) => this.imdbDetails.emit(imdbDetails)),
+                );
+              })
+            ).subscribe(
+
+            ),
+          );
         },
       ),
     );
 
 
-  }
+}
 
-  ngOnChanges() {
-  }
+ngOnChanges() {
+}
 
-  ngOnDestroy() {
-    this.subscriptions.unsubscribe();
-  }
+ngOnDestroy() {
+  this.subscriptions.unsubscribe();
+}
 
-  switchPage(page: DetailsEnum) {
-    this.currentPage = page;
-  }
+switchPage(page: DetailsEnum) {
+  this.currentPage = page;
+}
 
 }

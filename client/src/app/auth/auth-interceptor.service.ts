@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Observable, throwError } from 'rxjs';
-import { tap, map, catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Store } from '@ngxs/store';
 import { AuthState } from '../state/state/auth.state';
+import { AuthStateModel } from '../state/models/auth.model';
+import { Emitter, Emittable } from '@ngxs-labs/emitter';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthInterceptorService implements HttpInterceptor {
-
 
   constructor(private readonly authService: AuthService, private router: Router,
     private readonly toastr: ToastrService, private store: Store) { }
@@ -41,7 +42,7 @@ export class AuthInterceptorService implements HttpInterceptor {
               return throwError(error);
             } else {
               this.toastr.error('The session has expired.');
-              this.authService.logout();
+              this.store.dispatch(AuthState.logout);
             }
             break;
           case (504):
