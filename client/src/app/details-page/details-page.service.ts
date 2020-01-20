@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { TvService } from '../data-layer/tv.service';
 import { PersonService } from '../data-layer/person.service';
-import { Observable, from } from 'rxjs';
+import { Observable, from, of } from 'rxjs';
 import { ExternalIds } from '../interfaces/external-ids.interface';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap, take, catchError } from 'rxjs/operators';
 import { Person, Credits, PersonDetails } from '../interfaces/person.interface';
 import { ToastrService } from 'ngx-toastr';
 import { ShowDetails } from '../interfaces/show-details.interface';
@@ -32,6 +32,9 @@ export class DetailsPageService {
     );
   }
 
+  getCredits(id: string): Observable<Credits> {
+    return this.tvService.getCredits(id).pipe(take(1));
+  }
 
   getCast(id: string): Observable<Person[]> {
     return this.tvService.getCredits(id).pipe(
@@ -64,12 +67,11 @@ export class DetailsPageService {
 
   getContentRating(id: string): Observable<ContentRating[]> {
     return this.tvService.getContentRating(id).pipe(
-      map( (response) => response.results),
-    )
+      map((response) => response.results))
   }
 
   getSpecificContentRating(ratings: ContentRating[], country: string): string {
-    const found = ratings.find( (rating: ContentRating) => rating.iso_3166_1 === country);
+    const found = ratings.find((rating: ContentRating) => rating.iso_3166_1 === country);
     return found ? found.rating : '-';
   }
 

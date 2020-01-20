@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ShowDetails } from 'src/app/interfaces/show-details.interface';
-import { DetailsPageService } from '../details-page.service';
 import { Select } from '@ngxs/store';
 import { DetailsState } from 'src/app/state/state/details.state';
 import { Observable } from 'rxjs';
@@ -10,16 +9,11 @@ import { Observable } from 'rxjs';
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.css']
 })
-export class OverviewComponent implements OnInit, OnChanges {
-  // @Input() details: ShowDetails;
+export class OverviewComponent implements OnInit {
   @Select(DetailsState.getDetails) details$: Observable<ShowDetails>;
   @Select(DetailsState.getPosterPath) posterPath$: Observable<string>;
-  constructor(private readonly detailsPageService: DetailsPageService) { }
+  constructor() { }
 
   ngOnInit() {
   }
-
-  ngOnChanges() {
-  }
-
 }

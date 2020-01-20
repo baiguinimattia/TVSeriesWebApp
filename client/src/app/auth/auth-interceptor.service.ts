@@ -14,7 +14,8 @@ import { Emitter, Emittable } from '@ngxs-labs/emitter';
   providedIn: 'root'
 })
 export class AuthInterceptorService implements HttpInterceptor {
-
+  @Emitter(AuthState.logout)
+  public logout: Emittable;
   constructor(private readonly authService: AuthService, private router: Router,
     private readonly toastr: ToastrService, private store: Store) { }
 
@@ -42,7 +43,7 @@ export class AuthInterceptorService implements HttpInterceptor {
               return throwError(error);
             } else {
               this.toastr.error('The session has expired.');
-              this.store.dispatch(AuthState.logout);
+              this.logout.emit();
             }
             break;
           case (504):

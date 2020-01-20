@@ -42,6 +42,7 @@ export class AuthState {
 
     @Receiver()
     public static logout({ setState }: StateContext<AuthStateModel>) {
+        console.log('s-a apelat logout')
         this.cookieSrv.delete('authorization');
         setState({
             token: null,

@@ -1,4 +1,4 @@
-<div id="data-container" *ngIf="details">
+<div id="data-container" *ngIf="details$ | async as details">
     <!-- <div class="clr-row data-row">
         <div class=" clr-col-6 left-column">
             <h3>IMDB Series Id</h3>
@@ -15,8 +15,7 @@
             <h3>{{imdbDetails.actors}}</h3>
         </div>
     </div> -->
-
-    <div class="data-row" *ngIf="imdbDetails">
+    <div class="data-row" *ngIf="imdbDetails$ | async as imdbDetails">
         <h3><strong>Creator(s):</strong> {{imdbDetails.writer}}</h3>
         <h3><strong>Star(s):</strong> {{imdbDetails.actors}}</h3>
         <h3><strong>Award(s):</strong> {{imdbDetails.awards}}</h3>

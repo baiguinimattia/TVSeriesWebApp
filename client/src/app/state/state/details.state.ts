@@ -109,7 +109,6 @@ export class DetailsState {
         const currentState = getState();
         currentState.imdbDetails = payload;
         patchState(currentState);
-        console.log(currentState);
     }
 
 }

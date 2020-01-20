@@ -26,8 +26,8 @@ export class TvService {
     return this.http.get<Credits>(`/api/tv/${id}/credits`);
   }
 
-  getContentRating(id: string): Observable<{results: ContentRating[], id: string}> {
-    return this.http.get<{results: ContentRating[], id: string}>(`/api/tv/${id}/content_rating`);
+  getContentRating(id: string): Observable<{ results: ContentRating[], id: string }> {
+    return this.http.get<{ results: ContentRating[], id: string }>(`/api/tv/${id}/content_rating`);
   }
 
   getImdb(id: string): Observable<ImdbDetails> {

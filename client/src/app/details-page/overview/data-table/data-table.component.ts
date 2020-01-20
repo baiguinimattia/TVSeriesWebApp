@@ -2,10 +2,15 @@ import { Component, OnInit, Input, OnChanges, OnDestroy } from '@angular/core';
 import { ShowDetails } from 'src/app/interfaces/show-details.interface';
 import { ExternalIds } from 'src/app/interfaces/external-ids.interface';
 import { DetailsPageService } from '../../details-page.service';
-import { Subscription } from 'rxjs';
-import { tap, mapTo, switchMap, map } from 'rxjs/operators';
+import { Subscription, Observable, of } from 'rxjs';
+import { tap, mapTo, switchMap, map, catchError } from 'rxjs/operators';
 import { ContentRating } from 'src/app/interfaces/content-rating.interface';
 import { ImdbDetails } from 'src/app/interfaces/imdb-details.interface';
+import { Select } from '@ngxs/store';
+import { DetailsState } from 'src/app/state/state/details.state';
+import { ActivatedRoute } from '@angular/router';
+import { MapOperator } from 'rxjs/internal/operators/map';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-data-table',
@@ -13,43 +18,33 @@ import { ImdbDetails } from 'src/app/interfaces/imdb-details.interface';
   styleUrls: ['./data-table.component.css']
 })
 export class DataTableComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() details: ShowDetails;
-  externalIds: ExternalIds;
   parentalGuide: string;
-  imdbDetails: ImdbDetails;
   private subscriptions: Subscription = new Subscription();
-  constructor(private readonly detailsService: DetailsPageService) { }
+  @Select(DetailsState.getDetails) details$: Observable<ShowDetails>;
+  @Select(DetailsState.getExternalIds) externalIds$: Observable<ExternalIds>;
+  @Select(DetailsState.getImdbDetails) imdbDetails$: Observable<ImdbDetails>;
+
+
+  constructor(private readonly detailsService: DetailsPageService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-
-  }
-
-  ngOnChanges() {
-    if (this.details) {
-      this.subscriptions.add(this.detailsService.getExternalIds(this.details.id).pipe(
-        tap((response: ExternalIds) => {
-          this.externalIds = response;
-        }),
-        map((response: ExternalIds) => response.imdb_id),
-        switchMap((id: string) => {
-          return this.detailsService.getImdb(id).pipe(
-            tap((response: ImdbDetails) => this.imdbDetails = response),
-          );
-        }),
-      ).subscribe((response) => {console.log(this.imdbDetails)},
-      (error) => {}));
-
-      this.subscriptions.add(
-        this.detailsService.getContentRating(this.details.id)
-          .pipe(
-            tap((response: ContentRating[]) => {
-              this.parentalGuide = this.detailsService.getSpecificContentRating(response, 'US');
-            }),
-          )
-          .subscribe()
+    this.subscriptions.add(
+      this.route.params.pipe(
+        map((params) => params.id),
+        switchMap((id: string) => this.detailsService.getContentRating(id).pipe(
+          tap((result: ContentRating[]) => this.parentalGuide = this.detailsService.getSpecificContentRating(result, 'US')),
+          catchError((err) => {
+            return of([]);
+          })
+        ))
+      ).subscribe(
+        () => { },
+        (error) => console.log(error),
       )
-    }
+    )
   }
+
+  ngOnChanges() { }
 
   ngOnDestroy() {
     this.subscriptions.unsubscribe();

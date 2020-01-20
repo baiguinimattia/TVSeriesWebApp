@@ -1,12 +1,10 @@
 import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TvService } from '../data-layer/tv.service';
 import { ShowDetails } from '../interfaces/show-details.interface';
-import { tap, map, switchMap } from 'rxjs/operators';
+import { tap, map, switchMap, take } from 'rxjs/operators';
 import { Subscription, Observable } from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
 import { DetailsPageService } from './details-page.service';
-import { Person } from '../interfaces/person.interface';
+import { Person, Credits } from '../interfaces/person.interface';
 import { DetailsEnum } from '../enums/details-enum';
 import { ContentRating } from '../interfaces/content-rating.interface';
 import { Select, Store } from '@ngxs/store';
@@ -61,55 +59,45 @@ export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
       this.route.params.pipe(
         map(params => params.id),
         tap((id: string) => this.id.emit(id)),
-        switchMap((id: string) => this.detailsPageService.getDetails(id),
-        ),
-      ).subscribe(
-        (details: ShowDetails) => {
-          this.details.emit(details);
-          this.posterPath.emit(this.detailsPageService.getPosterPath(details.poster_path));
-
-          this.subscriptions.add(
-            this.detailsPageService.getCast(details.id).pipe(
-            ).subscribe(
-              (cast: Person[]) => this.cast.emit(cast),
-            ),
-          );
-          this.subscriptions.add(
-            this.detailsPageService.getCrew(details.id).pipe(
-            ).subscribe(
-              (crew: Person[]) => this.crew.emit(crew),
-            ),
-          );
-
-          this.subscriptions.add(
-            this.detailsPageService.getExternalIds(details.id).pipe(
-              tap((ids: ExternalIds) => this.externalIds.emit(ids)),
-              map((ids: ExternalIds) => ids.imdb_id),
-              switchMap((id: string) => {
-                return this.detailsPageService.getImdb(id).pipe(
-                  tap((imdbDetails: ImdbDetails) => this.imdbDetails.emit(imdbDetails)),
-                );
-              })
-            ).subscribe(
-
-            ),
-          );
-        },
-      ),
+        switchMap((id: string) => {
+          return this.detailsPageService.getDetails(id).pipe(
+            tap((details: ShowDetails) => {
+              this.details.emit(details);
+              this.posterPath.emit(this.detailsPageService.getPosterPath(details.poster_path));
+            }),
+            switchMap((details: ShowDetails) => {
+              return this.detailsPageService.getCredits(details.id).pipe(
+                tap((credits: Credits) => {
+                  this.crew.emit(credits.crew);
+                  this.cast.emit(credits.cast);
+                }),
+                switchMap(() => {
+                  return this.detailsPageService.getExternalIds(this.store.selectSnapshot(DetailsState.getId)).pipe(
+                    tap((result: ExternalIds) => this.externalIds.emit(result)),
+                    switchMap( (result: ExternalIds) => this.detailsPageService.getImdb(result.imdb_id).pipe(
+                      tap( (result: ImdbDetails) => this.imdbDetails.emit(result)),
+                    )),
+                  );
+                }),
+              )
+            }),
+          )
+        }),
+      ).subscribe(),
     );
 
 
-}
+  }
 
-ngOnChanges() {
-}
+  ngOnChanges() {
+  }
 
-ngOnDestroy() {
-  this.subscriptions.unsubscribe();
-}
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
+  }
 
-switchPage(page: DetailsEnum) {
-  this.currentPage = page;
-}
+  switchPage(page: DetailsEnum) {
+    this.currentPage = page;
+  }
 
 }
