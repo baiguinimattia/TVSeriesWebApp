@@ -1,6 +1,6 @@
 <h2 class="persons-heading">Series Cast</h2>
 <div class="clr-row persons-row">
-    <div *ngFor="let person of cast" class="clr-col-6 clr-col-sm-6 clr-col-md-6 clr-col-lg-4">
+    <div *ngFor="let person of cast$ | async" class="clr-col-6 clr-col-sm-6 clr-col-md-6 clr-col-lg-4">
         <app-person-list [person]="person"></app-person-list>
     </div>
 </div>

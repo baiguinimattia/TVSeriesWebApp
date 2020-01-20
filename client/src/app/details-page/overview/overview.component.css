@@ -39,8 +39,9 @@
 }
 
 .overview-poster {
-    max-height: 500px;
+    height: 500px;
     width: auto;
+    max-width: 340px;
 }
 
 .overview-poster:hover {

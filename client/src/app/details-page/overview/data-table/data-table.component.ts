@@ -32,13 +32,12 @@ export class DataTableComponent implements OnInit, OnChanges, OnDestroy {
       this.route.params.pipe(
         map((params) => params.id),
         switchMap((id: string) => this.detailsService.getContentRating(id).pipe(
-          tap((result: ContentRating[]) => this.parentalGuide = this.detailsService.getSpecificContentRating(result, 'US')),
           catchError((err) => {
             return of([]);
           })
         ))
       ).subscribe(
-        () => { },
+        (result: ContentRating[]) => { this.parentalGuide = this.detailsService.getSpecificContentRating(result, 'US') },
         (error) => console.log(error),
       )
     )

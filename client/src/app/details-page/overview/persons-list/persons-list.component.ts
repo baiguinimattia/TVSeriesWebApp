@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Person } from 'src/app/interfaces/person.interface';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { DetailsPageService } from '../../details-page.service';
 import { tap } from 'rxjs/operators';
 import { ShowDetails } from 'src/app/interfaces/show-details.interface';
+import { Select } from '@ngxs/store';
+import { DetailsState } from 'src/app/state/state/details.state';
 
 @Component({
   selector: 'app-persons-list',
@@ -11,17 +13,13 @@ import { ShowDetails } from 'src/app/interfaces/show-details.interface';
   styleUrls: ['./persons-list.component.css']
 })
 export class PersonsListComponent implements OnInit, OnDestroy{
-  cast: Person[] = [];
-  @Input() details: ShowDetails;
   private subscriptions: Subscription = new Subscription();
-  constructor(private readonly detailsService: DetailsPageService) { }
+
+  @Select(DetailsState.getCast) cast$: Observable<Person[]>;
+  
+  constructor() { }
 
   ngOnInit() {
-    this.subscriptions.add(
-      this.detailsService.getCast(this.details.id).pipe(
-        tap((response: Person[]) => this.cast = response),
-      ).subscribe(),
-    );
   }
 
   ngOnDestroy() {
