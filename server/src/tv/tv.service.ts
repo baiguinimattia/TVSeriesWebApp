@@ -20,8 +20,8 @@ export class TvService {
         return this.http.get(`${this.getBasePath}/search/tv`,
             {
                 params: this.configService.generateParams({ key: 'query', value: searchText }),
-            }).pipe( 
-                map( response => response.data.results),
+            }).pipe(
+                map(response => response.data.results),
             )
     }
 
@@ -106,7 +106,14 @@ export class TvService {
     }
 
     getImdb(id: string) {
-        return of(imdb.get( { id: id}, { apiKey: this.configService.imdbApiKey}));
+        return of(imdb.get({ id: id }, { apiKey: this.configService.imdbApiKey }));
+    }
+
+    getEpisodesBySeasonNo(id: string, no: number) {
+        return this.http.get(`${this.getBasePath}/tv/${id}/season/${no}`,
+            {
+                params: this.configService.generateParams(),
+            });
     }
 
 

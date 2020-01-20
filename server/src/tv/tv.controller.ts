@@ -48,7 +48,7 @@ export class TvController {
     @Get(':id/content_rating')
     getContentRating(@Param('id') id: string): Observable<any> {
         return this.tvService.getContentRating(id).pipe(
-            map( (response) => response.data),
+            map((response) => response.data),
         );
     }
 
@@ -56,6 +56,13 @@ export class TvController {
     getImdb(@Param('id') id: string) {
         return this.tvService.getImdb(id).pipe(
         );
+    }
+
+    @Get(':id/season/:no')
+    getEpisodes(@Param('id') id: string, @Param('no') no: number) {
+        return this.tvService.getEpisodesBySeasonNo(id, no).pipe(
+            map(response => response.data),
+        )
     }
 
 }

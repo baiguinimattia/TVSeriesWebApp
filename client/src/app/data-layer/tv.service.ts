@@ -33,4 +33,8 @@ export class TvService {
   getImdb(id: string): Observable<ImdbDetails> {
     return this.http.get<ImdbDetails>(`/api/tv/${id}/imdb`);
   }
+
+  getEpisodesBySeasonNo(id: string, no: number) {
+    return this.http.get(`/api/tv/${id}/season/${no}`);
+  }
 }

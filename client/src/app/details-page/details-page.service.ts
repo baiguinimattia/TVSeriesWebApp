@@ -78,4 +78,8 @@ export class DetailsPageService {
   getImdb(id: string): Observable<ImdbDetails> {
     return this.tvService.getImdb(id);
   }
+
+  getEpisodesBySeasonNo(id: string, no: number) {
+    return this.tvService.getEpisodesBySeasonNo(id, no);
+  }
 }
