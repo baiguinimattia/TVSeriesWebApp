@@ -8,7 +8,7 @@ import { Person, Credits, PersonDetails } from '../interfaces/person.interface';
 import { ToastrService } from 'ngx-toastr';
 import { ShowDetails } from '../interfaces/show-details.interface';
 import { MediaService } from '../data-layer/media.service';
-import { BackdropSizesEnum } from '../enums/image-enums';
+import { BackdropSizesEnum, StillSizesEnum } from '../enums/image-enums';
 import { ContentRating } from '../interfaces/content-rating.interface';
 import { ImdbDetails } from '../interfaces/imdb-details.interface';
 
@@ -63,6 +63,10 @@ export class DetailsPageService {
 
   getPosterPath(path: string): string {
     return `${this.mediaService.getImagePath(path, BackdropSizesEnum.original)}`;
+  }
+
+  getStillPath(path: string): string {
+    return `${this.mediaService.getImagePath(path, StillSizesEnum.original)}`;
   }
 
   getContentRating(id: string): Observable<ContentRating[]> {

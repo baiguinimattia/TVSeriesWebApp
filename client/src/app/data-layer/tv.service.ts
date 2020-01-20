@@ -6,6 +6,7 @@ import { ExternalIds } from '../interfaces/external-ids.interface';
 import { Credits } from '../interfaces/person.interface';
 import { ContentRating } from '../interfaces/content-rating.interface';
 import { ImdbDetails } from '../interfaces/imdb-details.interface';
+import { SeasonDetailed } from '../interfaces/season.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,7 @@ export class TvService {
     return this.http.get<ImdbDetails>(`/api/tv/${id}/imdb`);
   }
 
-  getEpisodesBySeasonNo(id: string, no: number) {
-    return this.http.get(`/api/tv/${id}/season/${no}`);
+  getEpisodesBySeasonNo(id: string, no: number): Observable<SeasonDetailed> {
+    return this.http.get<SeasonDetailed>(`/api/tv/${id}/season/${no}`);
   }
 }

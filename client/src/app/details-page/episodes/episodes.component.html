@@ -1,1 +1,20 @@
-<p>{{details.overview}}</p>
+<clr-dropdown>
+    <button clrDropdownTrigger aria-label="Dropdown demo button">
+        Seasons
+        <clr-icon shape="caret down"></clr-icon>
+    </button>
+    <clr-dropdown-menu *clrIfOpen>
+        <div clrDropdownItem *ngFor="let season of details.seasons" (click)="getEpisodes(season.season_number)">
+            {{season.name}}
+        </div>
+    </clr-dropdown-menu>
+
+
+</clr-dropdown>
+
+<div *ngIf="season$ | async as season">
+    <div *ngFor="let episode of season.episodes">
+        <h3>{{episode.name}}</h3>
+        <img class="episode-img" [src]="getImagePath(episode.still_path)" alt="" appImageFallBack>
+    </div>
+</div>
