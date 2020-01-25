@@ -7,5 +7,5 @@
 }
 
 .content-container {
-    background-color: var(--background-lighter);
+    background-image: var(--gradient);
 }

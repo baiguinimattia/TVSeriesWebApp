@@ -6,7 +6,7 @@
     width: 100px;
     height: 100px;
     margin: 40px auto 0;
-    background-color: var(--background-dark);
+    background-color: var(--background);
     position: relative;
     overflow: hidden;
     transition: all 0.5s ease;
@@ -38,7 +38,7 @@
     box-shadow: none;
     border: none;
     background: transparent;
-    color: var(--text-color-inverted-darker);
+    color: var(--highlight-lighter);
     padding: 20px 100px 20px 45px;
     font-size: 40px;
 }

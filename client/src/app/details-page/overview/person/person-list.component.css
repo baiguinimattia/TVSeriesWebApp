@@ -5,12 +5,12 @@
     border: 1px solid var(--highlight);
     margin: 0.5rem 0.25rem;
     text-align: center;
-    background-color: var(--background-dark);
-    color: var(--text-color-inverted-lighter);
+    background-color: var(--background);
+    color: var(--text-color-lighter);
 }
 
 #person-container:hover {
-    color: var(--text-color-inverted-darker);
+    color: var(--text-color-darker);
 }
 
 .profile-img {
@@ -35,7 +35,7 @@
 .primary-paragraph {
     margin: 0;
     padding: 0 0.25rem;
-    color: var(--text-color-inverted-lighter);
+    color: var(--text-color-lighter);
     font-size: 0.5rem;
     text-align: center;
 }

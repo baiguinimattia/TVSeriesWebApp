@@ -4,7 +4,7 @@ import { HeaderComponent } from './header.component';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
 import { ClarityModule } from '@clr/angular';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ClarityModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     HeaderComponent

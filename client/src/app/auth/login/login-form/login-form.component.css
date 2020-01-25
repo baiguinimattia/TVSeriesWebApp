@@ -1,7 +1,7 @@
 #login-container {
     height: 100%;
     width: 100%;
-    background-color: var(--background-lighter);
+    background-image: var(--gradient);
     padding: 1rem;
     text-align: center;
 }
@@ -10,7 +10,6 @@
     max-width: 400px;
     margin: 1rem auto;
     min-height: 500px;
-    background-color: var(--background-lighter);
     border-radius: 20% 0 20% 0;
     padding: 1rem 0;
 }
@@ -19,7 +18,7 @@
     padding-top: 1rem;
     font-weight: 800;
     font-size: 1.5rem;
-    color: var(--text-color-inverted);
+    color: var(--highlight);
 }
 
 .login-form input {
@@ -33,7 +32,7 @@
 }
 
 .btn-login {
-    background-color: var(--background-color-inverted);
+    background-color: var(--background);
     color: var(--text-color-lighter);
     font-weight: 800;
     border: none;
@@ -43,7 +42,7 @@
 
 .btn-login:hover {
     background-color: var(--background-darker);
-    color: var(--text-color-inverted);
+    color: var(--text-color-normal);
 }
 
 form p {
@@ -51,11 +50,12 @@ form p {
 }
 
 .text-primary a {
-    color: var(--text-color-inverted-lighter) !important;
+    color: var(--highlight);
     text-decoration: none;
+    font-size: 1rem;
 }
 
 .text-primary a:hover {
-    color: var(--text-color-inverted-darker) !important;
+    color: var(--highlight-darker);
     text-decoration: none;
 }

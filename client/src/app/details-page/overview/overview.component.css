@@ -26,7 +26,7 @@
 }
 
 .overview-name {
-    color: var(--text-color-inverted);
+    color: var(--text-color-normal);
     font-weight: 800;
     font-size: 1.5rem;
     line-height: 1.5rem;
@@ -51,7 +51,7 @@
 
 .overview-description {
     padding-top: 1rem;
-    color: var(--text-color-inverted-lighter);
+    color: var(--text-color-lighter);
     margin-bottom: 1rem;
 }
 
@@ -59,10 +59,10 @@
     text-decoration: none;
     background-color: var(--background-darker);
     padding: 0.5rem;
-    color: var(--text-color-inverted-lighter);
+    color: var(--text-color-lighter);
 }
 
 .homepage-btn:hover {
-    color: var(--text-color-inverted-darker);
+    color: var(--text-color-darker);
     background-color: rgba(0, 0, 0, 0.9);
 }

@@ -15,23 +15,23 @@
 }
 
 .introduction {
-    color: var(--text-color-inverted);
+    color: var(--text-color-normal);
     font-size: 2rem;
     line-height: 2rem;
 }
 
 .title {
-    color: var(--text-color-inverted-darker);
+    color: var(--text-color-darker);
     padding-bottom: 1rem;
 }
 
 select {
-    color: var(--text-color-inverted-darker);
+    color: var(--text-color-darker);
     font-size: 1.5rem;
     border: none;
-    border-bottom: 3px solid var(--text-color-inverted);
+    border-bottom: 3px solid var(--text-color-normal);
     margin: 1rem;
-    background-color: var(--background-dark);
+    background-color: var(--background);
     padding: 0.5rem;
 }
 

@@ -29,6 +29,7 @@ export class RecommendationsComponent implements OnInit {
   constructor(private detailsService: DetailsPageService) { }
 
   ngOnInit() {
+    console.log(this.details);
     this.id$.pipe(
       switchMap((id: string) => this.detailsService.getRecommendations(id).pipe(
         tap((response: ShowResult[]) => {
@@ -44,7 +45,7 @@ export class RecommendationsComponent implements OnInit {
   }
 
   getPosterPath(path: string) {
-    return `${PathsEnum.default}${PosterSizesEnum.w300}${path}`;
+    return `${PathsEnum.default}${PosterSizesEnum.original}${path}`;
   }
 
 }

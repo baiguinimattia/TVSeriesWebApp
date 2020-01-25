@@ -37,14 +37,14 @@
 }
 
 #menu-container {
-    background-color: var(--background-dark);
+    background-color: var(--background);
     position: fixed;
     overflow: inherit;
 }
 
 @media( min-width: 768px) {
     #menu-container {
-        border-top: 3px solid var(--background-dark);
+        border-top: 3px solid var(--background);
         z-index: 1;
     }
     #info-container {

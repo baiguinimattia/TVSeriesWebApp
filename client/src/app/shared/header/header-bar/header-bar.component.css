@@ -1,34 +1,47 @@
 .main-header {
-    background-color: var(--background-dark);
+    background-color: var(--background)
 }
 
 .clr-nav-level-1 {
-    background-color: var(--background-dark) !important;
+    background-color: var(--background)ortant;
 }
 
-.title {
-    font-weight: 800 !important;
-    color: var(--text-color-highlight) !important;
+.brand-title {
+    font-weight: 800;
+    color: var(--highlight-lighter);
 }
 
-clr-icon[shape=vm-bug] {
-    background-color: var(--background-dark) !important;
+.brand-title:hover {
+    color: var(--highlight-darker);
+}
+
+clr-icon[shape=video-camera] {
+    background-color: var(--background);
+}
+
+clr-icon[shape=color-picker] {
+    background-color: var(--background);
+    margin-top: 0.5rem;
 }
 
 .branding a {
-    color: var(--text-color-inverted);
+    color: var(--text-color-normal);
 }
 
 .branding a:hover {
-    color: var(--text-color-inverted-darker);
+    color: var(--text-color-darker);
 }
 
 .header-actions a {
-    color: var(--text-color-inverted);
+    color: var(--text-color-normal);
     font-size: 1.1rem;
 }
 
 .header-actions a:hover {
     cursor: pointer;
-    color: var(--text-color-inverted-darker);
+    color: var(--text-color-darker);
+}
+
+.navigation-btn:hover {
+    color: var(--highlight-lighter);
 }

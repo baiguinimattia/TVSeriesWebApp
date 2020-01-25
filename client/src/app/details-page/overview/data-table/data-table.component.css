@@ -3,7 +3,7 @@
     height: auto;
     margin-top: 1rem;
     border: 1px solid red;
-    background-color: var(--background-dark);
+    background-color: var(--background);
     padding: 1rem;
 }
 
@@ -18,12 +18,12 @@
 }
 
 .imdb-link a {
-    color: var(--text-color-inverted-lighter);
+    color: var(--text-color-lighter);
     text-decoration: none;
 }
 
 .imdb-link a:hover {
-    color: var(--text-color-inverted-darker);
+    color: var(--text-color-darker);
 }
 
 .data-row {
@@ -32,12 +32,12 @@
 }
 
 .data-row h3 {
-    color: var(--text-color-inverted);
+    color: var(--text-color-normal);
     text-align: center;
 }
 
 .data-row h3 strong {
     font-weight: 700;
-    color: var(--text-color-inverted-darker);
+    color: var(--text-color-darker);
     text-align: left;
 }

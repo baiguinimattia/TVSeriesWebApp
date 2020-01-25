@@ -1,8 +1,8 @@
 .item-container {
     height: 200px;
     max-width: 1000px;
-    background-color: var(--background-dark);
-    color: var(--text-color-inverted);
+    background-color: var(--background);
+    color: var(--text-color-normal);
     margin: 1rem auto;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .show-overview {
-    color: var(--text-color-inverted-darker);
+    color: var(--text-color-darker);
     text-align: center;
     padding: 0 0.25rem;
 }
