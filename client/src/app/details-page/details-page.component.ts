@@ -54,7 +54,6 @@ export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
     private store: Store) { }
 
   ngOnInit() {
-
     this.subscriptions.add(
       this.route.params.pipe(
         map(params => params.id),
@@ -86,8 +85,6 @@ export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
         }),
       ).subscribe(),
     );
-
-
   }
 
   ngOnChanges() {

@@ -1,4 +1,41 @@
-.episode-img {
-    height: auto;
-    max-width: 500px;
+#episodes-container {
+    margin: 0 auto;
+    max-width: 1400px;
+    padding: 0 1rem;
+}
+
+.season-dropdown {
+    font-size: 2rem;
+}
+
+.season-dropdown button {
+    width: 400px;
+    margin: 1rem;
+    text-align: left;
+}
+
+.introduction {
+    color: var(--text-color-inverted);
+    font-size: 2rem;
+    line-height: 2rem;
+}
+
+.title {
+    color: var(--text-color-inverted-darker);
+    padding-bottom: 1rem;
+}
+
+select {
+    color: var(--text-color-inverted-darker);
+    font-size: 1.5rem;
+    border: none;
+    border-bottom: 3px solid var(--text-color-inverted);
+    margin: 1rem;
+    background-color: var(--background-dark);
+    padding: 0.5rem;
+}
+
+.select-option:hover {
+    color: var(--text-color-darker);
+    background-color: var(--background-lighter);
 }

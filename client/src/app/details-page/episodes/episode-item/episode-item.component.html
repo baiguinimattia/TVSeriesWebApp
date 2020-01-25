@@ -1,0 +1,13 @@
+<div id="episode-container" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
+    <img class="episode-img" [src]="getImagePath(episode.still_path)" alt="" appImageFallBack>
+    <div class="episode-details" *ngIf="ifHovered">
+        <div class="clr-row">
+            <div class="clr-col-10 episode-name">
+                {{episode.name.substr(0, 19)}}...
+            </div>
+            <div class="clr-col-2">
+                <clr-icon shape="details" class="is-solid details-icon" size="48"></clr-icon>
+            </div>
+        </div>
+    </div>
+</div>

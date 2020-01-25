@@ -1,0 +1,59 @@
+#episode-container {
+    margin-bottom: 1rem;
+    z-index: 0;
+}
+
+.episode-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    z-index: 0;
+}
+
+.episode-details {
+    animation-name: fadeIn;
+    -webkit-animation-name: fadeIn;
+    animation-duration: 1.5s;
+    -webkit-animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    font-size: 1rem;
+    padding-top: 1rem;
+    line-height: 1.2rem;
+    color: var(--text-color-inverted-darker);
+    background-color: var(--background-dark);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--highlight);
+}
+
+.episode-details:hover {
+    cursor: pointer;
+}
+
+.details-icon {
+    float: right;
+    height: 100%;
+    margin: auto 0.25rem;
+}
+
+.episode-name {
+    padding: 0 0.5rem;
+}
+
+@keyframes fadeIn {
+    0% {
+        transform: scale(0);
+        opacity: 0.0;
+    }
+    60% {
+        transform: scale(1.1);
+    }
+    80% {
+        transform: scale(0.9);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

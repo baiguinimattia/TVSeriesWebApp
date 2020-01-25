@@ -14,9 +14,10 @@ import { RecommendationsComponent } from './recommendations/recommendations.comp
 import { DataTableComponent } from './overview/data-table/data-table.component';
 import { PersonsListComponent } from './overview/persons-list/persons-list.component';
 import { DirectivesModule } from '../shared/directives/directives.module';
+import { EpisodeItemComponent } from './episodes/episode-item/episode-item.component';
 
 @NgModule({
-  declarations: [DetailsPageComponent, BannerComponent, IntroComponent, PersonListComponent, GuideButtonComponent, BottomMenuComponent, OverviewComponent, DetailsComponent, EpisodesComponent, RecommendationsComponent, DataTableComponent, PersonsListComponent],
+  declarations: [DetailsPageComponent, BannerComponent, IntroComponent, PersonListComponent, GuideButtonComponent, BottomMenuComponent, OverviewComponent, DetailsComponent, EpisodesComponent, RecommendationsComponent, DataTableComponent, PersonsListComponent, EpisodeItemComponent],
   imports: [
     CommonModule,
     ClarityModule,

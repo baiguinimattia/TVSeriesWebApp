@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { ShowDetails } from 'src/app/interfaces/show-details.interface';
 import { DetailsPageService } from '../details-page.service';
 import { Observable } from 'rxjs';
@@ -25,8 +25,10 @@ export class EpisodesComponent implements OnInit {
     )
   }
 
-  getImagePath(path: string) {
-    return this.detailsSrv.getStillPath(path);
+  test(value) {
+    console.log(value);
   }
+
+
 
 }
