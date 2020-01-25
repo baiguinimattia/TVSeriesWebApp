@@ -28,6 +28,7 @@ export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
   @Select(DetailsState.getCrew) crew$: Observable<Person[]>;
   @Select(DetailsState.getExternalIds) externalIds$: Observable<ExternalIds>;
   @Select(DetailsState.getImdbDetails) imdbDetails$: Observable<ImdbDetails>;
+  @Select(DetailsState.getCurrentPage) currentPage$: Observable<DetailsEnum>;
 
 
   @Emitter(DetailsState.setId)
@@ -44,16 +45,19 @@ export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
   public externalIds: Emittable<ExternalIds>;
   @Emitter(DetailsState.setImdbDetails)
   public imdbDetails: Emittable<ImdbDetails>;
+  @Emitter(DetailsState.setCurrentPage)
+  public currentPage: Emittable<DetailsEnum>;
 
   private subscriptions: Subscription = new Subscription();
-  currentPage: DetailsEnum = DetailsEnum.overview;
   contentRating: ContentRating[];
 
   constructor(private route: ActivatedRoute,
     private readonly detailsPageService: DetailsPageService,
-    private store: Store) { }
+    private store: Store) {
+     }
 
   ngOnInit() {
+    this.currentPage.emit(DetailsEnum.overview);
     this.subscriptions.add(
       this.route.params.pipe(
         map(params => params.id),
@@ -85,6 +89,7 @@ export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
         }),
       ).subscribe(),
     );
+
   }
 
   ngOnChanges() {
@@ -95,7 +100,7 @@ export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   switchPage(page: DetailsEnum) {
-    this.currentPage = page;
+    this.currentPage.emit(page);
   }
 
 }

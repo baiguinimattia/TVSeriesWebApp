@@ -22,7 +22,7 @@
     </div>
 </div> -->
 
-<div class="data-container">
+<div class="data-container" *ngIf="currentPage$ | async as currentPage">
     <div class="clr-row">
 
         <div id="menu-container" class="clr-col-12">

@@ -65,4 +65,11 @@ export class TvController {
         )
     }
 
+    @Get(":id/recommendations")
+    getRecommendations(@Param('id') id: string) {
+        return this.tvService.getRecommendations(id).pipe(
+            map(response => response.data.results),
+        );
+    }
+
 }

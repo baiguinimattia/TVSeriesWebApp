@@ -14,6 +14,6 @@ import { DirectivesModule } from '../shared/directives/directives.module';
     ClarityModule,
     DirectivesModule
   ],
-  exports: [SearchPageComponent]
+  exports: [SearchPageComponent, SearchResultComponent]
 })
 export class SearchPageModule { }

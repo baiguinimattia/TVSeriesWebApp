@@ -6,6 +6,8 @@ import { ContentRating } from 'src/app/interfaces/content-rating.interface';
 import { Receiver, EmitterAction } from '@ngxs-labs/emitter';
 import { ExternalIds } from 'src/app/interfaces/external-ids.interface';
 import { ImdbDetails } from 'src/app/interfaces/imdb-details.interface';
+import { ShowResult } from 'src/app/interfaces/show-result.interface';
+import { DetailsEnum } from 'src/app/enums/details-enum';
 
 
 @State<DetailsStateModel>({
@@ -53,6 +55,16 @@ export class DetailsState {
     @Selector()
     public static getImdbDetails(state: DetailsStateModel): ImdbDetails {
         return state.imdbDetails;
+    }
+
+    @Selector()
+    public static getRecommendations(state: DetailsStateModel): ShowResult[] {
+        return state.recommendations;
+    }
+
+    @Selector()
+    public static getCurrentPage(state: DetailsStateModel): DetailsEnum {
+        return state.currentPage;
     }
 
     @Receiver()
@@ -108,6 +120,22 @@ export class DetailsState {
         { payload }: EmitterAction<ImdbDetails>) {
         const currentState = getState();
         currentState.imdbDetails = payload;
+        patchState(currentState);
+    }
+
+    @Receiver()
+    public static setRecommendations({ getState, patchState }: StateContext<DetailsStateModel>,
+        { payload }: EmitterAction<ShowResult[]>) {
+        const currentState = getState();
+        currentState.recommendations = payload;
+        patchState(currentState);
+    }
+
+    @Receiver()
+    public static setCurrentPage({ getState, patchState }: StateContext<DetailsStateModel>,
+        { payload }: EmitterAction<DetailsEnum>) {
+        const currentState = getState();
+        currentState.currentPage = payload;
         patchState(currentState);
     }
 

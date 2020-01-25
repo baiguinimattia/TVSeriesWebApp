@@ -86,4 +86,8 @@ export class DetailsPageService {
   getEpisodesBySeasonNo(id: string, no: number) {
     return this.tvService.getEpisodesBySeasonNo(id, no);
   }
+
+  getRecommendations(id: string) {
+    return this.tvService.getRecommendations(id);
+  }
 }

@@ -1,1 +1,17 @@
-<p>recommendations works!</p>
+<div class="search-container" *ngIf="recommendations$ | async as recommendations">
+    <div class="search-response" *ngFor="let result of recommendations">
+        <div class="item-container">
+            <div class="clr-row result-row">
+                <div class="clr-col-4 clr-col-sm-3 clr-col-md-2">
+                    <img class="poster-result" [src]="getPosterPath(result.poster_path)" alt="" appImageFallBack>
+                </div>
+                <div class="item-info clr-col-8 clr-col-sm-9 clr-col-md-10">
+                    <h3 class="title-heading">{{result.name}}</h3>
+                    <p class="show-overview">{{result.overview.substr(0, 100)}}...</p>
+                    <a class="details-btn" [routerLink]="['/details', result.id]" (click)="goToOverview()" routerLinkActive="router-link-active">More details</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
