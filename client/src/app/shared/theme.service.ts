@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 export const whiteTheme = {
-  'gradient': 'linear-gradient(to right, rgb(12, 235, 235), rgb(32, 227, 178), rgb(41, 255, 198))',
+  'gradient': 'linear-gradient(to right, rgb(102, 125, 182), rgb(0, 130, 200), rgb(0, 130, 200), rgb(102, 125, 182))',
   'background': '#d9d9d9',
   'background-lighter': '#f3f3f3',
   'background-darker': '#c0c0c0',

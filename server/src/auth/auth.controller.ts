@@ -18,7 +18,6 @@ export class AuthController {
     async sigIn(@Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto, @Res() response: Response) {
 
         const token = await this.authService.signIn(authCredentialsDto);
-        // response.header('authorization', 'Bearer ' + token.accessToken);
         response.cookie('authorization', token);
         response.send({token});
     }

@@ -9,6 +9,6 @@
 
 <div id="episodes-container" *ngIf="season$ | async as season">
     <div class="clr-row">
-        <app-episode-item *ngFor="let episode of season.episodes" class="clr-col-12 clr-col-sm-6 clr-col-md-6 clr-col-lg-4" [episode]="episode"></app-episode-item>
+        <app-episode-item *ngFor="let episode of season.episodes" class="clr-col-12 clr-col-sm-12 clr-col-md-6 clr-col-lg-4" [episode]="episode"></app-episode-item>
     </div>
 </div>

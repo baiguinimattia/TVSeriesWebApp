@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { DetailsPageComponent } from './details-page/details-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
+import { EpisodeDetailsComponent } from './details/episode-details/episode-details.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,10 @@ const routes: Routes = [
     path: 'search', component: SearchPageComponent, canActivate: [AuthGuardService]
   },
   {
-    path: 'details/:id', component: DetailsPageComponent, canActivate: [AuthGuardService]
+    path: ':id', component: DetailsPageComponent, canActivate: [AuthGuardService]
+  },
+  {
+    path: ':id/season/:sno/episode/:eno', component: EpisodeDetailsComponent, canActivate: [AuthGuardService]
   },
   { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuardService] }
 ];

@@ -20,6 +20,8 @@ import { NgxsModule } from '@ngxs/store';
 import { AuthState } from './state/state/auth.state';
 import { NgxsEmitPluginModule } from '@ngxs-labs/emitter';
 import { DetailsState } from './state/state/details.state';
+import { DetailsModule } from './details/details.module';
+import { NguCarouselModule } from '@ngu/carousel';
 
 export function jwtOptionsFactory(authService: AuthService) {
   return {
@@ -53,6 +55,8 @@ export function jwtOptionsFactory(authService: AuthService) {
     DirectivesModule,
     NgxsModule.forRoot([AuthState, DetailsState]),
     NgxsEmitPluginModule.forRoot(),
+    DetailsModule,
+    NguCarouselModule
   ],
   providers: [
     CookieService,

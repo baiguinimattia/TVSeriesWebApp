@@ -1,0 +1,16 @@
+<div class="container" *ngIf="episode$ | async as episode">
+    <div class="heading-container" *ngIf="details$ | async as details">
+        <h1 class="show-title">{{details.title}} ({{details._year_data}})</h1>
+        <div class="clr-row episode-heading">
+            <div class="clr-col-12 clr-col-sm-9">
+                <h1 class="episode-title">{{episode.name}}</h1>
+            </div>
+            <div class="clr-col-12 clr-col-sm-3 rating">
+                <clr-icon class="rating-icon" shape="star" size="40"></clr-icon>
+                <span class="vote-count">{{episode.vote_average.toFixed(1)}}/10<br>{{episode.vote_count}} votes</span>
+            </div>
+        </div>
+        <p class="heading-details">{{details.rated}} | {{details.runtime}} | {{details.genres}} | Episode aired {{episode.air_date | date}}</p>
+    </div>
+    <app-carousel [images]="images"></app-carousel>
+</div>

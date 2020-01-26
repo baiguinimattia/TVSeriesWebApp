@@ -20,15 +20,7 @@ export class EpisodesComponent implements OnInit {
   }
 
   getEpisodes(id: number) {
-    this.season$ =  this.detailsSrv.getEpisodesBySeasonNo(this.details.id, id).pipe(
-      tap( result => console.log(result)),
+    this.season$ = this.detailsSrv.getEpisodesBySeasonNo(this.details.id, id).pipe(
     )
   }
-
-  test(value) {
-    console.log(value);
-  }
-
-
-
 }

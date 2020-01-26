@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LogoSizesEnum, PosterSizesEnum, PathsEnum } from '../enums/image-enums';
+import { LogoSizesEnum, PosterSizesEnum, PathsEnum, StillSizesEnum, BackdropSizesEnum } from '../enums/image-enums';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DataLayerService } from './data-layer.service';
@@ -16,4 +16,15 @@ export class MediaService {
 
   }
 
+  getStillImage(path: string, dimension: StillSizesEnum): string {
+    return `${PathsEnum.default}${dimension}${path}`;
+  }
+
+  getBackdropImage(path: string, dimension: BackdropSizesEnum): string {
+    return `${PathsEnum.default}${dimension}${path}`;
+  }
+
+  getPosterImage(path: string, dimension: PosterSizesEnum): string {
+    return `${PathsEnum.default}${dimension}${path}`;
+  }
 }

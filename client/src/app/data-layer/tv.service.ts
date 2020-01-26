@@ -6,8 +6,9 @@ import { ExternalIds } from '../interfaces/external-ids.interface';
 import { Credits } from '../interfaces/person.interface';
 import { ContentRating } from '../interfaces/content-rating.interface';
 import { ImdbDetails } from '../interfaces/imdb-details.interface';
-import { SeasonDetailed } from '../interfaces/season.interface';
+import { SeasonDetailed, EpisodeDetailed } from '../interfaces/season.interface';
 import { ShowResult } from '../interfaces/show-result.interface';
+import { EpisodeImages } from '../interfaces/episode-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -39,8 +40,16 @@ export class TvService {
   getEpisodesBySeasonNo(id: string, no: number): Observable<SeasonDetailed> {
     return this.http.get<SeasonDetailed>(`/api/tv/${id}/season/${no}`);
   }
-  
+
   getRecommendations(id: string) {
     return this.http.get<ShowResult[]>(`/api/tv/${id}/recommendations`);
+  }
+
+  getEpisode(id: string, sno: number, eno: number) {
+    return this.http.get<EpisodeDetailed>(`/api/tv/${id}/season/${sno}/episode/${eno}`);
+  }
+
+  getEpisodesImages(id: string, sno: number, eno: number): Observable<EpisodeImages> {
+    return this.http.get<EpisodeImages>(`/api/tv/${id}/season/${sno}/episode/${eno}/images`);
   }
 }

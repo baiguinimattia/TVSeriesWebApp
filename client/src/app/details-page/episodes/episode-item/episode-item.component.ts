@@ -9,12 +9,12 @@ import { DetailsPageService } from '../../details-page.service';
 })
 export class EpisodeItemComponent implements OnInit {
   @Input('episode') episode: EpisodeDetailed;
-  ifHovered = false;
+  ifHovered = true;
   constructor(private detailsSrv: DetailsPageService) {
    }
 
   ngOnInit() {
-
+    console.log(this.episode);
   }
 
   mouseEnter() {
@@ -27,6 +27,10 @@ export class EpisodeItemComponent implements OnInit {
 
   getImagePath(path: string) {
     return this.detailsSrv.getStillPath(path);
+  }
+
+  toEpisodeDetails(episodeId: string) {
+    console.log(this.episode);
   }
 
 }

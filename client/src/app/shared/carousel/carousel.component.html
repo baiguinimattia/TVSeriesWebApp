@@ -1,0 +1,12 @@
+<div class="carousel">
+    <ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="images" *ngIf="images">
+        <ngu-tile *nguCarouselDef="let item; let i = index; let ani = animate">
+            <!-- [@slider]="ani" PLease this animation to this tile to see animation. stackblitz have error with animations -->
+            <div class="tile" [style.background]="'url('+item+')'">
+            </div>
+        </ngu-tile>
+
+        <button NguCarouselPrev class="leftRs" [style.opacity]="myCarousel.isFirst ? 0.5:1">&lt;</button>
+        <button NguCarouselNext class="rightRs" [style.opacity]="myCarousel.isLast ? 0.5:1">&gt;</button>
+    </ngu-carousel>
+</div>

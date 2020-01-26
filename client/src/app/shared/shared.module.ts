@@ -2,17 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderModule } from './header/header.module';
 import { AlertModule } from './header/alert/alert.module';
+import { CarouselComponent } from './carousel/carousel.component';
+import { NguCarouselModule } from '@ngu/carousel';
 
 @NgModule({
-  declarations: [],
+  declarations: [CarouselComponent],
   imports: [
     CommonModule,
     HeaderModule,
-    AlertModule
+    AlertModule,
+    NguCarouselModule
   ],
   exports: [
     HeaderModule,
-    AlertModule
+    AlertModule,
+    CarouselComponent
   ]
 })
 export class SharedModule { }

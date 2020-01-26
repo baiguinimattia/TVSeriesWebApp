@@ -3,7 +3,7 @@ import { ConfigService } from '../config/config.service';
 
 import * as imdb from 'imdb-api';
 import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class TvService {
@@ -111,6 +111,20 @@ export class TvService {
 
     getEpisodesBySeasonNo(id: string, no: number) {
         return this.http.get(`${this.getBasePath}/tv/${id}/season/${no}`,
+            {
+                params: this.configService.generateParams(),
+            });
+    }
+
+    getEpisode(id: string, sno: number, eno: number) {
+        return this.http.get(`${this.getBasePath}/tv/${id}/season/${sno}/episode/${eno}`,
+            {
+                params: this.configService.generateParams(),
+            });
+    }
+
+    getEpisodesImages(id: string, sno: number, eno: number) {
+        return this.http.get(`${this.getBasePath}/tv/${id}/season/${sno}/episode/${eno}/images`,
             {
                 params: this.configService.generateParams(),
             });

@@ -1,0 +1,53 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 1rem;
+}
+
+h1 {
+    margin: 0;
+}
+
+.show-title {
+    color: var(--text-color-darker);
+    font-size: 0.85rem;
+}
+
+.episode-title {
+    color: var(--text-color-normal);
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+clr-icon {
+    color: var(--highlight);
+}
+
+.episode-heading {
+    margin: 0;
+    padding: 0;
+}
+
+.heading-container {
+    padding: 1rem;
+    background-color: var(--background-lighter);
+}
+
+.rating {
+    text-align: right;
+}
+
+.rating-icon {
+    font-size: 1.2rem;
+}
+
+.vote-count {
+    color: var(--text-color-normal);
+    font-size: 1rem;
+}
+
+.heading-details {
+    color: var(--text-color-darker);
+}

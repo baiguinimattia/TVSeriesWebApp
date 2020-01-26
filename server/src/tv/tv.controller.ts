@@ -65,11 +65,27 @@ export class TvController {
         )
     }
 
-    @Get(":id/recommendations")
+    @Get(':id/recommendations')
     getRecommendations(@Param('id') id: string) {
         return this.tvService.getRecommendations(id).pipe(
             map(response => response.data.results),
         );
     }
+    
+    @Get(':id/season/:sno/episode/:eno/images')
+    getEpisodesImages(@Param() params) {
+        return this.tvService.getEpisodesImages(params.id, params.sno, params.eno).pipe(
+            map(response => response.data),
+        );
+    }
+
+    @Get(':id/season/:sno/episode/:eno')
+    getEpisode(@Param() params) {
+        return this.tvService.getEpisode(params.id, params.sno, params.eno).pipe(
+            map(response => response.data),
+        );
+    }
+
+
 
 }

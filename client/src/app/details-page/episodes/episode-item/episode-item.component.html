@@ -1,6 +1,8 @@
 <div id="episode-container" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
-    <img class="episode-img" [src]="getImagePath(episode.still_path)" alt="" appImageFallBack>
-    <div class="episode-details" *ngIf="ifHovered">
+    <div class="img-container">
+        <img class="episode-img" [src]="getImagePath(episode.still_path)" alt="" appImageFallBack>
+    </div>
+    <div class="episode-details" *ngIf="ifHovered" [routerLink]="['/', episode.show_id, 'season', episode.season_number, 'episode', episode.episode_number ]" routerLinkActive="router-link-active">
         <div class="clr-row">
             <div class="clr-col-10 episode-name">
                 {{episode.name.substr(0, 19)}}...
