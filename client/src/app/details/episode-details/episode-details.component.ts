@@ -7,7 +7,6 @@ import { tap } from 'rxjs/operators';
 import { Select } from '@ngxs/store';
 import { DetailsState } from 'src/app/state/state/details.state';
 import { ImdbDetails } from 'src/app/interfaces/imdb-details.interface';
-import { TvService } from 'src/app/data-layer/tv.service';
 import { EpisodeImages } from 'src/app/interfaces/episode-interface';
 import { StillSizesEnum } from 'src/app/enums/image-enums';
 
@@ -18,39 +17,30 @@ import { StillSizesEnum } from 'src/app/enums/image-enums';
 })
 export class EpisodeDetailsComponent implements OnInit, OnDestroy {
   episode$: Observable<EpisodeDetailed>;
-  // @Select(DetailsState.getImdbDetails) details$: Observable<ImdbDetails>;
-  details$: Observable<ImdbDetails>;
+  @Select(DetailsState.getImdbDetails) details$: Observable<ImdbDetails>;
   episodeImages$: Observable<EpisodeImages>;
   private subs: Subscription = new Subscription();
   images: string[] = [];
 
 
-  constructor(private route: ActivatedRoute, private readonly episodeSrv: EpisodeDetailsService,
-    private tvSrv: TvService) { }
+  constructor(private route: ActivatedRoute, private readonly episodeSrv: EpisodeDetailsService) { }
   ngOnInit() {
     this.route.params.pipe(
-      tap( response => {
+      tap(response => {
         this.episodeSrv.getEpisodesImages(response.id, response.sno, response.eno).pipe(
-          tap( response => {
-            response.stills.forEach( element => {
+          tap(response => {
+            response.stills.forEach(element => {
               console.log(this.episodeSrv.getStillPath(element.file_path, StillSizesEnum.original));
               this.images.push(this.episodeSrv.getStillPath(element.file_path, StillSizesEnum.original));
             })
           }),
         ).subscribe();
         this.episode$ = this.episodeSrv.getEpisode(response.id, response.sno, response.eno).pipe(
-          tap( response => console.log(response)),
+          tap(response => console.log(response)),
         );
       })
     ).subscribe();
-
-    // this.details$.subscribe( response => console.log(response));
-
-    this.details$ = this.tvSrv.getImdb('tt0944947').pipe(
-      tap( response => console.log(response)),
-    )
-    
-    
+    this.details$.subscribe(response => console.log(response));
   }
 
   ngOnDestroy() {

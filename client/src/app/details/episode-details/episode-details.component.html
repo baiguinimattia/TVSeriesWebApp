@@ -13,4 +13,8 @@
         <p class="heading-details">{{details.rated}} | {{details.runtime}} | {{details.genres}} | Episode aired {{episode.air_date | date}}</p>
     </div>
     <app-carousel [images]="images"></app-carousel>
+    <div class="details-container" *ngIf="details$ | async as details">
+        <h5 class="episode-overview">{{episode.overview}}</h5>
+        <h5><strong>Director:</strong> {{details.director}}</h5>
+    </div>
 </div>

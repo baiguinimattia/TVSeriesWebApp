@@ -21,8 +21,9 @@ export class CarouselComponent implements OnInit {
     touch: true,
     easing: 'cubic-bezier(0, 0, 0.2, 1)'
   };
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
+    this.carouselTileConfig.grid = { xs: 1, sm: 1, md: this.images.length >= 2 ? 2 : 1, lg: this.images.length >= 2 ? 2 : 1, all: 0 };
   }
 }
