@@ -11,8 +11,7 @@ export class HomeComponent implements OnInit {
   constructor(private readonly dataLayerService: DataLayerService) { }
 
   ngOnInit() {
-    // this.dataLayerService.search('Game of thrones').subscribe( (response) => console.log(response));
-    // this.dataLayerService.getShowEpisodesById('tt0944947').subscribe( (response) => console.log(response));
+
   }
 
 }

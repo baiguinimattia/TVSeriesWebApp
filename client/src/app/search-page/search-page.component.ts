@@ -35,7 +35,6 @@ export class SearchPageComponent implements OnInit {
 
     this.search$.subscribe(
       (response) => {
-        console.log(response);
       },
       (error) => {
         this.toast.error(error.message);

@@ -29,11 +29,9 @@ export class RecommendationsComponent implements OnInit {
   constructor(private detailsService: DetailsPageService) { }
 
   ngOnInit() {
-    console.log(this.details);
     this.id$.pipe(
       switchMap((id: string) => this.detailsService.getRecommendations(id).pipe(
         tap((response: ShowResult[]) => {
-          console.log(response)
           this.recommendations.emit(response);
         }),
       ))

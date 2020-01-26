@@ -9,16 +9,37 @@ import { ImdbDetails } from '../interfaces/imdb-details.interface';
 import { SeasonDetailed, EpisodeDetailed } from '../interfaces/season.interface';
 import { ShowResult } from '../interfaces/show-result.interface';
 import { EpisodeImages } from '../interfaces/episode-interface';
+import { MainState } from '../state/state/main.state';
+import { Emitter, Emittable } from '@ngxs-labs/emitter';
+import { tap } from 'rxjs/operators';
+import { Select } from '@ngxs/store';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TvService {
+  @Emitter(MainState.addId)
+  public visits: Emittable<Array<string>>;
+  @Select(MainState.visits) visits$: Observable<Array<string>>; 
+  ids: Array<string> = new Array<string>();
 
-  constructor(private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { 
+    this.visits$.subscribe(
+      (response) => {
+        this.ids = response;
+
+      }
+    );
+  }
 
   getDetails(id: string): Observable<ShowDetails> {
-    return this.http.get<ShowDetails>(`/api/tv/${id}`);
+    return this.http.get<ShowDetails>(`/api/tv/${id}`).pipe(
+      tap( () => {
+        console.log(typeof this.ids);
+        this.ids.push(id);
+        this.visits.emit(this.ids);
+      } ),
+    );
   }
 
   getExternalIds(id: string): Observable<ExternalIds> {

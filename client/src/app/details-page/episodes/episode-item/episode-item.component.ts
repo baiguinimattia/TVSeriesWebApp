@@ -14,7 +14,6 @@ export class EpisodeItemComponent implements OnInit {
    }
 
   ngOnInit() {
-    console.log(this.episode);
   }
 
   mouseEnter() {
@@ -30,7 +29,6 @@ export class EpisodeItemComponent implements OnInit {
   }
 
   toEpisodeDetails(episodeId: string) {
-    console.log(this.episode);
   }
 
 }

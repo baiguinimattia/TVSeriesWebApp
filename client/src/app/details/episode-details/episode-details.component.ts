@@ -30,17 +30,16 @@ export class EpisodeDetailsComponent implements OnInit, OnDestroy {
         this.episodeSrv.getEpisodesImages(response.id, response.sno, response.eno).pipe(
           tap(response => {
             response.stills.forEach(element => {
-              console.log(this.episodeSrv.getStillPath(element.file_path, StillSizesEnum.original));
               this.images.push(this.episodeSrv.getStillPath(element.file_path, StillSizesEnum.original));
             })
           }),
         ).subscribe();
         this.episode$ = this.episodeSrv.getEpisode(response.id, response.sno, response.eno).pipe(
-          tap(response => console.log(response)),
+          tap(response => {}),
         );
       })
     ).subscribe();
-    this.details$.subscribe(response => console.log(response));
+    this.details$.subscribe(response => {});
   }
 
   ngOnDestroy() {

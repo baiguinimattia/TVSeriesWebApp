@@ -23,6 +23,7 @@ import { DetailsState } from './state/state/details.state';
 import { DetailsModule } from './details/details.module';
 import { NguCarouselModule } from '@ngu/carousel';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { MainState } from './state/state/main.state';
 
 export function jwtOptionsFactory(authService: AuthService) {
   return {
@@ -54,10 +55,10 @@ export function jwtOptionsFactory(authService: AuthService) {
     DetailsPageModule,
     SearchPageModule,
     DirectivesModule,
-    NgxsModule.forRoot([AuthState, DetailsState]),
+    NgxsModule.forRoot([AuthState, DetailsState, MainState]),
     NgxsEmitPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({
-      key: [DetailsState]
+      key: [DetailsState, MainState]
     }),
     DetailsModule,
     NguCarouselModule,

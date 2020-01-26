@@ -4,9 +4,10 @@ import { HeaderModule } from './header/header.module';
 import { AlertModule } from './header/alert/alert.module';
 import { CarouselComponent } from './carousel/carousel.component';
 import { NguCarouselModule } from '@ngu/carousel';
+import { RecentComponent } from './recent/recent.component';
 
 @NgModule({
-  declarations: [CarouselComponent],
+  declarations: [CarouselComponent, RecentComponent],
   imports: [
     CommonModule,
     HeaderModule,

@@ -65,7 +65,6 @@ export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
         switchMap((id: string) => {
           return this.detailsPageService.getDetails(id).pipe(
             tap((details: ShowDetails) => {
-              console.log(details);
               this.details.emit(details);
               this.posterPath.emit(this.detailsPageService.getPosterPath(details.poster_path));
             }),
