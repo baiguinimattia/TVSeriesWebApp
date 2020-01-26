@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 
 export const whiteTheme = {
-  'gradient': 'linear-gradient(to right, rgb(255, 153, 102), rgb(255, 94, 98))',
-  'background': '#d8d8d8',
-  'background-lighter': '#f2f2f2',
-  'background-darker': '#bfbfbf',
-  'text-color-normal': '#141414',
-  'text-color-lighter': '#3a3a3a',
-  'text-color-darker': '#000000',
-  'highlight-lighter': '#3a3a3a',
-  'highlight': '#141414',
-  'highlight-darker': '#000000',
+  'gradient': 'linear-gradient(to right, rgb(12, 235, 235), rgb(32, 227, 178), rgb(41, 255, 198))',
+  'background': '#d9d9d9',
+  'background-lighter': '#f3f3f3',
+  'background-darker': '#c0c0c0',
+  'text-color-normal': '#3d6cb9',
+  'text-color-lighter': '#7296d1',
+  'text-color-darker': '#2a4a7f',
+  'highlight-lighter': '#4dfff5',
+  'highlight': '#00e6d8',
+  'highlight-darker': '#00b3a8',
 }
 
 export const darkTheme = {
