@@ -21,9 +21,9 @@ export const darkTheme = {
   'text-color-lighter': '#f2f2f2',
   'text-color-normal': '#d8d8d8',
   'text-color-darker': '#bfbfbf',
-  'highlight-lighter': '#f8434c',
-  'highlight': '#cc2f08',
-  'highlight-darker': '#9b060e',
+  'highlight-lighter': '#f8d761',
+  'highlight': '#f5c518',
+  'highlight-darker': '#d1a609',
 }
 
 @Injectable({

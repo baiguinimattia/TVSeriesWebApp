@@ -1,12 +1,12 @@
-<clr-header class="header-3 main-header">
+<clr-header class="header-3 main-header" *ngIf="!menuState">
     <div class="branding">
         <a [routerLink]="['/home']" class="nav-link">
             <clr-icon shape="video-camera"></clr-icon>
             <span class="brand-title">MatMal</span>
         </a>
     </div>
-    <div class="header-nav" [clr-nav-level]="1">
-        <a [routerLink]="['/search']" routerLinkActive="router-link-active" class="nav-link nav-text navigation-btn" *ngIf="authStatus">SEARCH</a>
+    <div class="header-nav">
+        <a class="nav-link nav-text navigation-btn" *ngIf="authStatus" (click)="toggleMenu(!menuState)">Menu</a>
     </div>
     <div class="header-actions">
         <clr-icon (click)="switchTheme(!theme)" shape="color-picker" class="is-solid"></clr-icon>

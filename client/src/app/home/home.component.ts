@@ -8,7 +8,7 @@ import { DataLayerService } from '../data-layer/data-layer.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private readonly dataLayerService: DataLayerService) { }
+  constructor() { }
 
   ngOnInit() {
 

@@ -1,0 +1,8 @@
+<div id="action-menu" *ngIf="state$ | async as state" [ngClass]="{'hidden': showAnimation}">
+    <div class="branding" [routerLink]="['/home']" routerLinkActive="router-link-active" (click)="toggleState(!state)">MATMAL</div>
+    <clr-icon shape="times" (click)="toggleState(!state)"></clr-icon>
+
+    <div class="action-container">
+        <button class="action-btn" (click)="toggleState(!state)" [routerLink]="['/search']" routerLinkActive="router-link-active">Search</button>
+    </div>
+</div>
