@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import { DataLayerModule } from '../data-layer/data-layer.module';
 import { ClarityModule } from '@clr/angular';
 import { AppRoutingModule } from '../app-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -11,7 +12,8 @@ import { AppRoutingModule } from '../app-routing.module';
     CommonModule,
     DataLayerModule,
     ClarityModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   exports: [ HomeComponent ]
 })

@@ -27,7 +27,6 @@ export class TvService {
     this.visits$.subscribe(
       (response) => {
         this.ids = response;
-
       }
     );
   }
@@ -35,7 +34,6 @@ export class TvService {
   getDetails(id: string): Observable<ShowDetails> {
     return this.http.get<ShowDetails>(`/api/tv/${id}`).pipe(
       tap( () => {
-        console.log(typeof this.ids);
         this.ids.push(id);
         this.visits.emit(this.ids);
       } ),

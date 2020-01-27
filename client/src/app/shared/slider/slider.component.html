@@ -1,0 +1,5 @@
+<swiper class="swiper" fxFlex="auto" [config]="config">
+    <div *ngFor="let step of visitedDetails; let index = index" class="swiper-slide">
+        <app-slider-element [data]="step | async"></app-slider-element>
+    </div>
+</swiper>
