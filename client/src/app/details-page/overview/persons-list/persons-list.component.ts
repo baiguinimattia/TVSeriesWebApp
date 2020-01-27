@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Person } from 'src/app/interfaces/person.interface';
 import { Subscription, Observable } from 'rxjs';
 import { DetailsPageService } from '../../details-page.service';
-import { tap } from 'rxjs/operators';
+import { tap, take, map } from 'rxjs/operators';
 import { ShowDetails } from 'src/app/interfaces/show-details.interface';
 import { Select } from '@ngxs/store';
 import { DetailsState } from 'src/app/state/state/details.state';

@@ -126,3 +126,21 @@
         padding: 0 2rem;
     }
 }
+
+.search-response {
+    margin: 0 1rem;
+}
+
+@media(max-width: 360px) {
+    .search.open {
+        width: 80vw;
+        font-size: 0.75rem;
+    }
+}
+
+@media(max-width: 560px) {
+    .search.open {
+        width: 80vw;
+        font-size: 0.75rem;
+    }
+}

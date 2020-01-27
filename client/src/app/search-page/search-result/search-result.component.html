@@ -1,27 +1,9 @@
-<!-- <div class="card">
-    <div class="card-header">
-        {{result.name}}
-    </div>
-    <div class="card-img">
-        <img class='poster' [src]='posterPath'>
-    </div>
-    <div class="card-block">
-        <p class="card-text">
-            {{result.overview}}
-        </p>
-    </div>
-    <div class="card-footer">
-        <button [routerLink]="['/details', result.id]" routerLinkActive="router-link-active" class="btn btn-sm btn-link">Get details</button>
-    </div>
-</div> -->
-
-
 <div class="item-container">
     <div class="clr-row result-row">
-        <div class="clr-col-4 clr-col-sm-3 clr-col-md-2">
+        <div class="clr-col-5 clr-col-sm-4 clr-col-md-3 poster-container">
             <img class="poster-result" [src]="posterPath" alt="" appImageFallBack>
         </div>
-        <div class="item-info clr-col-8 clr-col-sm-9 clr-col-md-10">
+        <div class="item-info clr-col-7 clr-col-sm-8 clr-col-md-9">
             <h3 class="title-heading">{{result.name}}</h3>
             <p class="show-overview">{{result.overview.substr(0, 100)}}...</p>
             <a class="details-btn" [routerLink]="['/', result.id]" routerLinkActive="router-link-active">More details</a>

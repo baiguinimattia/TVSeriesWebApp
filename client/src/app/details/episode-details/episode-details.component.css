@@ -15,7 +15,7 @@ h1 {
 }
 
 .episode-title {
-    color: var(--text-color-normal);
+    color: var(--text-color-lighter);
     font-size: 2.5rem;
     font-weight: 600;
     margin: 0;
@@ -62,4 +62,27 @@ clr-icon {
 .details-container h5 {
     color: var(--text-color-normal);
     margin: 0;
+}
+
+.details-container h5 strong {
+    color: var(--text-color-lighter);
+}
+
+@media(max-width: 425px) {
+    .container {
+        padding: 0.4rem;
+    }
+    .heading-container {
+        padding: 0.4rem;
+    }
+    .episode-title {
+        font-size: 1.25rem;
+        line-height: 1.4rem;
+    }
+    .rating {
+        text-align: left;
+    }
+    .details-container h5 {
+        padding-top: 0.25rem;
+    }
 }

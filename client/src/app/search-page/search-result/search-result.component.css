@@ -1,6 +1,6 @@
 .item-container {
-    height: 200px;
     max-width: 1000px;
+    max-height: 192px;
     background-color: var(--background);
     color: var(--text-color-normal);
     margin: 1rem auto;
@@ -12,8 +12,6 @@
 }
 
 .poster-result {
-    width: 133px;
-    height: 200px;
     object-fit: cover;
     overflow: hidden;
 }
@@ -46,9 +44,92 @@
     color: var(--text-color-lighter);
 }
 
-@media(min-width: 768px) {
+.show-overview {
+    text-align: left;
+}
+
+.poster-container {
+    height: 100%;
+    width: 100%;
+}
+
+.poster-result {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media(max-width: 360px) {
+    .title-heading {
+        margin-top: 0.25rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: var(--text-color-lighter);
+    }
+    .show-overview {
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        font-size: 0.5rem;
+        color: var(--text-color-darker);
+    }
+    .item-info {
+        padding: 0;
+    }
     .details-btn {
-        margin: 1rem auto;
-        width: 40%;
+        width: 100%;
+        margin: 0.25rem 0;
+    }
+    .item-container {
+        max-height: 225px;
+    }
+}
+
+@media(min-width: 410px) {
+    .item-info {}
+    .details-btn {
+        position: relative;
+        bottom: 0;
+        max-height: 2rem;
+    }
+    .item-container {
+        max-height: 200px;
+    }
+    .poster-result {
+        max-height: 192px;
+    }
+}
+
+@media( max-width: 768px) {
+    .title-heading {
+        margin-top: 0.25rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: var(--text-color-lighter);
+    }
+    .show-overview {
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        font-size: 0.5rem;
+        color: var(--text-color-darker);
+    }
+    .item-info {
+        padding: 0;
+    }
+    .details-btn {
+        width: 100%;
+        margin: 0.25rem 0;
+    }
+}
+
+@media(min-width: 768px) {
+    .item-info {
+        padding: 0;
+    }
+    .poster-result {
+        height: 192px;
+        width: auto;
+        margin-right: 1rem;
     }
 }

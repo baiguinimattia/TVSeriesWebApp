@@ -21,7 +21,6 @@ clr-icon[shape=video-camera] {
 
 clr-icon[shape=color-picker] {
     background-color: var(--background);
-    margin-top: 0.5rem;
 }
 
 .branding a {
@@ -44,4 +43,57 @@ clr-icon[shape=color-picker] {
 
 .navigation-btn:hover {
     color: var(--highlight-lighter);
+}
+
+clr-icon[shape=color-picker] {
+    width: 1rem;
+    height: 1rem;
+    margin-top: 0.75rem;
+}
+
+@media(max-width: 320px) {
+    a .navigation-link {
+        font-size: 0.5rem;
+    }
+    .header-actions a {
+        font-size: 0.7rem;
+        padding: 0.75rem 0.25rem;
+    }
+    .header-actions {
+        justify-content: flex-start;
+    }
+}
+
+@media(min-width: 321px) and (max-width:375px) {
+    .header-actions {
+        justify-content: flex-start;
+    }
+    .header-actions a {
+        font-size: 0.7rem;
+        padding: 0.75rem 0.5rem;
+    }
+}
+
+@media(min-width: 376px) and (max-width: 425px) {
+    .header-actions a {
+        font-size: 0.75rem;
+    }
+}
+
+@media(min-width: 426px) and (max-width: 768px) {
+    .header-actions {
+        margin-right: 1rem;
+    }
+    .header-actions a {
+        font-size: 0.85rem;
+    }
+}
+
+@media(min-width: 769px) {
+    .header-actions {
+        margin-right: 1rem;
+    }
+    .header-actions a {
+        font-size: 1rem;
+    }
 }

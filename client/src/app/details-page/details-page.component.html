@@ -1,30 +1,5 @@
-<!-- <div id="image-container" *ngIf="details">
-    <app-poster-image [details]="details"></app-poster-image>
-</div> -->
-
-<!-- <div id="info-container">
-    <app-guide-button [episodeNumber]="details.number_of_episodes" class="btn-episode-guide"></app-guide-button>
-</div>
-
-<div class="content-container">
-    <div class="clr-row content-row">
-        <div class="clr-col-12 clr-col-md-8">
-            <h2 class="persons-heading">Series Cast</h2>
-            <div class="clr-row persons-row">
-                <div *ngFor="let person of cast" class="clr-col-6 clr-col-sm-6 clr-col-md-6 clr-col-lg-4">
-                    <app-person-list [person]="person"></app-person-list>
-                </div>
-            </div>
-        </div>
-        <div class="clr-col-12 clr-col-md-4">
-            <span>6</span>
-        </div>
-    </div>
-</div> -->
-
 <div class="data-container" *ngIf="currentPage$ | async as currentPage">
     <div class="clr-row">
-
         <div id="menu-container" class="clr-col-12">
             <ul class="menu list-unstyled">
                 <li (click)="switchPage('overview')" [ngClass]="{active: currentPage === 'overview'}">OVERVIEW</li>

@@ -14,28 +14,11 @@
     padding: 1rem;
 }
 
-@media(max-width: 768px) {
-    #overview-container {
-        margin: 0;
-        padding: 0;
-        margin-top: 20px;
-    }
-    #main-data {
-        margin-bottom: 20px;
-    }
-}
-
 .overview-name {
-    color: var(--text-color-normal);
-    font-weight: 800;
+    color: var(--text-color-lighter);
+    font-weight: 600;
     font-size: 1.5rem;
     line-height: 1.5rem;
-}
-
-@media(max-width: 800px) {
-    .overview-name {
-        font-size: 1.3rem;
-    }
 }
 
 .overview-poster {
@@ -65,4 +48,33 @@
 .homepage-btn:hover {
     color: var(--text-color-darker);
     background-color: rgba(0, 0, 0, 0.9);
+}
+
+.slider {
+    margin-bottom: 3rem;
+}
+
+@media(max-width: 320px) {
+    #main-data {
+        padding: 0;
+    }
+    .overview-name {
+        font-size: 0.85rem;
+    }
+    .overview-description {
+        padding-top: 0.5rem;
+        text-align: left;
+        font-size: 0.55rem;
+    }
+    .overview-container {
+        margin: 0;
+    }
+    #secondary-data {
+        margin-top: 0.25rem;
+    }
+    #secondary-data img {
+        width: 80vw;
+        height: auto;
+        object-fit: contain;
+    }
 }
