@@ -13,6 +13,7 @@ import { MainState } from '../state/state/main.state';
 import { Emitter, Emittable } from '@ngxs-labs/emitter';
 import { tap } from 'rxjs/operators';
 import { Select } from '@ngxs/store';
+import { Popular } from '../interfaces/popular.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -70,5 +71,13 @@ export class TvService {
 
   getEpisodesImages(id: string, sno: number, eno: number): Observable<EpisodeImages> {
     return this.http.get<EpisodeImages>(`/api/tv/${id}/season/${sno}/episode/${eno}/images`);
+  }
+
+  getPopular() {
+    return this.http.get<Popular>('api/tv/popular');
+  }
+
+  getTopRated() {
+    return this.http.get<Popular>('/api/tv/top_rated');
   }
 }

@@ -130,6 +130,12 @@ export class TvService {
             });
     }
 
-
+    getTopRated() {
+        return this.http.get(`${this.getBasePath}/tv/top_rated`,
+            {
+                params: this.configService.generateParams(),
+            }
+        );
+    }
 
 }

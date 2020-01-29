@@ -1,0 +1,3 @@
+<div id="popular-container" *ngIf="popular$ | async as popular">
+    <app-popular-item *ngFor="let show of popular" [show]="show"></app-popular-item>
+</div>

@@ -1,0 +1,30 @@
+#popular-item-container {
+    width: 100%;
+    min-height: 30vh;
+    height: auto;
+    background-color: var(--background);
+    margin: 0.25rem 0;
+    position: relative;
+}
+
+.data-container {
+    position: absolute;
+    background-color: var(--background-lighter);
+    color: var(--text-color-lighter);
+    bottom: 0;
+    width: 100%;
+    min-height: 30%;
+    opacity: 0.6;
+    text-align: center;
+}
+
+.data-container:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.title-heading {
+    color: inherit;
+    margin: 0;
+    padding: 0.25rem 0;
+}

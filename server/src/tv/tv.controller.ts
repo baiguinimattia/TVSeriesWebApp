@@ -13,15 +13,23 @@ export class TvController {
     constructor(private readonly tvService: TvService) { }
 
     @Get('popular')
-    getPopular(): Promise<AxiosResponse<{ error: boolean, result: string[] }>> {
-        return this.tvService.getPopular().toPromise()
-            .then(response => response.data)
-            .catch(error => error);
+    getPopular() {
+        return this.tvService.getPopular().pipe(
+            map( response => response.data),
+        );
     }
 
-    @Get('/search')
+    @Get('search')
     getSearchResult(@Query('query') query) {
         return this.tvService.getSearchResult(query);
+    }
+
+    
+    @Get('top_rated')
+    getTopRated() {
+        return this.tvService.getTopRated().pipe(
+            map( response => response.data),
+        );
     }
 
     @Get(':id')
@@ -71,7 +79,7 @@ export class TvController {
             map(response => response.data.results),
         );
     }
-    
+
     @Get(':id/season/:sno/episode/:eno/images')
     getEpisodesImages(@Param() params) {
         return this.tvService.getEpisodesImages(params.id, params.sno, params.eno).pipe(
@@ -85,6 +93,7 @@ export class TvController {
             map(response => response.data),
         );
     }
+
 
 
 

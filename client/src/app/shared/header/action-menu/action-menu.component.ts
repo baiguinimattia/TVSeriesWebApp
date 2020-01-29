@@ -28,7 +28,6 @@ export class ActionMenuComponent implements OnInit {
         response => {
           this.showAnimation = false;
           this.setState.emit(state);
-          console.log('din interval');
         },
       )
     } else {

@@ -7,6 +7,7 @@ import { AuthGuardService } from './auth/auth-guard.service';
 import { DetailsPageComponent } from './details-page/details-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { EpisodeDetailsComponent } from './details/episode-details/episode-details.component';
+import { PopularComponent } from './popular/popular.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,9 @@ const routes: Routes = [
   },
   {
     path: 'search', component: SearchPageComponent, canActivate: [AuthGuardService]
+  },
+  {
+    path: 'popular', component: PopularComponent, canActivate: [AuthGuardService]
   },
   {
     path: ':id', component: DetailsPageComponent, canActivate: [AuthGuardService]
