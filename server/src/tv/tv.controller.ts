@@ -1,10 +1,12 @@
-import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, Query, UseGuards, Patch, Post, UsePipes, ValidationPipe, Body } from '@nestjs/common';
 import { TvService } from './tv.service';
-import { AxiosResponse } from 'axios';
 import { AuthGuard } from '@nestjs/passport';
 
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { AddShowDto } from './dto/add-show.dto';
+import { GetUser } from '../auth/get-user.decorator';
+import { User } from '../auth/user.entity';
 
 @Controller('tv')
 @UseGuards(AuthGuard())
@@ -15,7 +17,7 @@ export class TvController {
     @Get('popular')
     getPopular() {
         return this.tvService.getPopular().pipe(
-            map( response => response.data),
+            map(response => response.data),
         );
     }
 
@@ -24,11 +26,11 @@ export class TvController {
         return this.tvService.getSearchResult(query);
     }
 
-    
+
     @Get('top_rated')
     getTopRated() {
         return this.tvService.getTopRated().pipe(
-            map( response => response.data),
+            map(response => response.data),
         );
     }
 
@@ -94,7 +96,12 @@ export class TvController {
         );
     }
 
-
-
-
+    @Post('list')
+    @UsePipes(ValidationPipe)
+    addShow(
+        @Body() addShowDto: AddShowDto,
+        @GetUser() user: User
+    ) {
+        return this.tvService.addShow(addShowDto, user);
+    }
 }

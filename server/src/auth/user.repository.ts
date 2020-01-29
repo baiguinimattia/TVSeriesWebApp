@@ -13,6 +13,7 @@ export class UserRepository extends Repository<User> {
         user.email = email;
         user.salt = await bcrypt.genSalt();
         user.password = await this.hashPassword(password, user.salt);
+        user.myList = [];
         try {
             await user.save();
         } catch (error) {

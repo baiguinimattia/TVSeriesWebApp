@@ -4,12 +4,21 @@ import { ConfigService } from '../config/config.service';
 import * as imdb from 'imdb-api';
 import { of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { AddShowDto } from './dto/add-show.dto';
+import { User } from 'src/auth/user.entity';
+import { Show } from './tv.entity';
+import { TvRepository } from './tv.repository';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class TvService {
     private readonly headers: any;
 
-    constructor(private readonly http: HttpService, private readonly configService: ConfigService) {
+    constructor(
+        private readonly http: HttpService, private readonly configService: ConfigService,
+        @InjectRepository(TvRepository)
+        private tvRepository: TvRepository,
+    ) {
         this.headers = {
             'content-type': 'application/octet-stream',
             'x-rapidapi-host': 'uflixit.p.rapidapi.com', 'x-rapidapi-key': this.configService.getApiKey,
@@ -136,6 +145,13 @@ export class TvService {
                 params: this.configService.generateParams(),
             }
         );
+    }
+
+    async addShow(
+        addShowDto: AddShowDto,
+        user: User
+    ): Promise<Show> {
+        return this.tvRepository.addShow(addShowDto, user);
     }
 
 }
