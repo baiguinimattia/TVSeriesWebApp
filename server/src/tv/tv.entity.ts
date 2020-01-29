@@ -9,7 +9,7 @@ export class Show extends BaseEntity {
   @Column()
   show_id: string;
 
-  @ManyToOne(type => User, user => user.myList, { eager: false })
+  @ManyToOne(type => User, user => user.myList, { eager: false, onDelete: 'CASCADE'})
   user: User;
 
   @Column()

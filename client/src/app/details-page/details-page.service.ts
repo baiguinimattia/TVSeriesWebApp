@@ -90,4 +90,12 @@ export class DetailsPageService {
   getRecommendations(id: string) {
     return this.tvService.getRecommendations(id);
   }
+
+  getMyList() {
+    return this.tvService.getMyList();
+  }
+
+  addToList(id: string) {
+    return this.tvService.addShow(id);
+  }
 }

@@ -5,4 +5,5 @@ export interface MainStateModel {
     ifMenuActive: boolean;
     popular: Popular;
     topRated: Popular;
+    myList: string[]
 }

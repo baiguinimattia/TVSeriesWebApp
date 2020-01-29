@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query, UseGuards, Patch, Post, UsePipes, ValidationPipe, Body } from '@nestjs/common';
+import { Controller, Get, Param, Query, UseGuards, Patch, Post, UsePipes, ValidationPipe, Body, Delete } from '@nestjs/common';
 import { TvService } from './tv.service';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -32,6 +32,29 @@ export class TvController {
         return this.tvService.getTopRated().pipe(
             map(response => response.data),
         );
+    }
+
+    @Post('list')
+    @UsePipes(ValidationPipe)
+    addShow(
+        @Body() addShowDto: AddShowDto,
+        @GetUser() user: User
+    ) {
+        return this.tvService.addShow(addShowDto, user);
+    }
+
+    @Get('list')
+    getList(
+        @GetUser() user: User
+    ) {
+        return user.myList.map(el => el.show_id );
+    }
+    @Delete('list/:id')
+    removeShow(
+        @Param('id') id: string,
+        @GetUser() user: User 
+    ) {
+        return this.tvService.removeShow(id, user);
     }
 
     @Get(':id')
@@ -96,12 +119,5 @@ export class TvController {
         );
     }
 
-    @Post('list')
-    @UsePipes(ValidationPipe)
-    addShow(
-        @Body() addShowDto: AddShowDto,
-        @GetUser() user: User
-    ) {
-        return this.tvService.addShow(addShowDto, user);
-    }
+
 }

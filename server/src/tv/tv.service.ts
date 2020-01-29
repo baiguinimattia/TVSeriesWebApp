@@ -150,8 +150,15 @@ export class TvService {
     async addShow(
         addShowDto: AddShowDto,
         user: User
-    ): Promise<Show> {
+    ): Promise<void> {
         return this.tvRepository.addShow(addShowDto, user);
+    }
+
+    async removeShow(
+        id: string,
+        user: User
+    ): Promise<Show[]> {
+        return this.tvRepository.removeShow(id);
     }
 
 }

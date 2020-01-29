@@ -21,10 +21,10 @@ import { Popular } from '../interfaces/popular.interface';
 export class TvService {
   @Emitter(MainState.addId)
   public visits: Emittable<Array<string>>;
-  @Select(MainState.visits) visits$: Observable<Array<string>>; 
+  @Select(MainState.visits) visits$: Observable<Array<string>>;
   ids: Array<string> = new Array<string>();
 
-  constructor(private readonly http: HttpClient) { 
+  constructor(private readonly http: HttpClient) {
     this.visits$.subscribe(
       (response) => {
         this.ids = response;
@@ -34,10 +34,10 @@ export class TvService {
 
   getDetails(id: string): Observable<ShowDetails> {
     return this.http.get<ShowDetails>(`/api/tv/${id}`).pipe(
-      tap( () => {
+      tap(() => {
         this.ids.push(id);
         this.visits.emit(this.ids);
-      } ),
+      }),
     );
   }
 
@@ -79,5 +79,17 @@ export class TvService {
 
   getTopRated() {
     return this.http.get<Popular>('/api/tv/top_rated');
+  }
+
+  getMyList() {
+    return this.http.get('/api/tv/list');
+  }
+
+  addShow(id: string) {
+    return this.http.post('/api/tv/list', { id });
+  }
+
+  removeShow(id: string) {
+    return this.http.delete(`/api/tv/list/${id}`);
   }
 }

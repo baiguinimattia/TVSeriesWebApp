@@ -10,25 +10,34 @@ export class TvRepository extends Repository<Show> {
     async addShow(
         addShowDto: AddShowDto,
         user: User,
-    ): Promise<Show> {
+    ): Promise<void> {
         const { id } = addShowDto;
-
-        if(!user.myList.filter( el => el.show_id === id).length) {
+        if (!user.myList.filter(el => {
+            return el.show_id == id
+        }).length) {
             const show = new Show();
             show.show_id = id;
             show.user = user;
-    
             try {
                 await show.save();
             } catch (err) {
                 throw new InternalServerErrorException();
             }
-    
-            return show;
+            return;
         } else {
-            throw new HttpException('Already exists!', 200);
+            throw new HttpException('Already exists!', 204);
         }
+    }
 
-
+    async removeShow(
+        id: string,
+    ): Promise<any> 
+    {
+        try {
+           return await Show.delete({show_id: id});
+        } catch (err) {
+            throw new HttpException(err.message, 500);
+        }
     }
 }
+

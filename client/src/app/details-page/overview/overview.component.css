@@ -78,3 +78,21 @@
         object-fit: contain;
     }
 }
+
+.btn-list {
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--highlight);
+    border: none;
+    display: block;
+    margin: 1rem 30%;
+}
+
+.btn-list clr-icon {
+    width: 45px;
+    height: 45px;
+}
+
+.btn-list:hover {
+    color: var(--highlight-darker);
+    cursor: pointer;
+}

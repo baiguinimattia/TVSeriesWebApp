@@ -2,6 +2,7 @@ import { MainStateModel } from '../models/main.model';
 import { State, Selector, StateContext } from '@ngxs/store';
 import { Receiver, EmitterAction } from '@ngxs-labs/emitter';
 import { Result } from 'src/app/interfaces/popular.interface';
+import { Injector } from '@angular/core';
 
 @State<MainStateModel>({
     name: 'main',
@@ -10,10 +11,11 @@ import { Result } from 'src/app/interfaces/popular.interface';
         ifMenuActive: false,
         popular: { page: 1, total_results: 10000, total_pages: 500, results: new Array<Result>() },
         topRated: { page: 1, total_results: 10000, total_pages: 500, results: new Array<Result>() },
+        myList: [],
     }
 })
 export class MainState {
-    constructor() {
+    constructor(injector: Injector) {
     }
 
     @Selector()
@@ -34,6 +36,10 @@ export class MainState {
     @Selector()
     static topRated(state: MainStateModel): Array<Result> {
         return state.topRated.results;
+    }
+    @Selector()
+    static myList(state: MainStateModel): string[] {
+        return state.myList;
     }
 
     @Receiver()
@@ -72,5 +78,14 @@ export class MainState {
         const currentState = getState();
         currentState.topRated.results = payload;
         patchState(currentState);
+    }
+
+    @Receiver()
+    public static updateMyList({ getState, patchState }: StateContext<MainStateModel>,
+        { payload }: EmitterAction<string[]>) {
+        const currentState = getState();
+        currentState.myList = payload;
+        patchState(currentState);
+
     }
 }

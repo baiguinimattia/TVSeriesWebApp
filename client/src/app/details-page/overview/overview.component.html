@@ -11,6 +11,7 @@
         </div>
         <div id="secondary-data" class="clr-col-12 clr-col-md-6">
             <img class="overview-poster" [src]="posterPath$ | async" alt="" appImageFallBack>
+            <button class="btn-list" (click)="update(details.id)"><clr-icon shape="plus-circle" class="is-solid"></clr-icon></button>
         </div>
     </div>
     <div class="slider">

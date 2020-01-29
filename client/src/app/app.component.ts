@@ -24,6 +24,9 @@ export class AppComponent implements OnInit {
   @Emitter(MainState.setTopRated)
   public topRated: Emittable<Result[]>;
 
+  @Emitter(MainState.updateMyList)
+  public myList: Emittable<string[]>;
+
   constructor(private actions: Actions, private router: Router, private tvSrv: TvService) { }
 
   ngOnInit() {
@@ -35,7 +38,6 @@ export class AppComponent implements OnInit {
       map((response: Popular) => response.results),
       tap((results: Result[]) => {
         this.popular.emit(results);
-        console.log(results);
       }),
     ).subscribe();
 
@@ -44,8 +46,14 @@ export class AppComponent implements OnInit {
       map( (response: Popular) => response.results),
       tap( (results: Result[]) => {
         this.topRated.emit(results);
-        console.log(results);
       })
+    ).subscribe();
+
+    this.tvSrv.getMyList().pipe(
+      take(1),
+      tap( (response: string[]) => {
+        this.myList.emit(response);
+      } ),
     ).subscribe();
   }
 

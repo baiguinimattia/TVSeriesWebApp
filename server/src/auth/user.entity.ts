@@ -13,7 +13,7 @@ export class User extends BaseEntity {
     password: string;
     @Column()
     salt: string;
-    @OneToMany( type => Show, show => show.user, {eager: true})
+    @OneToMany(type => Show, show => show.user, { eager: true })
     myList: Show[];
 
     async validatePassword(password: string): Promise<boolean> {
