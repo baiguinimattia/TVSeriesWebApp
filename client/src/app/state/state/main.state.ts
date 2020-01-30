@@ -86,6 +86,23 @@ export class MainState {
         const currentState = getState();
         currentState.myList = payload;
         patchState(currentState);
+    }
+
+    @Receiver()
+    public static removeElement({ getState, patchState }: StateContext<MainStateModel>,
+        { payload }: EmitterAction<string>) {
+        const currentState = getState();
+        currentState.myList = currentState.myList.filter( el => el !== payload);
+        patchState(currentState);
 
     }
+
+    @Receiver()
+    public static addElement({ getState, patchState }: StateContext<MainStateModel>,
+        { payload }: EmitterAction<string>) {
+        const currentState = getState();
+        currentState.myList.push(payload);
+        patchState(currentState);
+    }
+
 }

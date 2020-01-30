@@ -8,6 +8,7 @@ import { DetailsPageComponent } from './details-page/details-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { EpisodeDetailsComponent } from './details/episode-details/episode-details.component';
 import { PopularComponent } from './popular/popular.component';
+import { MyListComponent } from './my-list/my-list.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,9 @@ const routes: Routes = [
   },
   {
     path: 'popular', component: PopularComponent, canActivate: [AuthGuardService]
+  },
+  {
+    path: 'mylist', component: MyListComponent, canActivate: [AuthGuardService],
   },
   {
     path: ':id', component: DetailsPageComponent, canActivate: [AuthGuardService]

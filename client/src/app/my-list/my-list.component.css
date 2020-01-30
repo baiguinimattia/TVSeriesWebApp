@@ -1,0 +1,6 @@
+#my-list-container {
+    padding: 0 1rem;
+    color: var(--text-color-normal);
+    margin: 1rem 0;
+    max-width: 1200px;
+}

@@ -1,0 +1,5 @@
+<div id="my-list-container" *ngIf="myList$ | async as elements">
+    <div class="clr-row">
+        <app-my-list-item class="clr-col-12 clr-col-sm-6 clr-col-md-4" [id]="element" *ngFor="let element of elements"></app-my-list-item>
+    </div>
+</div>

@@ -54,7 +54,7 @@ export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
   constructor(private route: ActivatedRoute,
     private readonly detailsPageService: DetailsPageService,
     private store: Store) {
-     }
+  }
 
   ngOnInit() {
     this.currentPage.emit(DetailsEnum.overview);
@@ -77,8 +77,8 @@ export class DetailsPageComponent implements OnInit, OnDestroy, OnChanges {
                 switchMap(() => {
                   return this.detailsPageService.getExternalIds(this.store.selectSnapshot(DetailsState.getId)).pipe(
                     tap((result: ExternalIds) => this.externalIds.emit(result)),
-                    switchMap( (result: ExternalIds) => this.detailsPageService.getImdb(result.imdb_id).pipe(
-                      tap( (result: ImdbDetails) => this.imdbDetails.emit(result)),
+                    switchMap((result: ExternalIds) => this.detailsPageService.getImdb(result.imdb_id).pipe(
+                      tap((result: ImdbDetails) => this.imdbDetails.emit(result)),
                     )),
                   );
                 }),

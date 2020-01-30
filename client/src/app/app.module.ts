@@ -25,6 +25,7 @@ import { NguCarouselModule } from '@ngu/carousel';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { MainState } from './state/state/main.state';
 import { PopularModule } from './popular/popular.module';
+import { MyListModule } from './my-list/my-list.module';
 
 export function jwtOptionsFactory(authService: AuthService) {
   return {
@@ -63,7 +64,8 @@ export function jwtOptionsFactory(authService: AuthService) {
     }),
     DetailsModule,
     NguCarouselModule,
-    PopularModule
+    PopularModule,
+    MyListModule
     
   ],
   providers: [
