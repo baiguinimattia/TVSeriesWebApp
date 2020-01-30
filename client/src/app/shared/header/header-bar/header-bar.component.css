@@ -32,17 +32,22 @@ clr-icon[shape=color-picker] {
 }
 
 .header-actions a {
-    color: var(--text-color-normal);
+    color: var(--highlight-lighter);
     font-size: 1.1rem;
 }
 
 .header-actions a:hover {
     cursor: pointer;
-    color: var(--text-color-darker);
+    color: var(--highlight);
+}
+
+.navigation-btn {
+    color: var(--highlight-lighter) !important;
+    font-weight: 800;
 }
 
 .navigation-btn:hover {
-    color: var(--highlight-lighter);
+    color: var(--highlight);
 }
 
 clr-icon[shape=color-picker] {

@@ -1,4 +1,6 @@
 <div class="container" *ngIf="episode$ | async as episode">
+
+    <button class="button-leaver" [routerLink]="['/', id]" routerLinkActive="router-link-active"><clr-icon shape="undo"></clr-icon>Go to Details</button>
     <div class="heading-container" *ngIf="details$ | async as details">
         <h1 class="show-title">{{details.title}} ({{details._year_data}})</h1>
         <div class="clr-row episode-heading">

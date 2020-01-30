@@ -21,12 +21,13 @@ export class EpisodeDetailsComponent implements OnInit, OnDestroy {
   episodeImages$: Observable<EpisodeImages>;
   private subs: Subscription = new Subscription();
   images: string[] = [];
-
+  id: string;
 
   constructor(private route: ActivatedRoute, private readonly episodeSrv: EpisodeDetailsService) { }
   ngOnInit() {
     this.route.params.pipe(
       tap(response => {
+        this.id = response.id;
         this.episodeSrv.getEpisodesImages(response.id, response.sno, response.eno).pipe(
           tap(response => {
             response.stills.forEach(element => {
@@ -35,7 +36,7 @@ export class EpisodeDetailsComponent implements OnInit, OnDestroy {
           }),
         ).subscribe();
         this.episode$ = this.episodeSrv.getEpisode(response.id, response.sno, response.eno).pipe(
-          tap(response => {}),
+          tap(response => console.log(response)),
         );
       })
     ).subscribe();

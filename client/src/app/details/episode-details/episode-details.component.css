@@ -86,3 +86,19 @@ clr-icon {
         padding-top: 0.25rem;
     }
 }
+
+.button-leaver {
+    border: none;
+    cursor: pointer;
+    color: var(--text-color-normal);
+    background-color: var(--background-lighter);
+    margin: 1rem auto;
+    padding: 0.25rem 1rem;
+}
+
+.button-leaver clr-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    text-align: left;
+    margin-right: 0.25rem;
+}

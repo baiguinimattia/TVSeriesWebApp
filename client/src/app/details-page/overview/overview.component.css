@@ -81,10 +81,10 @@
 
 .btn-list {
     background-color: rgba(0, 0, 0, 0);
-    color: var(--highlight);
+    color: var(--highlight-lighter);
     border: none;
     display: block;
-    margin: 1rem 30%;
+    margin: 1rem auto;
 }
 
 .btn-list clr-icon {
@@ -93,6 +93,6 @@
 }
 
 .btn-list:hover {
-    color: var(--highlight-darker);
+    color: var(--highlight);
     cursor: pointer;
 }

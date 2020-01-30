@@ -7,6 +7,7 @@ import { MainState } from 'src/app/state/state/main.state';
 import { tap, take } from 'rxjs/operators';
 import { MediaService } from 'src/app/data-layer/media.service';
 import { BackdropSizesEnum } from 'src/app/enums/image-enums';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-my-list-item',
@@ -19,7 +20,8 @@ export class MyListItemComponent implements OnInit {
 
   @Emitter(MainState.removeElement)
   public removeElement: Emittable<string>;
-  constructor(private tvSrv: TvService, private media: MediaService) { }
+  constructor(private tvSrv: TvService, private media: MediaService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.details$ = this.tvSrv.getDetails(this.id);
@@ -29,7 +31,9 @@ export class MyListItemComponent implements OnInit {
     this.tvSrv.removeShow(id).pipe(
       take(1),
       tap( () => this.removeElement.emit(id))
-    ).subscribe();
+    ).subscribe(
+       () => this.toastr.info('Show succesfully removed!'),
+    );
   }
 
   getImage(path: string) {

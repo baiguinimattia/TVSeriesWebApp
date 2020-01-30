@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Emitter, Emittable } from '@ngxs-labs/emitter';
 import { MainState } from 'src/app/state/state/main.state';
 import { TvService } from 'src/app/data-layer/tv.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-overview',
@@ -23,12 +24,16 @@ export class OverviewComponent implements OnInit {
   public updateList: Emittable<string[]>;
 
   private myList: string[];
-  constructor(private detailsSrv: DetailsPageService, private tvSrv: TvService) { }
+  ifInList: boolean = false;
+
+
+  constructor(private detailsSrv: DetailsPageService, private tvSrv: TvService,
+    private readonly toastr: ToastrService) { }
 
   ngOnInit() {
-    this.myList$.subscribe(response =>{
+    this.myList$.subscribe(response => {
       this.myList = response;
-    } );
+    });
   }
 
   update(id: string) {
@@ -38,15 +43,15 @@ export class OverviewComponent implements OnInit {
         tap((response: string[]) => {
           this.myList.splice(this.myList.findIndex(el => el === id), 1);
           this.updateList.emit(this.myList);
-        } )
-      ).subscribe();
+        })
+      ).subscribe(() => this.toastr.info('Show succesfully removed!'));
     } else {
       this.tvSrv.addShow(id).pipe(
         tap(() => {
           this.myList.push(id);
           this.updateList.emit(this.myList);
         })
-      ).subscribe();
+      ).subscribe(() => this.toastr.info('Show succesfully added!'));
     }
   }
 }

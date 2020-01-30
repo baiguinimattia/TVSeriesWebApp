@@ -2,10 +2,9 @@
     width: 100%;
     min-height: 275px;
     height: auto;
-    border: 1px solid var(--highlight);
     margin: 0.5rem 0.25rem;
     text-align: center;
-    background-color: var(--background);
+    background-color: var(--background-lighter);
     color: var(--text-color-lighter);
 }
 

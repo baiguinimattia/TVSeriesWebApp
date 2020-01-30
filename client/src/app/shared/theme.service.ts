@@ -17,13 +17,13 @@ export const darkTheme = {
   'gradient': 'linear-gradient(to right, rgb(15, 32, 39), rgb(32, 58, 67), rgb(44, 83, 100))',
   'background': '#141414',
   'background-darker': '#000000',
-  'background-lighter': '#3a3a3a',
+  'background-lighter': '#9A031E',
   'text-color-lighter': '#f2f2f2',
   'text-color-normal': '#d8d8d8',
   'text-color-darker': '#bfbfbf',
-  'highlight-lighter': '#f8d761',
-  'highlight': '#f5c518',
-  'highlight-darker': '#d1a609',
+  'highlight-lighter': '#16cfd2',
+  'highlight': '#0f8b8d',
+  'highlight-darker': '#084748',
 }
 
 @Injectable({

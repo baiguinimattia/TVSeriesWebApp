@@ -2,8 +2,7 @@
     width: 100%;
     height: auto;
     margin-top: 1rem;
-    border: 1px solid red;
-    background-color: var(--background);
+    background-color: var(--background-lighter);
     padding: 1rem;
 }
 

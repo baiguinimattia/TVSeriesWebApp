@@ -21,9 +21,9 @@
     padding-top: 1rem;
     line-height: 1.2rem;
     color: var(--text-color-darker);
-    background-color: var(--background);
+    background-color: var(--background-lighter);
     padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--highlight);
+    border-bottom: 2px solid var(--background-darker);
 }
 
 .episode-details:hover {

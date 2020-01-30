@@ -1,5 +1,5 @@
 import { MainStateModel } from '../models/main.model';
-import { State, Selector, StateContext } from '@ngxs/store';
+import { State, Selector, StateContext, Select } from '@ngxs/store';
 import { Receiver, EmitterAction } from '@ngxs-labs/emitter';
 import { Result } from 'src/app/interfaces/popular.interface';
 import { Injector } from '@angular/core';
