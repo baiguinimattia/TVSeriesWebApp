@@ -1,22 +1,12 @@
-<div id="register-container">
+<div id="login-container">
+    <div class="login-form">
+        <h2 class="welcome-header">Welcome</h2>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <input class="form-input" id="email" formControlName="email" type="email" placeholder="Email">
+            <input class="form-input" id="password" formControlName="password" type="password" placeholder="Password">
+            <button type="submit" class="btn btn-login">Register</button>
+            <p>Already have an account? <span class="text-primary"> <a [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</a></span></p>
+        </form>
 
-    <h1 class="register-heading">Register</h1>
-
-    <form clrForm [formGroup]="form" (ngSubmit)="submit()">
-        <clr-input-container>
-            <label>Email</label>
-            <input clrInput formControlName="email" type="email" />
-            <clr-control-error required>Email Required</clr-control-error>
-        </clr-input-container>
-
-        <clr-password-container>
-            <label>Password</label>
-            <input clrPassword formControlName="password" type="password" />
-            <clr-control-error required>Password Required</clr-control-error>
-        </clr-password-container>
-
-        <button class="btn btn-success">Register</button>
-        <button [routerLink]="['/login']" class="btn btn-danger">Go to login</button>
-
-    </form>
+    </div>
 </div>

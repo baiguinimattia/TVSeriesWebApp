@@ -37,7 +37,7 @@ export class MyListItemComponent implements OnInit {
   }
 
   getImage(path: string) {
-    return `url(${this.media.getBackdropImage(path, BackdropSizesEnum.w300)}) center center/cover no-repeat`;
+    return `url(${this.media.getBackdropImage(path, BackdropSizesEnum.w780)}) center top/cover no-repeat`;
   }
 
 }

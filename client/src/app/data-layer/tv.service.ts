@@ -82,7 +82,7 @@ export class TvService {
   }
 
   getMyList() {
-    return this.http.get('/api/tv/list');
+    return this.http.get<string[]>('/api/tv/list');
   }
 
   addShow(id: string) {

@@ -28,3 +28,21 @@
     margin: 0;
     padding: 0.25rem 0;
 }
+
+@media(min-width: 500px) {
+    #popular-item-container {
+        height: 35vh;
+    }
+}
+
+@media(min-width: 650px) {
+    #popular-item-container {
+        height: 40vh;
+    }
+}
+
+@media(min-width: 768px) {
+    #popular-item-container {
+        height: 25vh;
+    }
+}

@@ -1,6 +1,6 @@
 <div id="item-container" *ngIf="details$ | async as details" [ngStyle]="{'background': getImage(details.backdrop_path)}">
     <div class="item-menu">
-        {{details.name}}
+        <span class="title">{{details.name}}</span>
         <button class="btn remove" (click)="remove(id)"><clr-icon shape="trash"></clr-icon></button>
         <button class="btn details" [routerLink]="['/', id]" routerLinkActive="router-link-active"><clr-icon shape="details"></clr-icon></button>
     </div>

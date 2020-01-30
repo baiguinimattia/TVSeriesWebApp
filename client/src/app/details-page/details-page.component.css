@@ -15,7 +15,7 @@
 }
 
 #menu-container {
-    background-color: var(--background);
+    background-color: var(--background-lighter);
     opacity: 0.8;
     position: fixed;
     overflow: inherit;

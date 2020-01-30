@@ -1,5 +1,6 @@
 .main-header {
-    background-color: var(--background)
+    background-color: var(--background);
+    border-bottom: 3px solid var(--background)
 }
 
 .clr-nav-level-1 {
@@ -32,22 +33,23 @@ clr-icon[shape=color-picker] {
 }
 
 .header-actions a {
-    color: var(--highlight-lighter);
+    color: var(--highlight);
     font-size: 1.1rem;
 }
 
 .header-actions a:hover {
     cursor: pointer;
-    color: var(--highlight);
+    color: var(--highlight-lighter);
 }
 
 .navigation-btn {
-    color: var(--highlight-lighter) !important;
+    color: var(--highlight) !important;
     font-weight: 800;
+    padding: 0.75rem 0.5rem !important;
 }
 
 .navigation-btn:hover {
-    color: var(--highlight);
+    color: var(--highlight-lighter) !important;
 }
 
 clr-icon[shape=color-picker] {
@@ -64,18 +66,12 @@ clr-icon[shape=color-picker] {
         font-size: 0.7rem;
         padding: 0.75rem 0.25rem;
     }
-    .header-actions {
-        justify-content: flex-start;
-    }
     .branding {
         padding: 0 0.25rem;
     }
 }
 
 @media(min-width: 321px) and (max-width:375px) {
-    .header-actions {
-        justify-content: flex-start;
-    }
     .header-actions a {
         font-size: 0.7rem;
         padding: 0.75rem 0.5rem;

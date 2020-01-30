@@ -29,12 +29,12 @@ export class DetailsState {
 
     @Selector()
     public static getCast(state: DetailsStateModel): Person[] | [] {
-        return state.cast;
+        return state.cast.slice(0, 4);
     }
 
     @Selector()
     public static getCrew(state: DetailsStateModel): Person[] | [] {
-        return state.crew;
+        return state.crew.slice(0, 3);
     }
 
     @Selector()

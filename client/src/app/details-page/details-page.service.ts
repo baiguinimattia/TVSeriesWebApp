@@ -58,11 +58,11 @@ export class DetailsPageService {
   }
 
   getBackgroundPath(path: string): string {
-    return `#002538 url(${this.mediaService.getImagePath(path, BackdropSizesEnum.original)}) no-repeat center center/cover`;
+    return `#002538 url(${this.mediaService.getImagePath(path, BackdropSizesEnum.w780)}) no-repeat center center/cover`;
   }
 
   getPosterPath(path: string): string {
-    return `${this.mediaService.getImagePath(path, BackdropSizesEnum.original)}`;
+    return `${this.mediaService.getImagePath(path, BackdropSizesEnum.w780)}`;
   }
 
   getStillPath(path: string): string {

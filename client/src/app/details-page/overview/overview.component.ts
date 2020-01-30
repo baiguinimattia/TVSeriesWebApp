@@ -4,7 +4,7 @@ import { Select } from '@ngxs/store';
 import { DetailsState } from 'src/app/state/state/details.state';
 import { Observable, of } from 'rxjs';
 import { DetailsPageService } from '../details-page.service';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, tap, switchMap, take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Emitter, Emittable } from '@ngxs-labs/emitter';
 import { MainState } from 'src/app/state/state/main.state';
@@ -31,9 +31,13 @@ export class OverviewComponent implements OnInit {
     private readonly toastr: ToastrService) { }
 
   ngOnInit() {
-    this.myList$.subscribe(response => {
-      this.myList = response;
-    });
+    this.tvSrv.getMyList().pipe(
+      take(1),
+      tap(response => {
+        this.myList = response;
+        this.updateList.emit(response);
+      })
+    ).subscribe()
   }
 
   update(id: string) {
