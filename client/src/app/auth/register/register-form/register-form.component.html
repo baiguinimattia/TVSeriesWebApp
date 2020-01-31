@@ -1,7 +1,41 @@
 <div id="login-container">
     <div class="login-form">
         <h2 class="welcome-header">Welcome</h2>
-        <form [formGroup]="form" (ngSubmit)="submit()">
+        <form [formGroup]="registerForm" (ngSubmit)="submit()">
+
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger" role="alert">
+                <div class="alert-items">
+                    <div class="alert-item static">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+                        </div>
+                        <span class="alert-text">
+                            <div *ngIf="email.errors.required">
+                                Email is required!
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger" role="alert">
+                <div class="alert-items">
+                    <div class="alert-item static">
+                        <div class="alert-icon-wrapper">
+                            <clr-icon class="alert-icon" shape="check-circle"></clr-icon>
+                        </div>
+                        <span class="alert-text">
+                            <div *ngIf="password.errors.required">
+                                Password is required!
+                            </div>
+                            <div *ngIf="password.errors.pattern">
+                                Password must contain at least 8 characters, with uppercase and at least a number!
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
             <input class="form-input" id="email" formControlName="email" type="email" placeholder="Email">
             <input class="form-input" id="password" formControlName="password" type="password" placeholder="Password">
             <button type="submit" class="btn btn-login">Register</button>

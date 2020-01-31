@@ -14,7 +14,7 @@ import { PersonModule } from './person/person.module';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', '..', 'client', 'dist', 'client'),
+      rootPath: join(__dirname, '..', 'client'),
     }),
     TypeOrmModule.forRoot(typeOrmConfig),
     AuthModule,
