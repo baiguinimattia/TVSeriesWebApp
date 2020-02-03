@@ -13,7 +13,6 @@ export class ShowDetailsComponent implements OnInit {
   constructor(private mediaSrv: MediaService) { }
 
   ngOnInit() {
-    console.log(this.show);
   }
   getBackgroundUrl(): string {
     return `url(${this.mediaSrv.getBackdropImage(this.show.backdrop_path, BackdropSizesEnum.w780)}) top center/cover no-repeat`;

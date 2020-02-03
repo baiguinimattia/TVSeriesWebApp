@@ -22,13 +22,24 @@ export class SearchPageComponent implements OnInit {
   }
 
   toggle() {
-    this.toggleOpen = true;
-    this.searchText.nativeElement.focus();
-    if(this.searchText.nativeElement.value) {
-      this.search$ = this.searchService.searchTv(this.searchText.nativeElement.value).pipe(
-        tap((response: ShowResult[]) => this.results = response),
-      ).subscribe()
+    this.toggleOpen = !this.toggleOpen;
+    if (this.toggleOpen) {
+      this.searchText.nativeElement.focus();
     }
+  }
+
+  onKeydown($event) {
+    this.search$ = this.searchService.searchTv(this.searchText.nativeElement.value).pipe(
+      tap((response: ShowResult[]) => this.results = response),
+    );
+
+    this.search$.subscribe(
+      (response) => {
+      },
+      (error) => {
+        this.toast.error(error.message);
+      }
+    );
   }
 
 }
