@@ -1,0 +1,5 @@
+<div id="item-container" [ngStyle]="{'background': getBackgroundUrl()}" *ngIf="show">
+    <div class="data-container" [routerLink]="['/', show.id]" routerLinkActive="router-link-active">
+        <h3 class="title-heading">{{show.name}}</h3>
+    </div>
+</div>

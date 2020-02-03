@@ -161,4 +161,11 @@ export class TvService {
         return this.tvRepository.removeShow(id);
     }
 
+    getOnAir() {
+        return this.http.get(`${this.getBasePath}/tv/on_the_air`,
+            {
+                params: this. configService.generateParams(),
+            });
+    }
+
 }

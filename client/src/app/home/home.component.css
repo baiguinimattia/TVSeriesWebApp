@@ -1,0 +1,12 @@
+.on-air-heading {
+    color: var(--text-color-darker);
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+#on-air-container {
+    max-width: 1200px;
+    width: 100vw;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}

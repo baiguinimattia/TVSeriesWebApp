@@ -9,8 +9,9 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SliderElementComponent } from './slider/slider-element/slider-element.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { ClrIconModule } from '@clr/angular';
+import { ShowDetailsComponent } from './show-details/show-details.component';
 @NgModule({
-  declarations: [CarouselComponent, SliderComponent, SliderElementComponent],
+  declarations: [CarouselComponent, SliderComponent, SliderElementComponent, ShowDetailsComponent],
   imports: [
     CommonModule,
     HeaderModule,
@@ -25,6 +26,7 @@ import { ClrIconModule } from '@clr/angular';
     AlertModule,
     CarouselComponent,
     SliderComponent,
+    ShowDetailsComponent
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,6 @@
+<div id="on-air-container" *ngIf="onAir$ | async as results">
+    <h3 class="on-air-heading">On Air</h3>
+    <div class="clr-row">
+        <app-show-details *ngFor="let result of results" [show]="result" class="clr-col-12 clr-col-sm-12 clr-col-md-6"></app-show-details>
+    </div>
+</div>

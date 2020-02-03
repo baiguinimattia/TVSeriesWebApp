@@ -20,7 +20,7 @@ export class PersonListComponent implements OnInit, OnChanges {
   }
 
   getProfilePhoto() {
-    return `${PathsEnum.default}${ProfileSizesEnum.original}${this.person.profile_path}`;
+    return `${PathsEnum.secured}${ProfileSizesEnum.original}${this.person.profile_path}`;
   }
 
 }

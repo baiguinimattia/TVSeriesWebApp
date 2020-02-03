@@ -12,19 +12,19 @@ export class MediaService {
   constructor(private readonly http: HttpClient, private readonly data: DataLayerService) { }
 
   getImagePath(path?: string, dimension?: string): string {
-    return PathsEnum.default + PosterSizesEnum.original + path;
+    return PathsEnum.secured + PosterSizesEnum.original + path;
 
   }
 
   getStillImage(path: string, dimension: StillSizesEnum): string {
-    return `${PathsEnum.default}${dimension}${path}`;
+    return `${PathsEnum.secured}${dimension}${path}`;
   }
 
   getBackdropImage(path: string, dimension: BackdropSizesEnum): string {
-    return `${PathsEnum.default}${dimension}${path}`;
+    return `${PathsEnum.secured}${dimension}${path}`;
   }
 
   getPosterImage(path: string, dimension: PosterSizesEnum): string {
-    return `${PathsEnum.default}${dimension}${path}`;
+    return `${PathsEnum.secured}${dimension}${path}`;
   }
 }

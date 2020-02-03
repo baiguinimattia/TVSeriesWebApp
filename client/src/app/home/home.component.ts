@@ -5,6 +5,7 @@ import { take, map, tap } from 'rxjs/operators';
 import { Popular, Result } from '../interfaces/popular.interface';
 import { Emitter, Emittable } from '@ngxs-labs/emitter';
 import { MainState } from '../state/state/main.state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,9 @@ export class HomeComponent implements OnInit {
 
   @Emitter(MainState.updateMyList)
   public myList: Emittable<string[]>;
+
+
+  public onAir$: Observable<Result[]>;
   constructor(private tvSrv: TvService) { }
 
   ngOnInit() {
@@ -45,6 +49,8 @@ export class HomeComponent implements OnInit {
         this.myList.emit(response);
       } ),
     ).subscribe();
+
+    this.onAir$ = this.tvSrv.getOnAir();
   }
 
 }

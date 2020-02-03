@@ -47,14 +47,22 @@ export class TvController {
     getList(
         @GetUser() user: User
     ) {
-        return user.myList.map(el => el.show_id );
+        return user.myList.map(el => el.show_id);
     }
+
     @Delete('list/:id')
     removeShow(
         @Param('id') id: string,
-        @GetUser() user: User 
+        @GetUser() user: User
     ) {
         return this.tvService.removeShow(id, user);
+    }
+
+    @Get('on-air')
+    getOnAir() {
+        return this.tvService.getOnAir().pipe(
+            map(response => response.data.results),
+        );
     }
 
     @Get(':id')
@@ -118,6 +126,8 @@ export class TvController {
             map(response => response.data),
         );
     }
+
+
 
 
 }

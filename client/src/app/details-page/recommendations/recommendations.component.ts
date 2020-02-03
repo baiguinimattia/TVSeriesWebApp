@@ -43,7 +43,7 @@ export class RecommendationsComponent implements OnInit {
   }
 
   getPosterPath(path: string) {
-    return `${PathsEnum.default}${PosterSizesEnum.original}${path}`;
+    return `${PathsEnum.secured}${PosterSizesEnum.original}${path}`;
   }
 
 }

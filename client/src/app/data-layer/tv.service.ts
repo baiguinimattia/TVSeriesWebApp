@@ -13,7 +13,7 @@ import { MainState } from '../state/state/main.state';
 import { Emitter, Emittable } from '@ngxs-labs/emitter';
 import { tap } from 'rxjs/operators';
 import { Select } from '@ngxs/store';
-import { Popular } from '../interfaces/popular.interface';
+import { Popular, Result } from '../interfaces/popular.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -91,5 +91,9 @@ export class TvService {
 
   removeShow(id: string) {
     return this.http.delete(`/api/tv/list/${id}`);
+  }
+
+  getOnAir() {
+    return this.http.get<Result[]>(`/api/tv/on-air`);
   }
 }
