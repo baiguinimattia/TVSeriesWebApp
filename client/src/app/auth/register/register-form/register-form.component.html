@@ -13,6 +13,9 @@
                             <div *ngIf="email.errors.required">
                                 Email is required!
                             </div>
+                            <div *ngIf="email.errors.pattern">
+                                Please enter a valid email address!
+                            </div>
                         </span>
                     </div>
                 </div>
